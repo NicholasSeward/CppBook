@@ -16,6 +16,7 @@ NOTE: Chapter numbers and folder order are subject to change as the book develop
 - [Testing and Debugging](00intro/06testing%20and%20debugging.md)
 - [IDEs and Setup](00intro/07ides%20and%20setup.md)
 - [C++ Versions and g++](00intro/08cpp%20versions%20and%20gpp.md)
+- [Python to C++ Quick Start](00intro/09python%20to%20cpp%20quick%20start.md)
 
 ### 01 Basics
 

@@ -1,0 +1,77 @@
+---
+description: Conventions for writing textbook markdown chapters
+globs: "**/*.md"
+alwaysApply: false
+---
+
+# Textbook Markdown Chapters
+
+Conversational textbook chapters as `.md` files in numbered topic folders (e.g. `01Basics/topic name.md`).
+
+## Voice
+
+- One concept at a time; build on earlier chapters.
+- Plain language, short paragraphs; explain **why**, not only **what**.
+- End sections with something to **try** (change code, break it on purpose, run variants).
+- Do not use em dashes (`—`), en dashes as punctuation (`–`), or `--` as a stand-in. Use a period, comma, colon, parentheses, or split into two sentences instead.
+
+## Headings
+
+Use ATX headings (`#`). Do not skip levels.
+
+| Level | Use |
+|-------|-----|
+| `#` | Chapter title, **once** at the top; matches the topic (and usually the filename) |
+| `##` | Major sections (hook, core concept, examples, mistakes, summary) |
+| `###` | Subsections within a `##` block |
+| `####` | Rare; only when a `###` section needs a clear split |
+
+- One `#` per file. Do not use `#` for callouts or examples.
+- Prefer `##` / `###` over bold lines or pseudo-headings in plain text.
+- Callouts stay **inline** (prefix + paragraph), not as headings.
+
+## Typical flow
+
+Structure major blocks as `##` sections in this order when they fit:
+
+1. Hook: what it is and when you use it
+2. Explanation: definitions and rules
+3. Simple example → richer example
+4. Common mistakes (when relevant)
+5. Optional callouts (below)
+6. Tie back to prior material when needed
+
+## Callouts
+
+Use **exactly** these prefixes (all caps, trailing colon), one to three sentences each. Do not vary casing (`Protip`, `protip`, etc.).
+
+| Prefix | Purpose |
+|--------|---------|
+| `PROTIP:` | Shortcuts, workflow, productivity |
+| `PREFERENCE:` | Style guidance, not language rules |
+| `NOTE:` | Book-specific context |
+| `HISTORY:` | Background of a feature |
+| `AI:` | How AI affects learning or debugging here |
+
+## Drafting vs finished
+
+- Drafts: `[show example with ...]` for missing code, images, or demos.
+- Finished chapters: replace placeholders with real fenced blocks (` ```lang `) or assets. Keep placeholders only if the user wants an outline.
+
+## Code and examples
+
+- Tagged fenced blocks; samples should stand alone when possible.
+- Use good/bad pairs for style topics.
+- Link first mention of important external terms; define acronyms once.
+- Use `inline code` for syntax, names, and literals.
+- {} are column aligned
+
+## Files
+
+- Folders: `NNTopic` (e.g. `01Basics`)
+- Files: lowercase words, spaces: `topic name.md`
+- No extra front matter unless the build needs it
+
+## Outlines
+
+Expand bullet/outline notes into full prose. Keep intent, callouts, and teaching order. Drop jargon the reader has not seen yet.

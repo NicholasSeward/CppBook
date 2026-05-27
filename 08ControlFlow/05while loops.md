@@ -9,9 +9,11 @@ A **`while` loop** is basically an `if` that tries again until the condition bec
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int i{1};
-    while (i <= 10) {
+    while (i <= 10)
+    {
         std::cout << i << ' ';
         ++i;
     }
@@ -39,9 +41,11 @@ Sometimes you want to repeat until the user quits:
 #include <iostream>
 #include <string>
 
-int main() {
+int main()
+{
     std::string again{"y"};
-    while (again == "y" || again == "Y") {
+    while (again == "y" || again == "Y")
+    {
         std::cout << "Did something useful...\n";
         std::cout << "Again (y/n)? ";
         std::cin >> again;
@@ -71,7 +75,8 @@ The body is **not** attached to the `while`. The empty statement loops forever.
 
 ```cpp
 int i{0};
-while (i >= 0) {  // never becomes false if i only increases
+while (i >= 0)
+{  // never becomes false if i only increases
     std::cout << i << '\n';
     ++i;
 }
@@ -86,13 +91,18 @@ Short names are common in tiny loops: `i`, `j`, `k`. Descriptive names help in l
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int n{1};
-    while (n <= 12) {
+    while (n <= 12)
+    {
         std::cout << n;
-        if (n % 4 == 0) {
+        if (n % 4 == 0)
+        {
             std::cout << '\n';
-        } else {
+        }
+        else
+        {
             std::cout << ' ';
         }
         ++n;
@@ -106,11 +116,14 @@ int main() {
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int row{1};
-    while (row <= 4) {
+    while (row <= 4)
+    {
         int col{1};
-        while (col <= row) {
+        while (col <= row)
+        {
             std::cout << '*';
             ++col;
         }
@@ -126,17 +139,21 @@ Nested loops get confusing fast. A function can clarify:
 ```cpp
 #include <iostream>
 
-void printStars(int n) {
+void printStars(int n)
+{
     int i{0};
-    while (i < n) {
+    while (i < n)
+    {
         std::cout << '*';
         ++i;
     }
 }
 
-int main() {
+int main()
+{
     int row{1};
-    while (row <= 4) {
+    while (row <= 4)
+    {
         printStars(row);
         std::cout << '\n';
         ++row;

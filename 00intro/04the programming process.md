@@ -39,7 +39,8 @@ Here is a simple hello world program in C++:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "Hello, world!\n";
     return 0;
 }

@@ -21,7 +21,8 @@ Here is a program that prints a few literals:
 #include <iostream>
 #include <string>
 
-int main() {
+int main()
+{
     std::cout << 334534 << '\n';
     std::cout << 23.543 << '\n';
     std::cout << 'A' << '\n';
@@ -43,7 +44,8 @@ NOTE: Later we will talk about where variables live and how to work with address
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int x{5};
 
     std::cout << x << '\n';
@@ -98,7 +100,8 @@ You can create a variable and assign later:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int x;
     x = 5;
     std::cout << x << '\n';
@@ -113,7 +116,8 @@ You can assign multiple times:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int x{0};
     x = 10;
     x = x + 5; //definetly not allowed in algebra but no problem here
@@ -146,7 +150,8 @@ It is legal to define a variable and never give it a value. This is almost alway
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int x;               // uninitialized
     std::cout << x << '\n';
     return 0;

@@ -9,10 +9,12 @@ C++ has other ways to change control flow. This chapter covers `switch` (sometim
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int day{3};
 
-    switch (day) {
+    switch (day)
+    {
     case 1:
         std::cout << "Mon\n";
         break;
@@ -38,13 +40,20 @@ Each `case` labels a branch. `break` leaves the `switch`. Without `break`, execu
 ### Same idea with `if` / `else if`
 
 ```cpp
-if (day == 1) {
+if (day == 1)
+{
     std::cout << "Mon\n";
-} else if (day == 2) {
+}
+else if (day == 2)
+{
     std::cout << "Tue\n";
-} else if (day == 3) {
+}
+else if (day == 3)
+{
     std::cout << "Wed\n";
-} else {
+}
+else
+{
     std::cout << "Other\n";
 }
 ```
@@ -63,8 +72,10 @@ Here are three ways to solve the same problem. Given an integer `day`, print a s
 #include <iostream>
 #include <unordered_map>
 
-void printDaySwitch(int day) {
-    switch (day) {
+void printDaySwitch(int day)
+{
+    switch (day)
+    {
     case 1: std::cout << "Mon\n"; break;
     case 2: std::cout << "Tue\n"; break;
     case 3: std::cout << "Wed\n"; break;
@@ -72,14 +83,16 @@ void printDaySwitch(int day) {
     }
 }
 
-void printDayIf(int day) {
+void printDayIf(int day)
+{
     if (day == 1) std::cout << "Mon\n";
     else if (day == 2) std::cout << "Tue\n";
     else if (day == 3) std::cout << "Wed\n";
     else std::cout << "Other\n";
 }
 
-void printDayMap(int day) {
+void printDayMap(int day)
+{
     const std::unordered_map<int, const char*> names{
         {1, "Mon"},
         {2, "Tue"},
@@ -89,7 +102,8 @@ void printDayMap(int day) {
     std::cout << (it != names.end() ? it->second : "Other") << '\n';
 }
 
-int main() {
+int main()
+{
     int day{3};
     printDaySwitch(day);
     printDayIf(day);
@@ -107,7 +121,8 @@ PREFERENCE: My bias is clear. I do not like `switch` in beginner code. It adds m
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "Before goto\n";
 
     goto skip;

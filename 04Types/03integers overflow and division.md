@@ -14,7 +14,8 @@ NOTE: The C++ standard does not promise that `int` is exactly 32 bits, but on ty
 #include <iostream>
 #include <limits>
 
-int main() {
+int main()
+{
     std::cout << "int min: " << std::numeric_limits<int>::min() << '\n';
     std::cout << "int max: " << std::numeric_limits<int>::max() << '\n';
     std::cout << "long min: " << std::numeric_limits<long>::min() << '\n';
@@ -35,7 +36,8 @@ Example. This code is a demonstration only:
 #include <iostream>
 #include <limits>
 
-int main() {
+int main()
+{
     int x{std::numeric_limits<int>::max()};
     std::cout << "max int: " << x << '\n';
 
@@ -65,7 +67,8 @@ When you divide one integer by another integer, you get an integer result. The f
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "1/2 = " << 1 / 2 << '\n';
     std::cout << "50/7 = " << 50 / 7 << '\n';
     return 0;
@@ -88,7 +91,8 @@ If either operand is a floating point type, the division is floating point:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "1.0/2 = " << 1.0 / 2 << '\n';
     std::cout << "1/2.0 = " << 1 / 2.0 << '\n';
     return 0;
@@ -100,7 +104,8 @@ If you have integer variables and want a `double` result, one simple approach is
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int x{1};
     int y{2};
 
@@ -124,7 +129,8 @@ Example:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     unsigned int u{0};
     std::cout << (u - 1) << '\n'; // wraps around on typical machines
     return 0;

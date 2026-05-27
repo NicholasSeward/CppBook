@@ -25,17 +25,24 @@ PREFERENCE: Always use `{}` on `if` / `else` branches in this course. If you eve
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int age{20};
     bool hasTicket{true};
 
-    if (age >= 18) {
-        if (hasTicket) {
+    if (age >= 18)
+    {
+        if (hasTicket)
+        {
             std::cout << "Enter\n";
-        } else {
+        }
+        else
+        {
             std::cout << "Need a ticket\n";
         }
-    } else {
+    }
+    else
+    {
         std::cout << "Too young\n";
     }
 
@@ -46,11 +53,16 @@ int main() {
 **Chaining** uses `else if` on one level when cases are flat:
 
 ```cpp
-if (age < 13) {
+if (age < 13)
+{
     std::cout << "child\n";
-} else if (age < 18) {
+}
+else if (age < 18)
+{
     std::cout << "teen\n";
-} else {
+}
+else
+{
     std::cout << "adult\n";
 }
 ```

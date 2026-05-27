@@ -25,7 +25,8 @@ int b{+x};   // 5 (unary plus, rare in practice)
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << 10 + 3 << '\n';
     std::cout << 10 - 3 << '\n';
     std::cout << 10 * 3 << '\n';
@@ -44,7 +45,8 @@ If either operand is floating point, you get a floating result:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int a{1};
     int b{2};
 
@@ -65,7 +67,8 @@ int main() {
 #include <iostream>
 #include <cmath>
 
-int main() {
+int main()
+{
     double a{1.0};
     double b{0.0};
     std::cout << a / b << '\n';    // often inf
@@ -89,7 +92,8 @@ Changing and assigning in one step is so common that C++ has shorthand:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int x{10};
     x = x + 6;
     std::cout << x << '\n';  // 16
@@ -107,7 +111,8 @@ int main() {
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << 17 / 5 << '\n';  // 3
     std::cout << 17 % 5 << '\n';  // 2
     return 0;
@@ -121,7 +126,8 @@ In many languages, `%` always returns a non negative remainder. In C++, the sign
 If you want a positive wrap style result (useful for grid or Pac Man style wrapping):
 
 ```cpp
-int positiveMod(int x, int y) {
+int positiveMod(int x, int y)
+{
     return (x % y + y) % y;
 }
 ```
@@ -129,9 +135,11 @@ int positiveMod(int x, int y) {
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int width{10};
-    for (int x{8}; x < 13; ++x) {
+    for (int x{8}; x < 13; ++x)
+    {
         int wrapped = (x % width + width) % width;
         std::cout << "x=" << x << " wraps to " << wrapped << '\n';
     }
@@ -144,7 +152,8 @@ int main() {
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int n{14};
     std::cout << std::boolalpha;
     std::cout << "even: " << (n % 2 == 0) << '\n';

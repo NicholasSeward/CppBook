@@ -14,7 +14,8 @@ Relational operators compare two values and produce a `bool`.
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int a{3};
     int b{7};
 
@@ -32,14 +33,20 @@ Redundant:
 
 ```cpp
 bool isRaining{true};
-if (isRaining == true) { }
+if (isRaining == true)
+{
+}
 ```
 
 Better:
 
 ```cpp
-if (isRaining) { }
-if (!isRaining) { }
+if (isRaining)
+{
+}
+if (!isRaining)
+{
+}
 ```
 
 ## Do not use `==` with floating point
@@ -49,7 +56,8 @@ if (!isRaining) { }
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     double a{0.1 + 0.1 + 0.1};
     double b{0.3};
 
@@ -65,7 +73,8 @@ For "close enough," compare the absolute difference to a small epsilon:
 #include <iostream>
 #include <cmath>
 
-int main() {
+int main()
+{
     double a{0.1 + 0.1 + 0.1};
     double b{0.3};
     double epsilon{1e-9};

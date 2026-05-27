@@ -1,46 +1,161 @@
-It is important humans and to some degree AI to have your code well formatted following conventions.  C++ is a whitespace independent language which can allow some truely horrendous code to be made.  Most classes and employers and projects won't accept code unless it follows the specified formatting standard.  we will look at common formatting but make sure you match what is required
+# Formatting
 
-for the most part whitespace is ignored but it is need to seperate some elements.
+Good formatting makes code easier for humans to read. It also helps AI tools, because predictable structure gives them less noise to sort through.
 
-int x vs intx
+C++ mostly ignores whitespace, which means you can write truly awful-looking code that still compiles. Most classes, employers, and projects will not accept code unless it follows a formatting standard. This chapter covers the style this book will roughly use.
 
-however where one space can go usually you can put as much whitespace as you want
+## Whitespace in C++
 
+C++ is mostly **whitespace independent**. Spaces, tabs, and newlines usually do not change what the program means.
+
+But whitespace is still needed to separate some tokens:
+
+```cpp
+int x{5};   // OK
+intx{5};    // not the same thing
+```
+
+Where one space can go, many spaces or newlines can often go:
+
+```cpp
 int
 x
+{
+    5
+};
+```
 
-single line comments are terminated by newlines
+That is legal, but do not write code that way. The goal is not only to satisfy the compiler. The goal is to help the next reader.
 
-[example of correct but poorly formated code]
+NOTE: Single-line comments are different. A `//` comment ends at the newline, so moving line breaks can change what is commented out.
 
-[example of properly formated hello world]
+## Bad formatting that still compiles
 
-guideline
-blank lines between functions
-try not to make lines over 80 characters
-try not to have a statement span more than one line
-{} column alligned
-body of codeblock{} indented
+This program is valid C++, but it is painful to read:
 
-open curly tab
-closed curly untab
+```cpp
+#include <iostream>
+int main(){int x{5};if(x>0){std::cout<<"positive\n";}else{std::cout<<"not positive\n";}return 0;}
+```
 
-note: indents can be tabs or spaces.  doesn't matter. the ide can make the tab button do either.  you can set it if you care but in c++ it doesn't matter.  in python the standard is to use 4 spaces.  again...the ide probably knows this and will just get it right.  but if you copy and paste code with different types of indents to a white space dependent langauge like python...you might get in trouble.
+The compiler can understand it. Humans have to work harder.
 
-note: There is another style of {} placement and it is probably more common in old code but most langauges and modern c++ suggest the column alligned approach.  This makes match up paired {} easier.  You can do either but you should be consistent.
+## Better formatting
 
-[example of old {} placement]
+Same program, formatted for readability:
 
-protip: the ide typically has a line a 80 characters.  if you go over a couple...leave it...80 is just when you should start thinking about rewriting it.
+```cpp
+#include <iostream>
 
-protip: AI and IDE can easily format code nowdays.  Automatic formatting should be done as part of your process.
+int main()
+{
+    int x{5};
 
-official style guide
-companies, classes, projects etc might have a published style guild.  
+    if (x > 0)
+    {
+        std::cout << "positive\n";
+    }
+    else
+    {
+        std::cout << "not positive\n";
+    }
 
-http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines
-https://google.github.io/styleguide/cppguide.html
-https://llvm.org/docs/CodingStandards.html
-https://gcc.gnu.org/codingconventions.html
+    return 0;
+}
+```
 
-This text book will very roughly follow the c++ core guidelines
+The blank lines separate ideas. Indentation shows what belongs inside `main` and what belongs inside the `if`.
+
+## Basic guidelines
+
+- Put blank lines between functions.
+- Keep lines near 80 characters when reasonable.
+- Avoid splitting one simple statement across many lines.
+- Align `{}` in a consistent style.
+- Indent the body of every code block.
+- When you open a block, indent.
+- When you close a block, unindent.
+
+PREFERENCE: This book uses a style where the opening `{` starts on the line after the statement that owns it, and both `{` and `}` are aligned in the same column.
+
+```cpp
+if (score >= 60)
+{
+    std::cout << "Pass\n";
+}
+else
+{
+    std::cout << "Try again\n";
+}
+```
+
+## Another brace style
+
+You will also see the opening brace kept on the same line:
+
+```cpp
+if (score >= 60) {
+    std::cout << "Pass\n";
+} else {
+    std::cout << "Try again\n";
+}
+```
+
+This is also valid. The important thing is consistency.
+
+NOTE: This book uses vertically aligned `{}` unless the example is intentionally showing bad formatting or an alternate style.
+
+## Try it
+
+- Take the poorly formatted example and reformat it by hand.
+- Remove indentation from a working program. Notice how much harder it is to read.
+- Use your editor's format command on a small file, then inspect what changed.
+
+## Tabs vs spaces
+
+Indentation can use tabs or spaces. C++ does not care.
+
+Your editor can make the Tab key insert either a tab character or a certain number of spaces. Most editors can detect the style already used in a file.
+
+NOTE: Whitespace matters more in languages like Python. If you copy and paste mixed tabs and spaces into a whitespace-dependent language, you can get bugs or syntax errors. In C++, it is mainly a readability issue.
+
+## Line length
+
+Many editors draw a vertical guide around 80 characters. That does not mean a line becomes evil at character 81. It means you should start asking whether the line would be easier to read if you split it.
+
+PROTIP: If a line goes a few characters past 80, leave it alone if it reads well. Avoid giant lines that require horizontal scrolling.
+
+Bad:
+
+```cpp
+std::cout << "The final price after tax and discount is " << finalPrice << " dollars\n";
+```
+
+Better if it gets too long:
+
+```cpp
+std::cout << "The final price after tax and discount is "
+          << finalPrice
+          << " dollars\n";
+```
+
+## Formatting tools
+
+Modern IDEs and AI tools can format code automatically.
+
+PROTIP: Make formatting part of your normal process. Write code, run the formatter, then read the result. Automatic formatting does not replace understanding, but it removes a lot of boring cleanup.
+
+In many editors you can format the current file with a command like **Format Document**. For example, in Visual Studio Code, the default shortcut is **Shift+Alt+F**.
+
+## Official style guides
+
+Companies, classes, and projects may publish a style guide. If they do, follow it.
+
+Examples:
+
+- [C++ Core Guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
+- [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
+- [LLVM Coding Standards](https://llvm.org/docs/CodingStandards.html)
+- [GCC Coding Conventions](https://gcc.gnu.org/codingconventions.html)
+
+PREFERENCE: This textbook will very roughly follow the C++ Core Guidelines, but the goal is beginner readability rather than strict professional style compliance.

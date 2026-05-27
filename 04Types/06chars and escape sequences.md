@@ -23,7 +23,8 @@ You can convert a `char` to an `int` to see the numeric code:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     char c{'A'};
     std::cout << c << '\n';
     std::cout << static_cast<int>(c) << '\n';
@@ -43,7 +44,8 @@ This is a classic beginner confusion:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << 5 << '\n';
     std::cout << '5' << '\n';
     std::cout << static_cast<int>('5') << '\n';
@@ -58,7 +60,8 @@ int main() {
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     char c{};
     std::cout << "Type a character: ";
     std::cin >> c;
@@ -72,7 +75,8 @@ If you want to read the next character even if it is a space, use `std::cin.get(
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     char c{};
     std::cout << "Type a character (space allowed): ";
     std::cin.get(c);
@@ -107,7 +111,8 @@ Example:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "Column1\tColumn2\n";
     std::cout << "A\tB\n";
     std::cout << "Backslash: \\ \n";
@@ -134,7 +139,8 @@ You can use Unicode escape sequences to print symbols:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     // Unicode code points for card suits
     std::cout << "Spades: \u2660\n";   // ♠
     std::cout << "Hearts: \u2665\n";   // ♥
@@ -164,7 +170,8 @@ You can also change the color of your terminal output by printing ANSI escape co
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     // Print heart and diamond in red,
     // spade and club in default color
 

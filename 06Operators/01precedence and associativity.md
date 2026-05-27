@@ -45,7 +45,8 @@ PREFERENCE: If you are unsure, add parentheses. They make your intent obvious.
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int a{};
     int b{};
     a = b = 5;
@@ -59,7 +60,8 @@ int main() {
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << 2 + 3 * 4 << '\n';      // 14
     std::cout << (2 + 3) * 4 << '\n';    // 20
     return 0;

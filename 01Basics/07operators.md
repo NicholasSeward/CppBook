@@ -5,7 +5,8 @@ You have already written expressions like `1 + 1` and used `<<` to print. An **o
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << 1 + 1 << '\n';
     return 0;
 }
@@ -28,7 +29,8 @@ Operators are grouped by how many operands they take.
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int x{5};
     std::cout << -x << '\n';   // unary minus: makes a negative value
     x++;
@@ -69,7 +71,8 @@ C++ has one ternary operator: the **conditional operator**.
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int age{20};
     std::cout << (age >= 18 ? "adult" : "minor") << '\n';
     return 0;
@@ -87,7 +90,8 @@ You can build longer expressions:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << 1 + 2 * 3 << '\n';
     return 0;
 }
@@ -178,7 +182,8 @@ When the compiler runs your program, it **evaluates** expressions: it applies op
 This program is legal:
 
 ```cpp
-int main() {
+int main()
+{
     1 + 2;
     return 0;
 }
@@ -204,7 +209,8 @@ That is why chaining works:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int x{};
     int y{};
 

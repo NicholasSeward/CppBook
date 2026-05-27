@@ -11,15 +11,18 @@ Logical operators take `bool` values (or things that convert to `bool`) and prod
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     bool isRaining{false};
     bool isWarm{true};
 
-    if (!isRaining) {
+    if (!isRaining)
+    {
         std::cout << "Not raining\n";
     }
 
-    if (isWarm && !isRaining) {
+    if (isWarm && !isRaining)
+    {
         std::cout << "Go to the park\n";
     }
 
@@ -35,17 +38,23 @@ int main() {
 ```cpp
 #include <iostream>
 
-bool expensive() {
+bool expensive()
+{
     std::cout << "expensive() ran\n";
     return true;
 }
 
-int main() {
+int main()
+{
     bool ok{true};
-    if (ok || expensive()) { }  // expensive() does not run
+    if (ok || expensive())
+    {
+    } // expensive() does not run
 
     ok = false;
-    if (ok && expensive()) { }  // expensive() does not run
+    if (ok && expensive())
+    {
+    } // expensive() does not run
 
     return 0;
 }
@@ -58,7 +67,8 @@ NOTE: Do not put important side effects only on the right side of `&&` or `||`. 
 Use parentheses when logic gets long:
 
 ```cpp
-if ((age >= 13 && age <= 19) || isStudent) {
+if ((age >= 13 && age <= 19) || isStudent)
+{
     // ...
 }
 ```
@@ -74,15 +84,18 @@ Think of `!` like a negative sign. Two `!` cancel for `bool` values.
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     bool isRaining{true};
     bool isWarm{false};
 
-    if (isRaining || !isWarm) {
+    if (isRaining || !isWarm)
+    {
         std::cout << "Stay home\n";
     }
 
-    if (!isRaining && isWarm) {
+    if (!isRaining && isWarm)
+    {
         std::cout << "Go to the park\n";
     }
 
@@ -101,5 +114,7 @@ int main() {
 C++ allows `and`, `or`, and `not` as alternative spellings for `&&`, `||`, and `!`. They are uncommon in real world code. This book uses `&&`, `||`, and `!`.
 
 ```cpp
-if (not isRaining and isWarm) { }  // legal, unusual
+if (not isRaining and isWarm)
+{
+} // legal, unusual
 ```

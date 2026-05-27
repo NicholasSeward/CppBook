@@ -8,7 +8,8 @@ A counting `while`:
 
 ```cpp
 int i{1};
-while (i <= 10) {
+while (i <= 10)
+{
     std::cout << i << ' ';
     ++i;
 }
@@ -17,7 +18,8 @@ while (i <= 10) {
 The same idea as `for`:
 
 ```cpp
-for (int i{1}; i <= 10; ++i) {
+for (int i{1}; i <= 10; ++i)
+{
     std::cout << i << ' ';
 }
 ```
@@ -25,7 +27,8 @@ for (int i{1}; i <= 10; ++i) {
 ## Anatomy of a `for` loop
 
 ```cpp
-for (initialization; condition; update) {
+for (initialization; condition; update)
+{
     body
 }
 ```
@@ -40,8 +43,10 @@ for (initialization; condition; update) {
 ```cpp
 #include <iostream>
 
-int main() {
-    for (int i{0}; i < 10; ++i) {
+int main()
+{
+    for (int i{0}; i < 10; ++i)
+    {
         std::cout << i << ' ';
     }
     std::cout << '\n';
@@ -55,7 +60,9 @@ NOTE: Prefer `<` with a clear end value. Using `!=` can fail if the update skips
 
 ```cpp
 // Risky if update is not exactly +1 each time
-for (int i{0}; i != 10; ++i) { }
+for (int i{0}; i != 10; ++i)
+{
+}
 ```
 
 ## Off by one
@@ -63,7 +70,9 @@ for (int i{0}; i != 10; ++i) { }
 Being off by one is common. If you wanted `1` through `10`:
 
 ```cpp
-for (int i{1}; i <= 10; ++i) { }
+for (int i{1}; i <= 10; ++i)
+{
+}
 ```
 
 If you wanted ten iterations starting at 0, use `i < 10`.
@@ -76,8 +85,13 @@ AI: Tools and agents also iterate. Modern assistants often need several compile 
 
 ```cpp
 int i{0};
-for (; i < 5; ++i) { }           // no init in for
-for (int j{0}; j < 5; ) { ++j; } // no update in for
+for (; i < 5; ++i)
+{
+} // no init in for
+for (int j{0}; j < 5; ) // no update in for
+{
+    ++j;
+}
 ```
 
 PREFERENCE: Use the standard `for (int i = 0; i < n; ++i)` form when you can. It is the easiest to read and debug.
@@ -89,13 +103,16 @@ Avoid `for (;;)` as an infinite loop. Prefer `while (true)` if you truly need an
 ```cpp
 #include <iostream>
 
-int main() {
-    for (int i{10}; i >= 0; --i) {
+int main()
+{
+    for (int i{10}; i >= 0; --i)
+    {
         std::cout << i << ' ';
     }
     std::cout << '\n';
 
-    for (int n{1}; n < 100; n *= 2) {
+    for (int n{1}; n < 100; n *= 2)
+    {
         std::cout << n << ' ';
     }
     std::cout << '\n';
@@ -111,11 +128,14 @@ PREFERENCE: Prefer the standard counting form unless you have a clear reason not
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int rows{3};
     int cols{5};
-    for (int r{0}; r < rows; ++r) {
-        for (int c{0}; c < cols; ++c) {
+    for (int r{0}; r < rows; ++r)
+    {
+        for (int c{0}; c < cols; ++c)
+        {
             std::cout << '*';
         }
         std::cout << '\n';
@@ -127,8 +147,10 @@ int main() {
 Refactor with a function when nesting gets hard to follow:
 
 ```cpp
-void printLine(int cols) {
-    for (int c{0}; c < cols; ++c) {
+void printLine(int cols)
+{
+    for (int c{0}; c < cols; ++c)
+    {
         std::cout << '*';
     }
     std::cout << '\n';
@@ -144,13 +166,15 @@ void printLine(int cols) {
 
 ```cpp
 // Countdown with for
-for (int t{10}; t >= 0; --t) {
+for (int t{10}; t >= 0; --t)
+{
     std::cout << t << "... ";
 }
 
 // Repeat until user says stop (while fits better)
 std::string cmd;
-while (cmd != "quit") {
+while (cmd != "quit")
+{
     std::cout << "Command: ";
     std::cin >> cmd;
 }

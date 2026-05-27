@@ -25,7 +25,8 @@ Example:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int a{5};
     double b{a}; // implicit int to double
     std::cout << b << '\n';
@@ -48,7 +49,8 @@ Example:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     double pi{3.14159};
     int x{pi};
     std::cout << x << '\n';
@@ -83,7 +85,8 @@ If both operands are integers, the result is integer division. Cast one side to 
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int x{1};
     int y{2};
 

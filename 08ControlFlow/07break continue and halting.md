@@ -9,9 +9,12 @@ Loops can be controlled with `break`, `continue`, `return`, and `std::exit`. Eac
 ```cpp
 #include <iostream>
 
-int main() {
-    for (int i{0}; i < 10; ++i) {
-        if (i == 5) {
+int main()
+{
+    for (int i{0}; i < 10; ++i)
+    {
+        if (i == 5)
+        {
             break;
         }
         std::cout << i << ' ';
@@ -24,9 +27,12 @@ int main() {
 In nested loops, `break` only leaves one level:
 
 ```cpp
-for (int r{0}; r < 3; ++r) {
-    for (int c{0}; c < 3; ++c) {
-        if (c == 1) {
+for (int r{0}; r < 3; ++r)
+{
+    for (int c{0}; c < 3; ++c)
+    {
+        if (c == 1)
+        {
             break;  // leaves inner loop only
         }
         std::cout << r << ',' << c << ' ';
@@ -41,9 +47,12 @@ for (int r{0}; r < 3; ++r) {
 ```cpp
 #include <iostream>
 
-int main() {
-    for (int i{0}; i < 10; ++i) {
-        if (i % 2 == 0) {
+int main()
+{
+    for (int i{0}; i < 10; ++i)
+    {
+        if (i % 2 == 0)
+        {
             continue;
         }
         std::cout << i << ' ';  // odd numbers only
@@ -61,9 +70,12 @@ int main() {
 ```cpp
 #include <iostream>
 
-void printUntil(int stopAt) {
-    for (int i{0}; i < 10; ++i) {
-        if (i == stopAt) {
+void printUntil(int stopAt)
+{
+    for (int i{0}; i < 10; ++i)
+    {
+        if (i == stopAt)
+        {
             return;  // leaves the whole function
         }
         std::cout << i << ' ';
@@ -71,7 +83,8 @@ void printUntil(int stopAt) {
     std::cout << "(after loop)\n";
 }
 
-int main() {
+int main()
+{
     printUntil(3);  // prints 0 1 2 then stops
     std::cout << "back in main\n";
     return 0;
@@ -83,8 +96,10 @@ int main() {
 Same goal, with `break`:
 
 ```cpp
-for (int i{0}; i < 100; ++i) {
-    if (i * i > 50) {
+for (int i{0}; i < 100; ++i)
+{
+    if (i * i > 50)
+    {
         break;
     }
     std::cout << i << ' ';
@@ -94,7 +109,8 @@ for (int i{0}; i < 100; ++i) {
 Without `break`:
 
 ```cpp
-for (int i{0}; i < 100 && i * i <= 50; ++i) {
+for (int i{0}; i < 100 && i * i <= 50; ++i)
+{
     std::cout << i << ' ';
 }
 ```
@@ -109,9 +125,11 @@ Both can be fine. PREFERENCE: Use `break` or `continue` when they make the loop 
 #include <cstdlib>
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "Starting\n";
-    if (true) {
+    if (true)
+    {
         std::exit(1);  // non zero often means error
     }
     std::cout << "This never runs\n";

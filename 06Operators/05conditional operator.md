@@ -14,12 +14,16 @@ It is like a tiny inline `if` that produces a value.
 #include <iostream>
 #include <string>
 
-int main() {
+int main()
+{
     int age{16};
 
-    if (age >= 18) {
+    if (age >= 18)
+    {
         std::cout << "adult\n";
-    } else {
+    }
+    else
+    {
         std::cout << "minor\n";
     }
 
@@ -37,7 +41,8 @@ PREFERENCE: Avoid ternaries unless the case is very short and obvious. Use a nor
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int x{5};
 
     int z = x > 0 ? 1 : 2 + 3;  // parsed as (x > 0) ? 1 : (2 + 3)

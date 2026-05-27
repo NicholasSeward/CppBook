@@ -46,7 +46,8 @@ You can write scientific notation with `e`:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     double a{1.2e4};     // 12000
     double b{3.5e-3};    // 0.0035
     std::cout << a << '\n';
@@ -65,7 +66,8 @@ Reference: [cppreference: `std::setprecision`](https://en.cppreference.com/cpp/i
 #include <iostream>
 #include <iomanip>
 
-int main() {
+int main()
+{
     double x{1.0 / 3.0};
 
     std::cout << x << '\n';
@@ -85,7 +87,8 @@ Many decimals cannot be represented exactly in binary. This is not a C++ bug. It
 #include <iostream>
 #include <iomanip>
 
-int main() {
+int main()
+{
     double x{0.1};
     std::cout << std::setprecision(17) << x << '\n';
     return 0;
@@ -100,7 +103,8 @@ Another classic demo:
 #include <iostream>
 #include <iomanip>
 
-int main() {
+int main()
+{
     double x{1.0 / 3.0};
     std::cout << std::setprecision(17) << x << '\n';
     std::cout << std::setprecision(17) << (x + x + x) << '\n';
@@ -128,7 +132,8 @@ You can produce them with certain operations:
 #include <iostream>
 #include <iomanip>
 
-int main() {
+int main()
+{
     double pos_zero{+0.0};
     double neg_zero{-0.0};
     double pos_inf{1.0 / 0.0};

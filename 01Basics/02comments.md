@@ -16,7 +16,8 @@ A comment can take a full line:
 // Print a greeting (full-line comment)
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "Hello\n";  // end-of-line comment
     return 0;
 }
@@ -38,7 +39,8 @@ Block comments start with `/*` and end with `*/`. They can span several lines or
 /* A multiline comment
    can cover several lines. */
 
-int main() {
+int main()
+{
     std::cout << /* inline */ "Hi\n";
     return 0;
 }
@@ -86,7 +88,8 @@ Good naming, small functions, and straightforward logic make code **self-documen
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int x = 5;           // set x to 5
     std::cout << x;      // print x
     return 0;            // return 0
@@ -100,7 +103,8 @@ Every comment here restates the obvious.
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     // Billing uses net days; weekends are excluded in calculateDueDate().
     int dueDays = 14;
     std::cout << "Due in " << dueDays << " days\n";
@@ -115,11 +119,13 @@ The comment explains **why** `14` is there. Something the line of code alone doe
 ```cpp
 #include <iostream>
 
-int totalPrice(int itemCount, int pricePerItem) {
+int totalPrice(int itemCount, int pricePerItem)
+{
     return itemCount * pricePerItem;
 }
 
-int main() {
+int main()
+{
     std::cout << totalPrice(3, 1200) << '\n';
     return 0;
 }
@@ -138,7 +144,8 @@ Commenting out lines is a quick way to experiment. Only active (uncommented) sta
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "Line 1\n";
     // std::cout << "Line 2\n";
     std::cout << "Line 3\n";

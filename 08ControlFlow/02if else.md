@@ -11,10 +11,12 @@ An `if` runs a block only when its condition evaluates to `true`.
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int temperature{95};
 
-    if (temperature > 90) {
+    if (temperature > 90)
+    {
         std::cout << "It is hot\n";
     }
 
@@ -31,10 +33,12 @@ Curly braces let you run multiple statements in one branch:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int score{42};
 
-    if (score >= 40) {
+    if (score >= 40)
+    {
         std::cout << "Pass\n";
         std::cout << "Nice work\n";
     }
@@ -52,12 +56,16 @@ Use `else` for the opposite branch:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int age{16};
 
-    if (age >= 18) {
+    if (age >= 18)
+    {
         std::cout << "adult\n";
-    } else {
+    }
+    else
+    {
         std::cout << "minor\n";
     }
 
@@ -76,16 +84,24 @@ Use `else if` when you have more than two cases:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int grade{85};
 
-    if (grade >= 90) {
+    if (grade >= 90)
+    {
         std::cout << "A\n";
-    } else if (grade >= 80) {
+    }
+    else if (grade >= 80)
+    {
         std::cout << "B\n";
-    } else if (grade >= 70) {
+    }
+    else if (grade >= 70)
+    {
         std::cout << "C\n";
-    } else {
+    }
+    else
+    {
         std::cout << "Needs work\n";
     }
 
@@ -107,11 +123,16 @@ if (g >= 80) std::cout << "B\n";  // might also run!
 if (g >= 70) std::cout << "C\n";
 
 // Chained: at most one block runs
-if (g >= 90) {
+if (g >= 90)
+{
     std::cout << "A\n";
-} else if (g >= 80) {
+}
+else if (g >= 80)
+{
     std::cout << "B\n";
-} else if (g >= 70) {
+}
+else if (g >= 70)
+{
     std::cout << "C\n";
 }
 ```
@@ -124,9 +145,13 @@ PREFERENCE: Use chaining when the cases are mutually exclusive. Do not repeat yo
 
 ```cpp
 int x{0};
-if (x = 10) { }   // assigns 10, condition is true (non zero)
+if (x = 10)
+{
+} // assigns 10, condition is true (non zero)
 
-if (x == 10) { }  // compares, no assignment
+if (x == 10)
+{
+} // compares, no assignment
 ```
 
 NOTE: Enable compiler warnings. Many compilers catch `if (x = 10)` mistakes.
@@ -138,12 +163,16 @@ C++ allows non booleans in conditions. Zero is false. Non zero is true:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int x{0};
 
-    if (x) {
+    if (x)
+    {
         std::cout << "x is non zero\n";
-    } else {
+    }
+    else
+    {
         std::cout << "x is zero\n";
     }
 

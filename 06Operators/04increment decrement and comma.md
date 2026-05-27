@@ -10,7 +10,8 @@ Both forms add or subtract 1, but they differ when used **inside a larger expres
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int a{5};
     int b{5};
 
@@ -26,7 +27,8 @@ int main() {
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int i{0};
     int j{0};
 
@@ -51,7 +53,8 @@ int main() {
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int i{0};
     int j{0};
 
@@ -59,7 +62,8 @@ int main() {
     j = i + 10;
     std::cout << "i=" << i << ", j=" << j << '\n';  // i=1, j=11
 
-    for (int k{0}; k < 3; ++k) {
+    for (int k{0}; k < 3; ++k)
+    {
         std::cout << k << ' ';
     }
     std::cout << '\n';
@@ -79,7 +83,8 @@ You will see commas most often in function calls, not as a clever trick.
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int a{1};
     int b{2};
     int c = (a++, b + 10);  // a becomes 2, c becomes 12
@@ -94,11 +99,15 @@ PREFERENCE: Do not get fancy with the comma operator. Use two statements instead
 
 ```cpp
 // Hard to read
-if ((std::cout << "x=", x), x > 0) { }
+if ((std::cout << "x=", x), x > 0)
+{
+}
 
 // Better
 std::cout << "x=" << x << '\n';
-if (x > 0) { }
+if (x > 0)
+{
+}
 ```
 
 The comma operator has very low precedence. That is one more reason to avoid it in expressions.

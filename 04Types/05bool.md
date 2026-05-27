@@ -9,7 +9,8 @@ A `bool` can only be `true` or `false`.
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     bool isReady{true};
     bool isDone{false};
 
@@ -29,7 +30,8 @@ You can ask the stream to print the words instead:
 #include <iostream>
 #include <iomanip>
 
-int main() {
+int main()
+{
     bool isReady{true};
     std::cout << std::boolalpha;
     std::cout << isReady << '\n';
@@ -59,7 +61,8 @@ By default, `std::cin >> someBool` expects `0` or `1`.
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     bool answer{};
     std::cout << "Enter 0 or 1: ";
     std::cin >> answer;
@@ -74,7 +77,8 @@ If you enable `std::boolalpha` on input, it will parse `true` and `false`:
 #include <iostream>
 #include <iomanip>
 
-int main() {
+int main()
+{
     bool answer{};
     std::cin >> std::boolalpha;
 
@@ -96,7 +100,8 @@ It is uncommon to ask a user to type `true` or `false`. Many programs prefer `y/
 #include <iostream>
 #include <string>
 
-int main() {
+int main()
+{
     std::string text;
     std::cout << "Continue (y/n): ";
     std::cin >> text;
@@ -116,18 +121,23 @@ Functions often return `bool` to answer a question:
 ```cpp
 #include <iostream>
 
-bool isEven(int x) {
+bool isEven(int x)
+{
     return (x % 2) == 0;
 }
 
-int main() {
+int main()
+{
     int value;
     std::cout << "Enter an integer: ";
     std::cin >> value;
 
-    if (isEven(value)) {
+    if (isEven(value))
+    {
         std::cout << value << " is even." << std::endl;
-    } else {
+    }
+    else
+    {
         std::cout << value << " is odd." << std::endl;
     }
 

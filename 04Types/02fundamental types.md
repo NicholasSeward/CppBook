@@ -27,11 +27,13 @@ NOTE: The size column says "typical" for desktop systems. C++ does not require e
 ```cpp
 #include <iostream>
 
-void printHello() {
+void printHello()
+{
     std::cout << "Hello\n";
 }
 
-int main() {
+int main()
+{
     printHello();
     return 0;
 }
@@ -44,7 +46,8 @@ You can check sizes with `sizeof`:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "int: " << sizeof(int) << " bytes\n";
     std::cout << "long: " << sizeof(long) << " bytes\n";
     std::cout << "double: " << sizeof(double) << " bytes\n";
@@ -68,7 +71,8 @@ Example: Using fixed width integer types
 #include <iostream>
 #include <cstdint>
 
-int main() {
+int main()
+{
     std::int32_t a{1234567890};   // exactly 32 bits, signed
     std::uint64_t b{9876543210ULL}; // exactly 64 bits, unsigned
 

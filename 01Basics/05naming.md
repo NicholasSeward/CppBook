@@ -41,7 +41,8 @@ C++ is **case sensitive**. `score`, `Score`, and `SCORE` are three different nam
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int score{10};
     int Score{20};
 

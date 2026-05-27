@@ -21,7 +21,8 @@ Here is hello world with a single output statement:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "Hello, world!\n";
     return 0;
 }
@@ -34,7 +35,8 @@ Add more statements and they run one after another:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "Hello, world!\n";
     std::cout << "Second line.\n";
     return 0;
@@ -48,7 +50,8 @@ If there is no `main`, the program has no defined entry point—even a typo coun
 ```cpp
 #include <iostream>
 
-int Main() {  // wrong: must be main
+int Main()
+{  // wrong: must be main
     std::cout << "Hello\n";
     return 0;
 }
@@ -68,11 +71,13 @@ C++ ships with the [Standard Library](https://en.wikipedia.org/wiki/C%2B%2B_Stan
 #include <iostream>
 #include <cmath>
 
-int doubleValue(int x) {
+int doubleValue(int x)
+{
     return x * 2;
 }
 
-int main() {
+int main()
+{
     std::cout << "sqrt(9) = " << std::sqrt(9) << '\n';
     std::cout << "double(5) = " << doubleValue(5) << '\n';
     return 0;
@@ -91,7 +96,8 @@ You can also store a single character or a longer string in variables:
 #include <iostream>
 #include <string>
 
-int main() {
+int main()
+{
     char letter = 'A';
     std::string word = "ASCII";
 
@@ -130,7 +136,8 @@ HISTORY: ASCII appeared in the 1960s, well before graphical monitors were common
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     char bell = 7; // ASCII code for bell
     std::cout << "Done!" << bell << '\n';
     return 0;
@@ -152,7 +159,8 @@ ASCII originally used 7 bits of an 8-bit byte. The spare bit—and later [code p
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "Hello, world!\n";
     return 0;
 }
@@ -186,7 +194,8 @@ Start with a simple working example you can run and modify:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "Hello, world!\n";
     return 0;
 }

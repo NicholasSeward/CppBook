@@ -10,7 +10,8 @@ In C++, `^` is **bitwise XOR**, not "to the power of."
 #include <iostream>
 #include <cmath>
 
-int main() {
+int main()
+{
     std::cout << (5 ^ 2) << '\n';        // 7 (XOR), not 25
     std::cout << std::pow(5, 2) << '\n'; // 25.0
     return 0;
@@ -25,7 +26,8 @@ NOTE: There is no exponent operator in C++. Use `<cmath>` and `std::pow`, or mul
 #include <iostream>
 #include <cmath>
 
-int main() {
+int main()
+{
     std::cout << std::pow(2.0, 10.0) << '\n';  // 1024
     return 0;
 }
@@ -37,7 +39,8 @@ int main() {
 #include <iostream>
 #include <cmath>
 
-int main() {
+int main()
+{
     double result = std::pow(2.0, 10.0);
     int asInt = static_cast<int>(std::lround(result));
     std::cout << asInt << '\n';
@@ -62,10 +65,13 @@ int cube = x * x * x;
 ```cpp
 #include <iostream>
 
-long powInt(long base, int exp) {
+long powInt(long base, int exp)
+{
     long result{1};
-    while (exp > 0) {
-        if (exp % 2 == 1) {
+    while (exp > 0)
+    {
+        if (exp % 2 == 1)
+        {
             result *= base;
         }
         base *= base;
@@ -74,7 +80,8 @@ long powInt(long base, int exp) {
     return result;
 }
 
-int main() {
+int main()
+{
     std::cout << powInt(2, 10) << '\n';  // 1024
     return 0;
 }

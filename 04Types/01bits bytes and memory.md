@@ -70,7 +70,8 @@ Compile and run this program. It prints the size of a few types on your system.
 #include <iostream>
 #include <string>
 
-int main() {
+int main()
+{
     std::cout << "sizeof(char) = " << sizeof(char) << " byte(s)\n";
     std::cout << "sizeof(bool) = " << sizeof(bool) << " byte(s)\n";
     std::cout << "sizeof(int) = " << sizeof(int) << " byte(s)\n";

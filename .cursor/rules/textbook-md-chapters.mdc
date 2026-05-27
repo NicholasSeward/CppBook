@@ -64,7 +64,16 @@ Use **exactly** these prefixes (all caps, trailing colon), one to three sentence
 - Use good/bad pairs for style topics.
 - Link first mention of important external terms; define acronyms once.
 - Use `inline code` for syntax, names, and literals.
-- {} are column aligned
+- Use vertically aligned braces in normal C++ examples:
+
+```cpp
+if (condition)
+{
+    doWork();
+}
+```
+
+- Keep same-line braces only when the point is to show bad formatting, an alternate brace style, or a compact snippet where brace style is not the lesson.
 
 ## Files
 

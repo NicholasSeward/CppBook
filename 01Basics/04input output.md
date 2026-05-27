@@ -24,7 +24,8 @@ Important objects:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "Hello again\n";
     return 0;
 }
@@ -37,7 +38,8 @@ int main() {
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "Score: " << 42 << " points\n";
     return 0;
 }
@@ -48,7 +50,8 @@ You can print **literals** and **variables**:
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int score{42};
     std::cout << "Score: " << score << '\n';
     return 0;
@@ -80,8 +83,10 @@ A tiny progress-style loop using `\r`:
 ```cpp
 #include <iostream>
 
-int main() {
-    for (int i{0}; i <= 1000000; ++i) {
+int main()
+{
+    for (int i{0}; i <= 1000000; ++i)
+    {
         std::cout << "\rProgress: " << i << "/1000000 ";
     }
     std::cout << '\n';
@@ -98,7 +103,8 @@ For input, the operator direction flips. `>>` is the **extraction operator**. It
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int age{};
 
     std::cout << "Enter your age: ";
@@ -126,7 +132,8 @@ Whitespace (spaces, tabs, newlines) separates tokens. You can read more than one
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     int a{};
     int b{};
 
@@ -148,7 +155,8 @@ If the user types extra characters after the numbers, `>>` for integers stops at
 #include <iostream>
 #include <string>
 
-int main() {
+int main()
+{
     int n{};
     std::string leftover;
 

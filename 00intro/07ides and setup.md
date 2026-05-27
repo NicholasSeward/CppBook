@@ -41,7 +41,8 @@ Let's make sure everything is working by creating a simple program from scratch.
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "Hello, world!\n";
     return 0;
 }

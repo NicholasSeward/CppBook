@@ -5,7 +5,8 @@ A program starts in `main` and normally runs **line by line** from top to bottom
 ```cpp
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "Step 1\n";
     std::cout << "Step 2\n";
     std::cout << "Step 3\n";

@@ -90,16 +90,3 @@ int main()
 The distribution object controls the range. In this example, `die` can produce `1`, `2`, `3`, `4`, `5`, or `6`.
 
 The generator object, `rng`, stores the current state of the random sequence.
-
-## Why This Gets Its Own Folder
-
-C++ has old random tools and modern random tools. It also has some traps that look harmless at first:
-
-- using `%` to force numbers into a range
-- seeding over and over
-- using weak generators for serious work
-- expecting random bugs to be easy to reproduce
-
-The next step is to look at the idea behind pseudorandom numbers, then move to the C++ tools we actually want to use.
-
-Try changing the seed in the examples above. Run the program more than once with the same seed, then run it again with a different seed.

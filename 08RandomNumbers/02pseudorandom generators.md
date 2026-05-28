@@ -31,11 +31,11 @@ This is not a recommendation. It is just small enough to understand.
 
 int main()
 {
-    unsigned int state{7};
+    int state{7};
 
     for (int count{0}; count < 10; ++count)
     {
-        state = (state * 5 + 1) % 16;
+        state = (state * 97 + 73) % 1000;
         std::cout << state << "\n";
     }
 
@@ -46,14 +46,14 @@ int main()
 Each new state comes from the old state:
 
 ```
-state = (state * 5 + 1) % 16;
+state = (state * 97 + 73) % 1000;
 ```
 
-That is the whole trick. Multiply, add, take the remainder, repeat.
+That is the whole trick. Multiply, add, take the remainder(modulus), repeat.
 
 Run the program a few times. You should see the same sequence every time. Then change the seed from `7` to another number and run it again.
 
-NOTE: Do not use this LCG in real programs. It is tiny and predictable on purpose, so that the idea is visible.
+NOTE: Do not use this LCG in real programs. It is very predictable.
 
 ## Turning State Into a Die Roll
 
@@ -66,13 +66,12 @@ For a die roll, we want values from `1` through `6`.
 
 int main()
 {
-    unsigned int state{7};
+    int state{7};
 
-    for (int roll{1}; roll <= 10; ++roll)
+    for (int count{0}; count < 10; ++count)
     {
-        state = (state * 5 + 1) % 16;
-        int die{static_cast<int>(state % 6) + 1};
-
+        state = (state * 97 + 73) % 1000;
+        int die{state % 6 + 1};
         std::cout << die << "\n";
     }
 
@@ -94,13 +93,13 @@ A useful PRNG usually has several qualities:
 - It has enough internal state.
 - It is hard to predict for the intended use.
 
-The period is how long the sequence can go before it repeats. A tiny generator with only 16 possible states cannot have a long period. A modern generator can have an enormous period.
+The period is how long the sequence can go before it repeats—that is, the maximum number of random values it generates before cycling back to the same state. A simple generator with only 16 possible states will start repeating very quickly. In contrast, a modern generator like the Mersenne Twister (`mt19937` in C++) has a period of 2^19937 − 1. To get a sense of how huge that is: there are about 10^80 electrons in the observable universe. The period of `mt19937` is so vast, you could give every single electron in the visible universe its own unique random number, and still not run out—even if you did this not just once, but more than a trillion trillion trillion times over. In practice, this means you will never see the sequence repeat in any normal use.
 
 Uniformity means the values are spread out well. If a die roller gives `6` half the time, something is wrong.
 
 Predictability depends on the purpose. Predictable randomness is fine for debugging a game level. It is not fine for cryptography, gambling, passwords, or anything involving money.
 
-PREFERENCE: Use the tiny generator only as a teaching model. For actual C++ programs, use `<random>`.
+PREFERENCE: Use the LCG generator only as a teaching model. For actual C++ programs, use `<random>`.
 
 ## True Randomness
 
@@ -109,5 +108,3 @@ True randomness has to come from outside the deterministic rules of the program.
 In C++, `std::random_device` is the standard library tool that asks the implementation for nondeterministic random data if it can.
 
 We usually use that kind of value to seed a PRNG. The PRNG then produces the long sequence quickly.
-
-Try changing the LCG numbers in this chapter. What happens if you change `% 16` to `% 8`? What happens if the seed is `0`?

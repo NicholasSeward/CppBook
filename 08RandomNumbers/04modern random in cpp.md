@@ -128,32 +128,3 @@ int main()
 ```
 
 This is useful when you want a random percentage, a probability check, or a position between two limits.
-
-## Choosing Randomly
-
-Here is a small program that chooses a random direction for a game enemy.
-
-```cpp
-#include <iostream>
-#include <random>
-#include <string>
-#include <vector>
-
-int main()
-{
-    std::vector<std::string> directions{"north", "south", "east", "west"};
-
-    std::mt19937 rng{12345};
-    std::uniform_int_distribution<int> index{0, static_cast<int>(directions.size()) - 1};
-
-    std::cout << "The enemy moves " << directions.at(index(rng)) << ".\n";
-
-    return 0;
-}
-```
-
-The range uses the valid vector indexes: `0` through `directions.size() - 1`.
-
-NOTE: The cast is there because `directions.size()` returns an unsigned size type, while this distribution is using `int`. In larger programs, be thoughtful about signed and unsigned values.
-
-Try changing the seed and the list of directions. Then add a fifth direction and make sure the distribution still covers the whole vector.

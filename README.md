@@ -68,25 +68,25 @@ Coming soon.
 - [Relational Operators](06Operators/06relational%20operators.md)
 - [Logical Operators](06Operators/07logical%20operators.md)
 
-### 07 Vectors and Arrays
+### 07 Vector
 
 Coming soon.
 
-### 08 Random Numbers
+### 08 Random
 
-- [Random Numbers Index](08RandomNumbers/info.md)
-- [Why Random Numbers Matter](08RandomNumbers/01why%20random%20numbers%20matter.md)
-- [Pseudorandom Generators](08RandomNumbers/02pseudorandom%20generators.md)
-- [`rand` and `srand`](08RandomNumbers/03rand%20and%20srand.md)
-- [Modern Random in C++](08RandomNumbers/04modern%20random%20in%20cpp.md)
-- [Seeding and Reusing Generators](08RandomNumbers/05seeding%20and%20reusing%20generators.md)
-- [Debugging Random Programs](08RandomNumbers/06debugging%20random%20programs.md)
+- [Random Index](08Random/README.md)
+- [Why Random Numbers Matter](08Random/01why%20random%20numbers%20matter.md)
+- [Pseudorandom Generators](08Random/02pseudorandom%20generators.md)
+- [`rand` and `srand`](08Random/03rand%20and%20srand.md)
+- [Modern Random in C++](08Random/04modern%20random%20in%20cpp.md)
+- [Seeding and Reusing Generators](08Random/05seeding%20and%20reusing%20generators.md)
+- [Debugging Random Programs](08Random/06debugging%20random%20programs.md)
 
 ### 09 Files and Streams
 
 Coming soon.
 
-### 10 Templates and Generic Code
+### 10 Templates
 
 Coming soon.
 
@@ -98,15 +98,15 @@ Coming soon.
 
 Coming soon.
 
-### 13 Inheritance and Polymorphism
+### 13 Inheritance
 
 Coming soon.
 
-### 14 Operator Overloading
+### 14 Overloading
 
 Coming soon.
 
-### 15 Pointers and Memory
+### 15 Pointers
 
 Coming soon.
 

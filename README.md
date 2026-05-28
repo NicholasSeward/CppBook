@@ -8,15 +8,15 @@ NOTE: Chapter numbers and folder order are subject to change as the book develop
 
 ### 00 Intro
 
-- [Programs and Languages](00intro/01programs%20and%20languages.md)
-- [Compilation and Runtimes](00intro/02compilation%20and%20runtimes.md)
-- [History of C and C++](00intro/03history%20of%20c%20and%20cpp.md)
-- [The Programming Process](00intro/04the%20programming%20process.md)
-- [Compiling, Linking, and Libraries](00intro/05compiling%20linking%20and%20libraries.md)
-- [Testing and Debugging](00intro/06testing%20and%20debugging.md)
-- [IDEs and Setup](00intro/07ides%20and%20setup.md)
-- [C++ Versions and g++](00intro/08cpp%20versions%20and%20gpp.md)
-- [Python to C++ Quick Start](00intro/09python%20to%20cpp%20quick%20start.md)
+- [Programs and Languages](00Intro/01programs%20and%20languages.md)
+- [Compilation and Runtimes](00Intro/02compilation%20and%20runtimes.md)
+- [History of C and C++](00Intro/03history%20of%20c%20and%20cpp.md)
+- [The Programming Process](00Intro/04the%20programming%20process.md)
+- [Compiling, Linking, and Libraries](00Intro/05compiling%20linking%20and%20libraries.md)
+- [Testing and Debugging](00Intro/06testing%20and%20debugging.md)
+- [IDEs and Setup](00Intro/07ides%20and%20setup.md)
+- [C++ Versions and g++](00Intro/08cpp%20versions%20and%20gpp.md)
+- [Python to C++ Quick Start](00Intro/09python%20to%20cpp%20quick%20start.md)
 
 ### 01 Basics
 
@@ -28,6 +28,14 @@ NOTE: Chapter numbers and folder order are subject to change as the book develop
 - [Formatting](01Basics/06formatting.md)
 - [Operators](01Basics/07operators.md)
 
+### 02 Functions
+
+Coming soon.
+
+### 03 Error Handling
+
+Coming soon.
+
 ### 04 Types
 
 - [Bits, Bytes, and Memory](04Types/01bits%20bytes%20and%20memory.md)
@@ -37,6 +45,17 @@ NOTE: Chapter numbers and folder order are subject to change as the book develop
 - [`bool`](04Types/05bool.md)
 - [Characters and Escape Sequences](04Types/06chars%20and%20escape%20sequences.md)
 - [Type Conversions](04Types/07type%20conversions.md)
+
+### 05 Control Flow
+
+- [Control Flow Index](05ControlFlow/info.md)
+- [Execution Path](05ControlFlow/01execution%20path.md)
+- [If and Else](05ControlFlow/02if%20else.md)
+- [If Issues](05ControlFlow/03if%20issues.md)
+- [Switch and `goto`](05ControlFlow/04switch%20and%20goto.md)
+- [While Loops](05ControlFlow/05while%20loops.md)
+- [For Loops](05ControlFlow/06for%20loops.md)
+- [Break, Continue, and Halting](05ControlFlow/07break%20continue%20and%20halting.md)
 
 ### 06 Operators
 
@@ -49,13 +68,50 @@ NOTE: Chapter numbers and folder order are subject to change as the book develop
 - [Relational Operators](06Operators/06relational%20operators.md)
 - [Logical Operators](06Operators/07logical%20operators.md)
 
-### 08 Control Flow
+### 07 Vectors and Arrays
 
-- [Control Flow Index](08ControlFlow/info.md)
-- [Execution Path](08ControlFlow/01execution%20path.md)
-- [If and Else](08ControlFlow/02if%20else.md)
-- [If Issues](08ControlFlow/03if%20issues.md)
-- [Switch and `goto`](08ControlFlow/04switch%20and%20goto.md)
-- [While Loops](08ControlFlow/05while%20loops.md)
-- [For Loops](08ControlFlow/06for%20loops.md)
-- [Break, Continue, and Halting](08ControlFlow/07break%20continue%20and%20halting.md)
+Coming soon.
+
+### 08 Random Numbers
+
+Coming soon.
+
+### 09 Files and Streams
+
+Coming soon.
+
+### 10 Templates and Generic Code
+
+Coming soon.
+
+### 11 Algorithms and Lambdas
+
+Coming soon.
+
+### 12 Classes
+
+Coming soon.
+
+### 13 Inheritance and Polymorphism
+
+Coming soon.
+
+### 14 Operator Overloading
+
+Coming soon.
+
+### 15 Pointers and Memory
+
+Coming soon.
+
+### 16 Data Structures
+
+Coming soon.
+
+### 17 GUI Programming
+
+Coming soon.
+
+### 18 Design Patterns
+
+Coming soon.

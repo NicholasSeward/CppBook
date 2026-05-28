@@ -78,7 +78,7 @@ int main()
 
     std::cout << "Rolling five dice:\n";
 
-    for (int roll{1}; roll <= 5; ++roll)
+    for (int count{0}; count < 5; ++count)
     {
         std::cout << die(rng) << "\n";
     }

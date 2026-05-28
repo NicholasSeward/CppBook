@@ -67,6 +67,7 @@ Use **exactly** these prefixes (all caps, trailing colon), one to three sentence
 - Use `inline code` for syntax, names, and literals.
 - Do not use `using namespace std;` in C++ examples.
 - Prefer `.at()` instead of `[]` for container access in C++ examples.
+- Prefer zero-based `for` loops when the variable only counts iterations, e.g. `for (int count{0}; count < n; ++count)`. Start at `1` only when the one-based value is part of the lesson or output.
 - Use vertically aligned braces in normal C++ examples:
 
 ```

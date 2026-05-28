@@ -26,7 +26,7 @@ int main()
 
     int playerHealth{20};
 
-    for (int hit{1}; hit <= 5; ++hit)
+    for (int count{0}; count < 5; ++count)
     {
         playerHealth -= damage(rng);
         std::cout << "Health: " << playerHealth << "\n";
@@ -53,7 +53,7 @@ int main()
 
     int playerHealth{20};
 
-    for (int hit{1}; hit <= 5; ++hit)
+    for (int count{0}; count < 5; ++count)
     {
         playerHealth -= damage(rng);
         std::cout << "Health: " << playerHealth << "\n";

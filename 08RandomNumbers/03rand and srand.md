@@ -39,7 +39,7 @@ To force `rand()` into a range, old code often uses the remainder operator.
 
 int main()
 {
-    for (int roll{1}; roll <= 10; ++roll)
+    for (int count{0}; count < 10; ++count)
     {
         int die{std::rand() % 6 + 1};
         std::cout << die << "\n";
@@ -70,7 +70,7 @@ int main()
 {
     std::srand(12345);
 
-    for (int roll{1}; roll <= 10; ++roll)
+    for (int count{0}; count < 10; ++count)
     {
         int die{std::rand() % 6 + 1};
         std::cout << die << "\n";
@@ -97,7 +97,7 @@ int main()
 {
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
-    for (int roll{1}; roll <= 10; ++roll)
+    for (int count{0}; count < 10; ++count)
     {
         int die{std::rand() % 6 + 1};
         std::cout << die << "\n";

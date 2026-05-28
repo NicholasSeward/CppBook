@@ -7,8 +7,8 @@ Looping a known number of times is so common that C++ has a **`for` loop** that 
 A counting `while`:
 
 ```cpp
-int i{1};
-while (i <= 10)
+int i{0};
+while (i < 10)
 {
     std::cout << i << ' ';
     ++i;
@@ -18,7 +18,7 @@ while (i <= 10)
 The same idea as `for`:
 
 ```cpp
-for (int i{1}; i <= 10; ++i)
+for (int i{0}; i < 10; ++i)
 {
     std::cout << i << ' ';
 }
@@ -70,7 +70,7 @@ for (int i{0}; i != 10; ++i)
 Being off by one is common. If you wanted `1` through `10`:
 
 ```cpp
-for (int i{1}; i <= 10; ++i)
+for (int i{0}; i < 10; ++i)
 {
 }
 ```

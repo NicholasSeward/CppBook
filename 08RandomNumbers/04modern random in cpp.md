@@ -49,7 +49,7 @@ int main()
     std::mt19937 rng{12345};
     std::uniform_int_distribution<int> die{1, 6};
 
-    for (int roll{1}; roll <= 10; ++roll)
+    for (int count{0}; count < 10; ++count)
     {
         std::cout << die(rng) << "\n";
     }
@@ -73,7 +73,7 @@ int main()
     std::mt19937 rng{12345};
     std::uniform_int_distribution<int> d20{1, 20};
 
-    for (int roll{1}; roll <= 5; ++roll)
+    for (int count{0}; count < 5; ++count)
     {
         std::cout << "d20 roll: " << d20(rng) << "\n";
     }

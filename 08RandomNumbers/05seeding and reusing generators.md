@@ -17,7 +17,7 @@ int main()
     std::mt19937 rng{12345};
     std::uniform_int_distribution<int> die{1, 6};
 
-    for (int roll{1}; roll <= 5; ++roll)
+    for (int count{0}; count < 5; ++count)
     {
         std::cout << die(rng) << "\n";
     }
@@ -42,7 +42,7 @@ int main()
     std::mt19937 rng{rd()};
     std::uniform_int_distribution<int> die{1, 6};
 
-    for (int roll{1}; roll <= 5; ++roll)
+    for (int count{0}; count < 5; ++count)
     {
         std::cout << die(rng) << "\n";
     }
@@ -76,7 +76,7 @@ int rollDie()
 
 int main()
 {
-    for (int roll{1}; roll <= 5; ++roll)
+    for (int count{0}; count < 5; ++count)
     {
         std::cout << rollDie() << "\n";
     }
@@ -100,7 +100,7 @@ One clean approach is to write a helper that owns the generator and distribution
 
 int main()
 {
-    for (int roll{1}; roll <= 5; ++roll)
+    for (int count{0}; count < 5; ++count)
     {
         std::cout << random_utils::getInt(1, 6) << "\n";
     }

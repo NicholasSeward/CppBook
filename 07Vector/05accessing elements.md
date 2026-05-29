@@ -97,6 +97,8 @@ int main()
     std::cout << "Last value: " << values.at(values.size() - 1) << "\n";
     return 0;
 }
+```
+
 > NOTE: The largest valid index in a vector is always one less than its size. For example, if a vector has 10 elements, the valid indexes go from 0 to 9. The last element is at index 9, not 10.
 
 `size()` returns an unsigned value. Be careful when you subtract `1`. If the vector is empty, subtracting 1 can lead to unexpected results due to unsigned integer underflow.

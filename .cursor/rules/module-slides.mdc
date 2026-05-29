@@ -1,0 +1,107 @@
+---
+description: Generate module lecture slides from textbook chapter readings
+globs: "Modules/**/*.md"
+alwaysApply: false
+---
+
+# Module Slides
+
+When asked to make slides for a module, build one Markdown deck from **all** assigned reading for that module. Do not skip chapters or sections that exist in the repo.
+
+## Sources (in priority order)
+
+1. **Module assignment** — `Modules/module readings.md` (which folders and any partial `04Types` notes apply).
+2. **Chapter content** — every `.md` file in those numbered folders, except `README.md`. Sort by filename/number.
+3. **Custom content** — `Tutorials/` or other supplements only when listed for the module. **Prefer and emphasize textbook chapters** over tutorials or external notes.
+
+If a folder is listed but has no chapter files yet, include a single placeholder slide noting the topic is coming soon.
+
+### Partial `04Types`
+
+- **through Type Aliases** — `04Types/01` through `04Types/08`
+- **Enums and Structs** — `04Types/09` through `04Types/13`
+
+## Output
+
+- **Path:** `Modules/Slides (Module X).md` (replace `X` with the module number).
+- **Format:** Marp-style slides separated by `---` on its own line.
+- **Style:** Simple and short. One main idea per slide. Minimal bullets (usually 3–6). Short phrases, not paragraphs.
+
+Follow the textbook voice rules in `textbook-md-chapters.mdc` (no em/en dashes as punctuation, clear plain language).
+
+## Deck flow (in order)
+
+### 1. Title slide
+
+```markdown
+# Module X - Module Name
+## Programming II
+### CPSI 27603
+#### University of Arkansas at Little Rock
+```
+
+Use the exact module number and title from `Modules/module readings.md`.
+
+---
+
+### 2. Review (1–2 slides)
+
+- Look at **previous** modules in `module readings.md`.
+- Pick a few ideas students often confuse or forget.
+- At least **1** slide, at most **2**.
+- Do not re-teach full prior modules; quick reminders only.
+
+---
+
+### 3. Learning Objectives
+
+- Turn this module’s topics into **measurable** objectives (“Explain…”, “Use…”, “Write…”).
+- Usually one slide; split only if the list is long.
+
+---
+
+### 4. Key Terms
+
+- Collect important terms from **all** assigned reading (definitions, types, functions, patterns).
+- One or two slides. Term + brief definition per bullet.
+
+---
+
+### 5. Content
+
+- Walk through **all** assigned chapter material in a logical order (match chapter sequence unless a clearer story exists).
+- **Do not omit** major sections from any assigned chapter file.
+- Prefer chapter headings and teaching points over tutorial quiz wording.
+- Many short slides beat few crowded slides.
+- Code on a slide: one small snippet or signature line when it helps; avoid full listings.
+- Use `> NOTE:` / `> PREFERENCE:` ideas as short callout bullets when they matter for class.
+
+---
+
+### 6. Do's and Don'ts
+
+- One slide (or two if needed).
+- **Do:** practices the chapters encourage (e.g. use `.at()`, brace style, test after small changes).
+- **Don't:** common mistakes warned about in the reading (undefined behavior, off-by-one, unsafe `[]`, etc.).
+- Ground every item in this module’s content.
+- Don't double list.  Bad example: Do format. Don't forget to format
+
+---
+
+### 7. Key Takeaways
+
+- One slide summarizing what students should remember after the module.
+
+---
+
+### 8. Further Explorations
+
+- One slide suggesting optional follow-ups that build on this module (tools, chapters ahead, small projects). Not required homework unless the user asks.
+
+## Checklist before finishing
+
+- [ ] Every assigned chapter file was reflected in the Content section.
+- [ ] Chapters weighted over tutorials/custom material.
+- [ ] Slides separated with `---`.
+- [ ] File named `Slides (Module X).md` in `Modules/`.
+- [ ] Deck is short and scannable (no walls of text).

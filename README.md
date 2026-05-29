@@ -152,3 +152,8 @@ Coming soon.
 
 - [Design Patterns Index](18DesignPatterns/README.md)
 Coming soon.
+
+### 19 Testing
+
+- [Testing Index](19Testing/README.md)
+Coming soon.

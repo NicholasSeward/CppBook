@@ -16,3 +16,4 @@ Types describe what kind of value a program is working with and what operations 
 - [Enum Values, Input, and Output](10enum%20values%20input%20and%20output.md)
 - [Struct Basics](11struct%20basics.md)
 - [Structs and Functions](12structs%20and%20functions.md)
+- [Copying, Printing, and Nesting Structs](13copying%20printing%20and%20nesting%20structs.md)

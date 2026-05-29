@@ -51,6 +51,7 @@ Coming soon.
 - [Enum Values, Input, and Output](04Types/10enum%20values%20input%20and%20output.md)
 - [Struct Basics](04Types/11struct%20basics.md)
 - [Structs and Functions](04Types/12structs%20and%20functions.md)
+- [Copying, Printing, and Nesting Structs](04Types/13copying%20printing%20and%20nesting%20structs.md)
 
 ### 05 Control Flow
 

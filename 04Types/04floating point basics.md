@@ -35,7 +35,7 @@ You do not need to memorize the bit layout now. The takeaway is precision is lim
 Typical precision:
 
 - `float` has about 7 significant decimal digits. This comes from its 23-bit mantissa: since there are 2^23 possible distinct values for the fractional part, this roughly translates to 7 significant digits in decimal.
-- `double` has about 15 to 16 significant decimal digits, thanks to its 52-bit mantissa. The 2^52 possible values provide much finer granularity, which allows for higher precision and about 15–16 digits in decimal notation.
+- `double` has about 15 to 16 significant decimal digits, thanks to its 52-bit mantissa. The 2^52 possible values provide much finer granularity, which allows for higher precision and about 15 to 16 digits in decimal notation.
 
 PREFERENCE: Use `double` by default unless you have a strong reason to use `float`.
 

@@ -38,6 +38,7 @@ Coming soon.
 
 ### 04 Types
 
+- [Types Index](04Types/README.md)
 - [Bits, Bytes, and Memory](04Types/01bits%20bytes%20and%20memory.md)
 - [Fundamental Types](04Types/02fundamental%20types.md)
 - [Integers, Overflow, and Division](04Types/03integers%20overflow%20and%20division.md)
@@ -45,10 +46,14 @@ Coming soon.
 - [`bool`](04Types/05bool.md)
 - [Characters and Escape Sequences](04Types/06chars%20and%20escape%20sequences.md)
 - [Type Conversions](04Types/07type%20conversions.md)
+- [Type Aliases](04Types/08type%20aliases.md)
+- [Enumerations](04Types/09enumerations.md)
+- [Enum Values, Input, and Output](04Types/10enum%20values%20input%20and%20output.md)
+- [Struct Basics](04Types/11struct%20basics.md)
+- [Structs and Functions](04Types/12structs%20and%20functions.md)
 
 ### 05 Control Flow
 
-- [Control Flow Index](05ControlFlow/info.md)
 - [Execution Path](05ControlFlow/01execution%20path.md)
 - [If and Else](05ControlFlow/02if%20else.md)
 - [If Issues](05ControlFlow/03if%20issues.md)
@@ -59,7 +64,6 @@ Coming soon.
 
 ### 06 Operators
 
-- [Operators Index](06Operators/info.md)
 - [Precedence and Associativity](06Operators/01precedence%20and%20associativity.md)
 - [Arithmetic, Assignment, and Modulus](06Operators/02arithmetic%20assignment%20and%20modulus.md)
 - [Exponentiation and `std::pow`](06Operators/03exponentiation%20and%20pow.md)

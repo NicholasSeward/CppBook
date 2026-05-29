@@ -143,7 +143,7 @@ int main()
 
     if (!values.empty()) {
         int size = values.size();
-        std::cout << "Last index: " << lastIndex << "\n";
+        std::cout << "Last index: " << size << "\n";
         std::cout << "Last value: " << values.at(size-1) << "\n";
     } else {
         std::cout << "Vector is empty!\n";

@@ -13,3 +13,7 @@ Dynamic arrays for storing many values of the same type.
 - [Traversing Vectors](07traversing%20vectors.md)
 - [Vector Size and Growth](08vector%20size%20and%20growth.md)
 - [Push and Pop](09push%20and%20pop.md)
+
+## Tutorials
+
+- [Vectors, Loops, Random, Struct, and Enum Quiz](../Tutorials/vectors%20loops%20random%20struct%20enum%20quiz.md)

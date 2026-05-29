@@ -159,3 +159,47 @@ int main()
 ```
 
 This program might print `0`. It might print a random-looking number. It might appear to work and then fail later. The value of `x` is **undefined** here, and reading it is not something you can rely on.
+
+## Try it now
+
+### Exercise 1: Store and change a value
+
+Prompt: Add a `lives` variable, initialize it, change it, and print it.
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    int score{0};
+    // TODO: Create an int named lives and initialize it.
+
+    score = 10;
+    // TODO: Change lives before printing it.
+
+    std::cout << "Score: " << score << '\n';
+    // TODO: Print lives.
+
+    return 0;
+}
+```
+
+### Exercise 2: Initialize before use
+
+Prompt: Fix the starter so every variable has a clear starting value before it is printed.
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    int counter{};
+    int total{};
+
+    // TODO: Give counter and total meaningful values.
+
+    std::cout << counter << '\n';
+    std::cout << total << '\n';
+    return 0;
+}
+```

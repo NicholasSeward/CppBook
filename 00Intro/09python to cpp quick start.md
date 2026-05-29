@@ -427,3 +427,125 @@ int main()
 | `def f(...):` | `returnType f(...) { ... }` |
 
 > NOTE: The cheat sheet uses compact `{ ... }` to save space. Full examples in this book use vertically aligned braces.
+
+## Try it now
+
+Use each working Python program as the target behavior. Then complete the C++ starter playground.
+
+### 1. Greeting with input
+
+Prompt: Ask for a name, then print a greeting.
+
+```python
+name = input("Name? ")
+print("Hello, " + name + "!")
+```
+
+```cpp
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string name{};
+
+    // TODO: Ask for the name.
+    // TODO: Read the name.
+    // TODO: Print the greeting.
+
+    std::cout << "Starter runs.\n";
+    return 0;
+}
+```
+
+### 2. Pass or retry
+
+Prompt: Read a score. Print `"pass"` if the score is at least `70`; otherwise print `"retry"`.
+
+```python
+score = int(input("Score? "))
+
+if score >= 70:
+    print("pass")
+else:
+    print("retry")
+```
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    int score{};
+
+    // TODO: Ask for the score.
+    // TODO: Read the score.
+    // TODO: Use if/else to print pass or retry.
+
+    std::cout << "Starter runs.\n";
+    return 0;
+}
+```
+
+### 3. Count and total
+
+Prompt: Print the numbers from `0` through `4`, then print their total.
+
+```python
+total = 0
+
+for number in range(5):
+    print(number)
+    total += number
+
+print("Total:", total)
+```
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    int total{0};
+
+    // TODO: Write a zero-based for loop.
+    // TODO: Print each number.
+    // TODO: Add each number to total.
+    // TODO: Print the total after the loop.
+
+    std::cout << "Starter runs.\n";
+    return 0;
+}
+```
+
+### 4. A small function
+
+Prompt: Write a function that doubles a number, then call it from the main part of the program.
+
+```python
+def double_number(value):
+    return value * 2
+
+number = 6
+print(double_number(number))
+```
+
+```cpp
+#include <iostream>
+
+int doubleNumber(int value)
+{
+    // TODO: Return value times 2.
+    return value;
+}
+
+int main()
+{
+    int number{6};
+
+    // TODO: Print the doubled number.
+
+    std::cout << "Starter runs.\n";
+    return 0;
+}
+```

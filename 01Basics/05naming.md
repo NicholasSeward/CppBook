@@ -115,3 +115,46 @@ std::cout << homeScore + awayScore;
 ```
 
 > PROTIP: Rename while you learn. The first name you pick does not have to be permanent. Clear names save more time than clever short ones.
+
+## Try it now
+
+### Exercise 1: Rename vague variables
+
+Prompt: The following code adds together the number of apples and the number of oranges. Rename `x` and `y` so the code explains what the values mean.
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    int x{7};
+    int y{10};
+
+    // TODO: Rename x and y, then update this output line to use the clearer variable names.
+    std::cout << x + y << '\n';
+    return 0;
+}
+```
+
+### Exercise 2: Keep one naming style
+
+Prompt: Add a variable for the total score using the same naming style as `homeScore` and `awayScore`. Print each value with a label.
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    int homeScore{21};
+    int awayScore{17};
+
+    // TODO: Add a variable for the total score using the same naming style.
+    // TODO: Compute the total score as the sum of homeScore and awayScore.
+
+    std::cout << "Home score: " << homeScore << '\n';
+    std::cout << "Away score: " << awayScore << '\n';
+    // TODO: Print the total score with a label.
+    std::cout << "Total score: " << '\n';
+    return 0;
+}
+```

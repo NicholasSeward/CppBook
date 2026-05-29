@@ -187,27 +187,38 @@ This chapter focuses on **syntax** errors, sometimes called compilation errors.
 
 > AI: Missing semicolons and typos used to cost hours of debugging. Today, assistants can spot many syntax errors instantly. But learning theory says that wrestling with mistakes helps you build lasting understanding, struggle is a key part of learning. It’s still an open question what balance of guided help versus personal problem solving works best for learning programming in the modern world. When you are starting out, still try to understand *why* a fix is needed.
 
-### Try breaking your program
+## Try it now
 
-Start with a simple working example you can run and modify:
+### Exercise 1: Change the message
+
+Prompt: Change the program so it prints your own greeting and one extra line.
 
 ```cpp
 #include <iostream>
 
 int main()
 {
+    // TODO: Replace this message.
     std::cout << "Hello, world!\n";
+
+    // TODO: Add one more output line.
+
     return 0;
 }
 ```
 
-Deliberately introduce mistakes and read the compiler message:
+### Exercise 2: Break and fix it
 
-- Remove a semicolon after a statement
-- Change `"` to `'` in the wrong place
-- Misspell `main` as `Main` or `man`
-- Drop `#include <iostream>` and use `std::cout` anyway
+Prompt: Introduce one syntax error, read the compiler message, then fix it.
 
-Sometimes the message points straight at the problem; sometimes it is vague. Different compilers and flags change the wording.
+```cpp
+#include <iostream>
+
+int main()
+{
+    std::cout << "Break this line on purpose.\n";
+    return 0;
+}
+```
 
 > NOTE: Runnable snippets in this book are often compiled to [WebAssembly](https://en.wikipedia.org/wiki/WebAssembly) with [Clang](https://en.wikipedia.org/wiki/Clang). Outside the book, this text assumes **g++** (GNU C++). Other common toolchains include [GCC](https://en.wikipedia.org/wiki/GNU_Compiler_Collection) and [Microsoft Visual C++](https://en.wikipedia.org/wiki/Microsoft_Visual_C%2B%2B) (MSVC).

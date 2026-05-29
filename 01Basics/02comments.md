@@ -154,3 +154,22 @@ int main()
 ```
 
 Run it, then remove the `//` before the second `cout` and run again. Try commenting out `Line 1` or `Line 3` and predict the output before you compile.
+
+## Try it now
+
+### Exercise 1: Turn a line on
+
+Prompt: Uncomment the middle output line, then run the program again.
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    std::cout << "Line 1\n";
+    // TODO: Remove the // from the next line.
+    // std::cout << "Line 2\n";
+    std::cout << "Line 3\n";
+    return 0;
+}
+```

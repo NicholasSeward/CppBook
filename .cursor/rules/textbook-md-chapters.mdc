@@ -42,11 +42,13 @@ Structure major blocks as `##` sections in this order when they fit:
 5. Optional callouts (below)
 6. Tie back to prior material when needed
 
-## Try it out sections
+## Try it now sections
 
-- When it fits, end a chapter with `## Try it out`.
-- Include 1 to 3 short prompts that ask the reader to modify, extend, or test the chapter's idea.
-- If a prompt needs code, include a small runnable starter playground in a `cpp` block.
+- When it fits, end a chapter with `## Try it now`.
+- Include 1 to 3 individual exercises.
+- Each exercise should have a simple prompt and starter code.
+- Starter code should be runnable, but leave enough missing or marked with `TODO` comments so the reader practices the chapter's content.
+- If the starter code is C++, use a `cpp` block only when it is a complete runnable program.
 
 ## Callouts
 

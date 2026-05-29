@@ -105,12 +105,6 @@ This is also valid. The important thing is consistency.
 
 > NOTE: This book uses vertically aligned `{}` unless the example is intentionally showing bad formatting or an alternate style.
 
-## Try it
-
-- Take the poorly formatted example and reformat it by hand.
-- Remove indentation from a working program. Notice how much harder it is to read.
-- Use your editor's format command on a small file, then inspect what changed.
-
 ## Tabs vs spaces
 
 Indentation can use tabs or spaces. C++ does not care.
@@ -159,3 +153,32 @@ Examples:
 - [GCC Coding Conventions](https://gcc.gnu.org/codingconventions.html)
 
 > PREFERENCE: This textbook will very roughly follow the C++ Core Guidelines, but the goal is beginner readability rather than strict professional style compliance.
+
+## Try it now
+
+### Exercise 1: Reformat by hand
+
+Prompt: Reformat the starter so the braces and indentation match this book's style.
+
+```cpp
+#include <iostream>
+int main(){int score{72};if(score>=60){std::cout<<"Pass\n";}else{std::cout<<"Try again\n";}return 0;}
+```
+
+### Exercise 2: Split a long line
+
+Prompt: Split the long output statement across multiple readable lines.
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    int finalPrice{42};
+
+    // TODO: Split this long statement into a readable multi-line statement.
+    std::cout << "The final price after tax and discount is " << finalPrice << " dollars\n";
+
+    return 0;
+}
+```

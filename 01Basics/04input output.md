@@ -180,3 +180,45 @@ Try input: `42 is the answer`
 Run the program twice with the same typing if your environment reuses input, or type fresh input each run, and watch what the second read picks up.
 
 > NOTE: Reading a full line of text, or recovering from bad input (letters when you expected a number), needs more tools (`std::getline`, clear the stream state, etc.). For now we assume the user follows directions.
+
+## Try it now
+
+### Exercise 1: Add two numbers
+
+Prompt: Ask for two integers, read them, and print their sum.
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    int first{};
+    int second{};
+
+    // TODO: Print a clear prompt.
+    // TODO: Read both numbers.
+    // TODO: Print their sum.
+    return 0;
+}
+```
+
+### Exercise 2: Echo a word
+
+Prompt: Ask for one word and print it back with a label.
+
+```cpp
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string word{};
+
+    // TODO: Ask the user for one word.
+    // TODO: Read the word.
+    // TODO: Print the word with a label.
+
+    std::cout << "Starter runs.\n";
+    return 0;
+}
+```

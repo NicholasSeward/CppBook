@@ -228,3 +228,43 @@ Both `x` and `y` end up as `6`. The assignment runs from right to left: `x = 6` 
 ### Takeaway
 
 Every expression evaluates down to **one value**.
+
+## Try it now
+
+### Exercise 1: Add parentheses
+
+Prompt: You're calculating a reward where the sum of the score and bonus should be doubled (the sum should be computed before multiplying by 2). Add parentheses so the intended order is obvious and correct.
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    int score{10};
+    int bonus{3};
+    int reward{score + bonus * 2};
+
+    std::cout << "Reward: " << reward << '\n';
+    return 0;
+}
+```
+
+### Exercise 2: Replace chained assignment
+
+Prompt: Replace the chained assignment with two separate assignments.
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    int x{};
+    int y{};
+
+    // TODO: Replace this with two clearer statements.
+    y = x = 6;
+
+    std::cout << "x = " << x << ", y = " << y << '\n';
+    return 0;
+}
+```

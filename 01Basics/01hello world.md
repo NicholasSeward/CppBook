@@ -166,22 +166,22 @@ int main()
 }
 ```
 
-- `#include <iostream>` ,  a **preprocessor directive**. Before compilation, the compiler pulls in declarations from `<iostream>`, giving you `std::cout` (character output) and `std::cin` (character input).
-- The blank line ,  C++ ignores extra **whitespace**. You do not need blank lines, but they separate ideas and help humans (and tools) read the file.
+- `#include <iostream>`: a **preprocessor directive**. Before compilation, the compiler pulls in declarations from `<iostream>`, giving you `std::cout` (character output) and `std::cin` (character input).
+- The blank line: C++ ignores extra **whitespace**. You do not need blank lines, but they separate ideas and help humans (and tools) read the file.
 
 > AI: Large codebases are increasingly written and maintained with AI assistance. Readable layout and predictable style still matter: conventions make code easier for people and models to parse and extend.
 
-- `int main()` ,  defines `main`. The `int` is the **return type**: the kind of value `main` sends back to the environment. Think of a math helper that takes a number and **returns** a result; `main` returns an integer status code.
-- `std::cout` ,  standard character output (typically the terminal). The `<<` **insertion operator** sends strings or other values into the stream.
-- `return 0` ,  success. Conventionally `0` means “finished OK.” Non-zero values (such as `1`) often mean something went wrong; you can assign your own meanings in larger programs.
+- `int main()`: defines `main`. The `int` is the **return type**: the kind of value `main` sends back to the environment. Think of a math helper that takes a number and **returns** a result; `main` returns an integer status code.
+- `std::cout`: standard character output (typically the terminal). The `<<` **insertion operator** sends strings or other values into the stream.
+- `return 0`: success. Conventionally `0` means “finished OK.” Non-zero values (such as `1`) often mean something went wrong; you can assign your own meanings in larger programs.
 
 ## When things go wrong
 
 Programs fail in three broad ways:
 
-1. **Syntax** (compile-time) ,  the compiler cannot understand the source: missing `;`, wrong quotes, typo in `main`.
-2. **Runtime** ,  the build succeeded but the program crashes or stops abnormally while running.
-3. **Logic** ,  it runs but does the wrong thing.
+1. **Syntax** (compile-time): the compiler cannot understand the source: missing `;`, wrong quotes, typo in `main`.
+2. **Runtime**: the build succeeded but the program crashes or stops abnormally while running.
+3. **Logic**: it runs but does the wrong thing.
 
 This chapter focuses on **syntax** errors, sometimes called compilation errors.
 

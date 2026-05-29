@@ -5,7 +5,7 @@ Programming is not only typing code. It matches the **engineering design process
 ## The loop
 
 1. **Define the problem**  
-   What should the program do,  For whom,  What counts as success, 
+   What should the program do? For whom? What counts as success?
 
 2. **Consider and research solutions**  
    What algorithms, libraries, or designs might work?  What have others done?

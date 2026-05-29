@@ -1,9 +1,9 @@
-# Conditional Operator (`, :`)
+# Conditional Operator (`?:`)
 
 The **conditional operator** (ternary) is the only operator with three operands:
 
 ```text
-condition ,  valueIfTrue : valueIfFalse
+condition ? valueIfTrue : valueIfFalse
 ```
 
 It is like a tiny inline `if` that produces a value.
@@ -27,7 +27,7 @@ int main()
         std::cout << "minor\n";
     }
 
-    std::cout << (age >= 18 ,  "adult" : "minor") << '\n';
+    std::cout << (age >= 18 ? "adult" : "minor") << '\n';
     return 0;
 }
 ```
@@ -36,7 +36,7 @@ int main()
 
 ## Precedence
 
-`, :` binds just above assignment (`=`). Without parentheses, parsing can surprise you:
+`?:` binds just above assignment (`=`). Without parentheses, parsing can surprise you:
 
 ```cpp
 #include <iostream>
@@ -45,10 +45,10 @@ int main()
 {
     int x{5};
 
-    int z = x > 0 ,  1 : 2 + 3;  // parsed as (x > 0) ,  1 : (2 + 3)
+    int z = x > 0 ? 1 : 2 + 3;  // parsed as (x > 0) ? 1 : (2 + 3)
     std::cout << z << '\n';      // 1
 
-    int w = (x > 0) ,  (1) : (2 + 3);
+    int w = (x > 0) ? (1) : (2 + 3);
     std::cout << w << '\n';      // 1
 
     return 0;

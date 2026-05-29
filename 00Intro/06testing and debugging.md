@@ -42,4 +42,4 @@ When your code doesn't compile:
 
 Some error messages can be confusing. If needed, use AI or online resources to help interpret them.
 
-> AI: This course emphasizes learning the core concepts. Use AI to help explain errors, provide small examples, or quiz your understanding. Instead of simply asking "fix it," try asking "What does this error mean, " or "Why is this line incorrect, " to build your skills.
+> AI: This course emphasizes learning the core concepts. Use AI to help explain errors, provide small examples, or quiz your understanding. Instead of simply asking "fix it," try asking "What does this error mean?" or "Why is this line incorrect?" to build your skills.

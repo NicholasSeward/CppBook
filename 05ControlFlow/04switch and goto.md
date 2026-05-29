@@ -99,7 +99,7 @@ void printDayMap(int day)
         {3, "Wed"},
     };
     auto it = names.find(day);
-    std::cout << (it != names.end() ,  it->second : "Other") << '\n';
+    std::cout << (it != names.end() ? it->second : "Other") << '\n';
 }
 
 int main()

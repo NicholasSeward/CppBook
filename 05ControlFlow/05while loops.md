@@ -47,7 +47,7 @@ int main()
     while (again == "y" || again == "Y")
     {
         std::cout << "Did something useful...\n";
-        std::cout << "Again (y/n),  ";
+        std::cout << "Again (y/n)? ";
         std::cin >> again;
     }
     return 0;

@@ -74,7 +74,7 @@ C++ has one ternary operator: the **conditional operator**.
 int main()
 {
     int age{20};
-    std::cout << (age >= 18 ,  "adult" : "minor") << '\n';
+    std::cout << (age >= 18 ? "adult" : "minor") << '\n';
     return 0;
 }
 ```
@@ -97,7 +97,7 @@ int main()
 }
 ```
 
-Does this print `7` or `9`,  It prints `7`, because multiplication happens before addition.
+Does this print `7` or `9`? It prints `7`, because multiplication happens before addition.
 
 You can also chain stream operators (because `<<` returns the stream on the left):
 

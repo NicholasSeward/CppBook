@@ -101,7 +101,7 @@ enum Hemisphere
 int main()
 {
     Direction direction{North};
-    Hemisphere hemi{North}; // Which 'North' is this,  Error or unexpected result!
+    Hemisphere hemi{North}; // Which 'North' is this? Error or unexpected result!
     std::cout << direction << " " << hemi << "\n";
     return 0;
 }

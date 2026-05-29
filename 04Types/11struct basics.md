@@ -197,10 +197,10 @@ int main()
 {
     Point point;
 
-    std::cout << "x,  ";
+    std::cout << "x? ";
     std::cin >> point.x;
 
-    std::cout << "y,  ";
+    std::cout << "y? ";
     std::cin >> point.y;
 
     std::cout << point.x << ", " << point.y << "\n";

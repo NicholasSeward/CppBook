@@ -6,7 +6,7 @@ You already saw a simple case: `1 + 2 * 3` is `7`, not `9`, because `*` happens 
 
 ## Precedence
 
-**Precedence** answers: which operator binds tighter, 
+**Precedence** answers: which operator binds tighter?
 
 Higher in the list below runs first (tighter binding):
 
@@ -27,7 +27,7 @@ Higher in the list below runs first (tighter binding):
 | 13 | left to right | `\|` | bitwise OR |
 | 14 | left to right | `&&` | logical AND |
 | 15 | left to right | `\|\|` | logical OR |
-| 16 | right to left | `, :` | conditional (ternary) |
+| 16 | right to left | `?:` | conditional (ternary) |
 | 17 | right to right | `=` `+=` `-=` `*=` `/=` `%=` | assignment |
 | 18 | left to right | `,` | comma |
 
@@ -37,7 +37,7 @@ This is a **beginner** table. It is not every C++ operator, but it covers what y
 
 ## Associativity
 
-**Associativity** answers: if operators have the same precedence, which side groups first, 
+**Associativity** answers: if operators have the same precedence, which side groups first?
 
 - Most operators are **left to right**: `10 - 3 - 2` is `(10 - 3) - 2` which is `5`.
 - Assignment is **right to left**: `a = b = 5` assigns `5` to `b`, then assigns that result to `a`.

@@ -32,7 +32,7 @@ int main()
     int i{0};
     int j{0};
 
-    // Which value of i is added,  You must know postfix rules.
+    // Which value of i is added? You must know postfix rules.
     j = i++ + 10;
     std::cout << "i=" << i << ", j=" << j << '\n';  // i=1, j=10
 

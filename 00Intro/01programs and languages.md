@@ -37,7 +37,7 @@ Here’s a simple Venn diagram showing the intersection.
 ```
 C++ is shown in the intersecting area where both rectangles meet: it can be used as both a high level and a low level language.
 
-- **Python and Java:** These are purely high-level languages. You focus on problems, data structures, and logic—not hardware details.
+- **Python and Java:** These are purely high-level languages. You focus on problems, data structures, and logic, not hardware details.
 - **C++:** This language can be high level (abstract, object-oriented code) or low level (direct hardware access, manual memory management). It sits in the overlap.
 - **C, Assembly, Machine code:** These are low level. You control memory directly and interact closely with the CPU.
 
@@ -45,4 +45,4 @@ C++ is shown in the intersecting area where both rectangles meet: it can be used
 
 **Low level**: Close to the hardware. Gives you control over performance, timing, and memory, but code is harder to write and understand.
 
-NOTE: Higher level means more abstraction, not always "better." Sometimes you need lower level code for speed or hardware access.
+> NOTE: Higher level means more abstraction, not always "better." Sometimes you need lower level code for speed or hardware access.

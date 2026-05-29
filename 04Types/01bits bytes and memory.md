@@ -18,7 +18,7 @@ Many C++ types are described in bytes:
 - `int` is often 4 bytes on desktop systems
 - `double` is often 8 bytes
 
-NOTE: C++ does not promise exact sizes for most built in types. It promises relationships, minimum sizes, and rules. You can always check sizes with `sizeof`.
+> NOTE: C++ does not promise exact sizes for most built in types. It promises relationships, minimum sizes, and rules. You can always check sizes with `sizeof`.
 
 ## Memory and addresses
 
@@ -45,7 +45,7 @@ RAM is organized internally in larger blocks (often called **pages**). Even thou
 
 This is one reason why placing data that is used together near each other can improve performance. The CPU caches nearby bytes.
 
-NOTE: You do not need to optimize memory layout in beginner programs. This idea becomes useful later when you work with arrays, vectors, and performance.
+> NOTE: You do not need to optimize memory layout in beginner programs. This idea becomes useful later when you work with arrays, vectors, and performance.
 
 ## Why types exist
 
@@ -81,5 +81,5 @@ int main()
 }
 ```
 
-PREFERENCE: Do not memorize sizes from this output. Learn the idea that sizes can vary and that `sizeof` tells the truth for your build.
+> PREFERENCE: Do not memorize sizes from this output. Learn the idea that sizes can vary and that `sizeof` tells the truth for your build.
 

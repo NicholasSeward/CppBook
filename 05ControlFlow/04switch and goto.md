@@ -39,7 +39,7 @@ Each `case` labels a branch. `break` leaves the `switch`. Without `break`, execu
 
 ### Same idea with `if` / `else if`
 
-```cpp
+```
 if (day == 1)
 {
     std::cout << "Mon\n";
@@ -58,9 +58,9 @@ else
 }
 ```
 
-PREFERENCE: This book will mostly use `if` / `else if` chains. They are flexible and avoid `switch` details like forgotten `break` and fall through. Many programmers like `switch`. You may see them in other codebases. They do not unlock anything required here.
+> PREFERENCE: This book will mostly use `if` / `else if` chains. They are flexible and avoid `switch` details like forgotten `break` and fall through. Many programmers like `switch`. You may see them in other codebases. They do not unlock anything required here.
 
-NOTE: Later you might use lookup tables or maps for many cases. That is an advanced topic. `if` chains are enough for now.
+> NOTE: Later you might use lookup tables or maps for many cases. That is an advanced topic. `if` chains are enough for now.
 
 ## `switch` vs `if` vs map (side by side)
 
@@ -99,7 +99,7 @@ void printDayMap(int day)
         {3, "Wed"},
     };
     auto it = names.find(day);
-    std::cout << (it != names.end() ? it->second : "Other") << '\n';
+    std::cout << (it != names.end() ,  it->second : "Other") << '\n';
 }
 
 int main()
@@ -112,7 +112,7 @@ int main()
 }
 ```
 
-PREFERENCE: My bias is clear. I do not like `switch` in beginner code. It adds mental overhead (`break`, fall through rules, and awkward edits) without teaching anything new that you cannot learn with `if` / `else if`.
+> PREFERENCE: My bias is clear. I do not like `switch` in beginner code. It adds mental overhead (`break`, fall through rules, and awkward edits) without teaching anything new that you cannot learn with `if` / `else if`.
 
 ## `goto`: do not use
 
@@ -141,4 +141,4 @@ Why avoid `goto`:
 - Refactoring and debugging become painful
 - Structured control (`if`, loops, functions) solves the same problems more clearly
 
-PREFERENCE: Treat any `goto` in code as an immediate no. Use structured control flow instead.
+> PREFERENCE: Treat any `goto` in code as an immediate no. Use structured control flow instead.

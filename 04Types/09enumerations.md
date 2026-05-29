@@ -101,7 +101,7 @@ enum Hemisphere
 int main()
 {
     Direction direction{North};
-    Hemisphere hemi{North}; // Which 'North' is this? Error or unexpected result!
+    Hemisphere hemi{North}; // Which 'North' is this,  Error or unexpected result!
     std::cout << direction << " " << hemi << "\n";
     return 0;
 }
@@ -139,7 +139,7 @@ int main()
 
 `Direction::North` is more to type, but it is also safer. The name `North` belongs to `Direction`.
 
-PREFERENCE: Use `enum class` unless the enum is already inside a namespace or class where the names are clearly contained.
+> PREFERENCE: Use `enum class` unless the enum is already inside a namespace or class where the names are clearly contained.
 
 ## Naming Enum Values
 

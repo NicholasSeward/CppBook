@@ -10,14 +10,14 @@ C++ is mostly **whitespace independent**. Spaces, tabs, and newlines usually do 
 
 But whitespace is still needed to separate some tokens:
 
-```cpp
+```
 int x{5};   // OK
 intx{5};    // not the same thing
 ```
 
 Where one space can go, many spaces or newlines can often go:
 
-```cpp
+```
 int
 x
 {
@@ -27,7 +27,7 @@ x
 
 That is legal, but do not write code that way. The goal is not only to satisfy the compiler. The goal is to help the next reader.
 
-NOTE: Single-line comments are different. A `//` comment ends at the newline, so moving line breaks can change what is commented out.
+> NOTE: Single-line comments are different. A `//` comment ends at the newline, so moving line breaks can change what is commented out.
 
 ## Bad formatting that still compiles
 
@@ -76,9 +76,9 @@ The blank lines separate ideas. Indentation shows what belongs inside `main` and
 - When you open a block, indent.
 - When you close a block, unindent.
 
-PREFERENCE: This book uses a style where the opening `{` starts on the line after the statement that owns it, and both `{` and `}` are aligned in the same column.
+> PREFERENCE: This book uses a style where the opening `{` starts on the line after the statement that owns it, and both `{` and `}` are aligned in the same column.
 
-```cpp
+```
 if (score >= 60)
 {
     std::cout << "Pass\n";
@@ -93,7 +93,7 @@ else
 
 You will also see the opening brace kept on the same line:
 
-```cpp
+```
 if (score >= 60) {
     std::cout << "Pass\n";
 } else {
@@ -103,7 +103,7 @@ if (score >= 60) {
 
 This is also valid. The important thing is consistency.
 
-NOTE: This book uses vertically aligned `{}` unless the example is intentionally showing bad formatting or an alternate style.
+> NOTE: This book uses vertically aligned `{}` unless the example is intentionally showing bad formatting or an alternate style.
 
 ## Try it
 
@@ -117,23 +117,23 @@ Indentation can use tabs or spaces. C++ does not care.
 
 Your editor can make the Tab key insert either a tab character or a certain number of spaces. Most editors can detect the style already used in a file.
 
-NOTE: Whitespace matters more in languages like Python. If you copy and paste mixed tabs and spaces into a whitespace-dependent language, you can get bugs or syntax errors. In C++, it is mainly a readability issue.
+> NOTE: Whitespace matters more in languages like Python. If you copy and paste mixed tabs and spaces into a whitespace-dependent language, you can get bugs or syntax errors. In C++, it is mainly a readability issue.
 
 ## Line length
 
 Many editors draw a vertical guide around 80 characters. That does not mean a line becomes evil at character 81. It means you should start asking whether the line would be easier to read if you split it.
 
-PROTIP: If a line goes a few characters past 80, leave it alone if it reads well. Avoid giant lines that require horizontal scrolling.
+> PROTIP: If a line goes a few characters past 80, leave it alone if it reads well. Avoid giant lines that require horizontal scrolling.
 
 Bad:
 
-```cpp
+```
 std::cout << "The final price after tax and discount is " << finalPrice << " dollars\n";
 ```
 
 Better if it gets too long:
 
-```cpp
+```
 std::cout << "The final price after tax and discount is "
           << finalPrice
           << " dollars\n";
@@ -143,7 +143,7 @@ std::cout << "The final price after tax and discount is "
 
 Modern IDEs and AI tools can format code automatically.
 
-PROTIP: Make formatting part of your normal process. Write code, run the formatter, then read the result. Automatic formatting does not replace understanding, but it removes a lot of boring cleanup.
+> PROTIP: Make formatting part of your normal process. Write code, run the formatter, then read the result. Automatic formatting does not replace understanding, but it removes a lot of boring cleanup.
 
 In many editors you can format the current file with a command like **Format Document**. For example, in Visual Studio Code, the default shortcut is **Shift+Alt+F**.
 
@@ -158,4 +158,4 @@ Examples:
 - [LLVM Coding Standards](https://llvm.org/docs/CodingStandards.html)
 - [GCC Coding Conventions](https://gcc.gnu.org/codingconventions.html)
 
-PREFERENCE: This textbook will very roughly follow the C++ Core Guidelines, but the goal is beginner readability rather than strict professional style compliance.
+> PREFERENCE: This textbook will very roughly follow the C++ Core Guidelines, but the goal is beginner readability rather than strict professional style compliance.

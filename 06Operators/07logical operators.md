@@ -60,13 +60,13 @@ int main()
 }
 ```
 
-NOTE: Do not put important side effects only on the right side of `&&` or `||`. It might never run.
+> NOTE: Do not put important side effects only on the right side of `&&` or `||`. It might never run.
 
 ## Mixing `&&` and `||`
 
 Use parentheses when logic gets long:
 
-```cpp
+```
 if ((age >= 13 && age <= 19) || isStudent)
 {
     // ...
@@ -113,7 +113,7 @@ int main()
 
 C++ allows `and`, `or`, and `not` as alternative spellings for `&&`, `||`, and `!`. They are uncommon in real world code. This book uses `&&`, `||`, and `!`.
 
-```cpp
+```
 if (not isRaining and isWarm)
 {
 } // legal, unusual

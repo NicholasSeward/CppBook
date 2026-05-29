@@ -61,7 +61,7 @@ Randomness does not mean a program is out of control. You still decide:
 
 That last point matters. During development, repeatability is often helpful. If a bug happens only on one random run, you want a way to make that same run happen again.
 
-NOTE: Randomness is not one topic. There is game randomness, simulation randomness, testing randomness, and security randomness. They do not all have the same requirements.
+> NOTE: Randomness is not one topic. There is game randomness, simulation randomness, testing randomness, and security randomness. They do not all have the same requirements.
 
 ## A Simple Range Example
 

@@ -2,7 +2,7 @@
 
 A beginner-friendly C++ textbook organized as Markdown chapters.
 
-NOTE: Chapter numbers and folder order are subject to change as the book develops.
+> NOTE: Chapter numbers and folder order are subject to change as the book develops.
 
 ## Chapters
 
@@ -69,7 +69,7 @@ Coming soon.
 - [Arithmetic, Assignment, and Modulus](06Operators/02arithmetic%20assignment%20and%20modulus.md)
 - [Exponentiation and `std::pow`](06Operators/03exponentiation%20and%20pow.md)
 - [Increment, Decrement, and Comma](06Operators/04increment%20decrement%20and%20comma.md)
-- [Conditional Operator (`?:`)](06Operators/05conditional%20operator.md)
+- [Conditional Operator (`, :`)](06Operators/05conditional%20operator.md)
 - [Relational Operators](06Operators/06relational%20operators.md)
 - [Logical Operators](06Operators/07logical%20operators.md)
 

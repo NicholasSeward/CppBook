@@ -62,21 +62,21 @@ int main()
 
 `std::endl` ends a line and **flushes** the output buffer (forces pending text to show up now):
 
-```cpp
+```
 std::cout << "Line 1" << std::endl;
 std::cout << "Line 2" << std::endl;
 ```
 
 The escape sequence `\n` also starts a new line, but it does not flush by itself:
 
-```cpp
+```
 std::cout << "Line 1\n";
 std::cout << "Line 2\n";
 ```
 
-NOTE: `\n` is often slightly faster for heavy logging because it skips the extra flush. For interactive prompts, `std::endl` can help make sure the user sees the prompt before input. In practice, either is fine in this course. This book uses both.
+> NOTE: `\n` is often slightly faster for heavy logging because it skips the extra flush. For interactive prompts, `std::endl` can help make sure the user sees the prompt before input. In practice, either is fine in this course. This book uses both.
 
-HISTORY: `\n` is an [ASCII](https://en.wikipedia.org/wiki/ASCII) **control character** (line feed, value 10). Printers and terminals adopted it long ago. Other escape sequences still show up in tools: `\r` (carriage return, value 13) returns to the start of the current line; `\b` (backspace, value 8) moves the cursor back one column.
+> HISTORY: `\n` is an [ASCII](https://en.wikipedia.org/wiki/ASCII) **control character** (line feed, value 10). Printers and terminals adopted it long ago. Other escape sequences still show up in tools: `\r` (carriage return, value 13) returns to the start of the current line; `\b` (backspace, value 8) moves the cursor back one column.
 
 A tiny progress-style loop using `\r`:
 
@@ -119,9 +119,9 @@ int main()
 
 Always **prompt** the user so they know what to type.
 
-PREFERENCE: Print the prompt **without** a trailing newline so the cursor stays on the same line as the question. Put a **space** after the colon. It still works without the space, but it looks odd to many users.
+> PREFERENCE: Print the prompt **without** a trailing newline so the cursor stays on the same line as the question. Put a **space** after the colon. It still works without the space, but it looks odd to many users.
 
-```cpp
+```
 std::cout << "Enter your age: ";  // space after colon, no endl yet
 ```
 
@@ -179,4 +179,4 @@ Try input: `42 is the answer`
 
 Run the program twice with the same typing if your environment reuses input, or type fresh input each run, and watch what the second read picks up.
 
-NOTE: Reading a full line of text, or recovering from bad input (letters when you expected a number), needs more tools (`std::getline`, clear the stream state, etc.). For now we assume the user follows directions.
+> NOTE: Reading a full line of text, or recovering from bad input (letters when you expected a number), needs more tools (`std::getline`, clear the stream state, etc.). For now we assume the user follows directions.

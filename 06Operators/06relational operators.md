@@ -31,7 +31,7 @@ int main()
 
 Redundant:
 
-```cpp
+```
 bool isRaining{true};
 if (isRaining == true)
 {
@@ -40,7 +40,7 @@ if (isRaining == true)
 
 Better:
 
-```cpp
+```
 if (isRaining)
 {
 }
@@ -85,4 +85,4 @@ int main()
 }
 ```
 
-PREFERENCE: Use `<` and `>` freely with floats. Use approximate equality with `std::abs` when you need "about equal."
+> PREFERENCE: Use `<` and `>` freely with floats. Use approximate equality with `std::abs` when you need "about equal."

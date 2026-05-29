@@ -51,7 +51,7 @@ Sometimes the standard library is not enough. You can:
 
 Tools like [vcpkg](https://vcpkg.io/) are **package managers**: they download and build libraries so you can link against them.
 
-NOTE: If everyone uses the same popular libraries, a single security flaw ([CVE](https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures)) can affect many projects at once. That is a bit like agricultural **monoculture**: one disease can threaten every identical crop. Some teams lean on more custom or diverse code bases. There is no perfect answer, but it is worth knowing why dependency choices matter.
+> NOTE: If everyone uses the same popular libraries, a single security flaw ([CVE](https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures)) can affect many projects at once. That is a bit like agricultural **monoculture**: one disease can threaten every identical crop. Some teams lean on more custom or diverse code bases. There is no perfect answer, but it is worth knowing why dependency choices matter.
 
 ## Building vs compiling
 
@@ -59,4 +59,4 @@ NOTE: If everyone uses the same popular libraries, a single security flaw ([CVE]
 
 [Visual Studio](https://visual.visualstudio.com/) includes build tools behind the scenes. This course often calls `g++` directly for clarity. We will use [CMake](https://cmake.org/) occasionally when a project has multiple files.
 
-NOTE: CMake generates build files; it is not a compiler. Think of it as a recipe that tells `g++` (or MSVC) what to build.
+> NOTE: CMake generates build files; it is not a compiler. Think of it as a recipe that tells `g++` (or MSVC) what to build.

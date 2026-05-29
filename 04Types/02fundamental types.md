@@ -15,10 +15,10 @@ These are the main types you will see early in this book:
 | `int` | whole numbers | 4 bytes | common default integer |
 | `long` | bigger whole numbers | 4 or 8 bytes | varies by platform |
 | `float` | decimals | 4 bytes | about 7 digits of precision |
-| `double` | decimals | 8 bytes | about 15 to 16 digits of precision |
+| `double` | decimals | 8 bytes | about 1516 digits of precision |
 | `void` | no value | n/a | used as a function return type |
 
-NOTE: The size column says "typical" for desktop systems. C++ does not require exact sizes for most of these types.
+> NOTE: The size column says "typical" for desktop systems. C++ does not require exact sizes for most of these types.
 
 ## `void`
 
@@ -55,7 +55,7 @@ int main()
 }
 ```
 
-NOTE: This is one reason C++ is used for many environments. The language can target an 8 bit microcontroller or a 64 bit server.
+> NOTE: This is one reason C++ is used for many environments. The language can target an 8 bit microcontroller or a 64 bit server.
 
 ## Fixed width integer types
 
@@ -63,7 +63,7 @@ If you need an integer type with a guaranteed width for a file format or network
 
 Reference: [cppreference: `<cstdint>`](https://en.cppreference.com/cpp/header/cstdint)
 
-NOTE: These are aliases for regular integer types that match the width. They do not create a new magical storage class. They are mostly used when the size must be exact.
+> NOTE: These are aliases for regular integer types that match the width. They do not create a new magical storage class. They are mostly used when the size must be exact.
 
 Example: Using fixed width integer types
 

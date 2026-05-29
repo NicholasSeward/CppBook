@@ -60,7 +60,7 @@ int main()
 
 The fractional part is dropped. That is sometimes correct, sometimes a bug.
 
-NOTE: Many compilers warn when a conversion can lose information. Treat these warnings seriously.
+> NOTE: Many compilers warn when a conversion can lose information. Treat these warnings seriously.
 
 ## `static_cast`
 
@@ -68,7 +68,7 @@ NOTE: Many compilers warn when a conversion can lose information. Treat these wa
 
 Examples you already saw:
 
-```cpp
+```
 double result = static_cast<double>(x) / y;
 int asciiCode = static_cast<int>('A');
 ```

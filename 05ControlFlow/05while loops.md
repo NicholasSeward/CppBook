@@ -31,7 +31,7 @@ How it works:
 
 Comment out `++i` and the condition never becomes false. You get an **infinite loop**.
 
-NOTE: Every loop needs a path to eventually make the condition false. Usually that means updating a loop variable inside the body.
+> NOTE: Every loop needs a path to eventually make the condition false. Usually that means updating a loop variable inside the body.
 
 ## Intentional infinite loops
 
@@ -47,7 +47,7 @@ int main()
     while (again == "y" || again == "Y")
     {
         std::cout << "Did something useful...\n";
-        std::cout << "Again (y/n)? ";
+        std::cout << "Again (y/n),  ";
         std::cin >> again;
     }
     return 0;
@@ -60,7 +60,7 @@ int main()
 
 ### Semicolon on the `while` line
 
-```cpp
+```
 int i{0};
 while (i < 5);  // null statement, condition checked once forever
 {
@@ -73,7 +73,7 @@ The body is **not** attached to the `while`. The empty statement loops forever.
 
 ### Wrong condition
 
-```cpp
+```
 int i{0};
 while (i >= 0)
 {  // never becomes false if i only increases
@@ -166,7 +166,7 @@ int main()
 
 `do { ... } while (condition);` runs the body once, then checks the condition. Everything you need in this course can be done with `while` and `for`. This book will not use `do while`.
 
-PREFERENCE: Use `while` when you do not know how many iterations you need ahead of time (user input, read until done).
+> PREFERENCE: Use `while` when you do not know how many iterations you need ahead of time (user input, read until done).
 
 ## Try it
 

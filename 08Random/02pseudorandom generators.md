@@ -53,7 +53,7 @@ That is the whole trick. Multiply, add, take the remainder(modulus), repeat.
 
 Run the program a few times. You should see the same sequence every time. Then change the seed from `7` to another number and run it again.
 
-NOTE: Do not use this LCG in real programs. It is very predictable.
+> NOTE: Do not use this LCG in real programs. It is very predictable.
 
 ## Turning State Into a Die Roll
 
@@ -93,13 +93,13 @@ A useful PRNG usually has several qualities:
 - It has enough internal state.
 - It is hard to predict for the intended use.
 
-The period is how long the sequence can go before it repeats—that is, the maximum number of random values it generates before cycling back to the same state. A simple generator with only 16 possible states will start repeating very quickly. In contrast, a modern generator like the Mersenne Twister (`mt19937` in C++) has a period of 2^19937 − 1. To get a sense of how huge that is: there are about 10^80 electrons in the observable universe. The period of `mt19937` is so vast, you could give every single electron in the visible universe its own unique random number, and still not run out—even if you did this not just once, but more than a trillion trillion trillion times over. In practice, this means you will never see the sequence repeat in any normal use.
+The period is how long the sequence can go before it repeats, that is, the maximum number of random values it generates before cycling back to the same state. A simple generator with only 16 possible states will start repeating very quickly. In contrast, a modern generator like the Mersenne Twister (`mt19937` in C++) has a period of 2^19937 - 1. To get a sense of how huge that is: there are about 10^80 electrons in the observable universe. The period of `mt19937` is so vast, you could give every single electron in the visible universe its own unique random number, and still not run out, even if you did this not just once, but more than a trillion trillion trillion times over. In practice, this means you will never see the sequence repeat in any normal use.
 
 Uniformity means the values are spread out well. If a die roller gives `6` half the time, something is wrong.
 
 Predictability depends on the purpose. Predictable randomness is fine for debugging a game level. It is not fine for cryptography, gambling, passwords, or anything involving money.
 
-PREFERENCE: Use the LCG generator only as a teaching model. For actual C++ programs, use `<random>`.
+> PREFERENCE: Use the LCG generator only as a teaching model. For actual C++ programs, use `<random>`.
 
 ## True Randomness
 

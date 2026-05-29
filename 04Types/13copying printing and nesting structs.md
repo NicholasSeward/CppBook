@@ -107,7 +107,7 @@ The left side is an output stream, like `std::cout`. The right side is the `Play
 
 The function returns the same stream so printing can keep going.
 
-NOTE: This is called operator overloading. A later chapter will cover it more carefully. For now, this pattern is enough when you want a clean way to print a struct.
+> NOTE: This is called operator overloading. A later chapter will cover it more carefully. For now, this pattern is enough when you want a clean way to print a struct.
 
 ## Returning a Struct
 

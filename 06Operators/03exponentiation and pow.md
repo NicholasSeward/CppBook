@@ -18,7 +18,7 @@ int main()
 }
 ```
 
-NOTE: There is no exponent operator in C++. Use `<cmath>` and `std::pow`, or multiply by hand for small powers.
+> NOTE: There is no exponent operator in C++. Use `<cmath>` and `std::pow`, or multiply by hand for small powers.
 
 ## `std::pow` for floating point
 
@@ -48,13 +48,13 @@ int main()
 }
 ```
 
-NOTE: There is no standard library integer power function. Round and cast is fine for rare cases but slower than integer math.
+> NOTE: There is no standard library integer power function. Round and cast is fine for rare cases but slower than integer math.
 
 ## Small powers by hand
 
 Squaring and cubing are easy:
 
-```cpp
+```
 int x{7};
 int square = x * x;
 int cube = x * x * x;
@@ -87,4 +87,4 @@ int main()
 }
 ```
 
-PREFERENCE: Use `x * x` for squares. Use `std::pow` for general floating powers. Use `powInt` only when you need speed or exact integer math.
+> PREFERENCE: Use `x * x` for squares. Use `std::pow` for general floating powers. Use `powInt` only when you need speed or exact integer math.

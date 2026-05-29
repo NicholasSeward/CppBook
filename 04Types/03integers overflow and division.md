@@ -8,7 +8,7 @@ Most integer types you use early are **signed**, meaning they can hold negative 
 
 On many modern systems, `int` uses 32 bits. That means it can usually store values from about -2 billion to 2 billion.
 
-NOTE: The C++ standard does not promise that `int` is exactly 32 bits, but on typical desktops it is.
+> NOTE: The C++ standard does not promise that `int` is exactly 32 bits, but on typical desktops it is.
 
 ```cpp
 #include <iostream>
@@ -48,7 +48,7 @@ int main()
 }
 ```
 
-PREFERENCE: Pick an integer type that is big enough for your problem. If you might count billions of items, `int` is a risk. Use `long`, or use a fixed width type if you need a known range.
+> PREFERENCE: Pick an integer type that is big enough for your problem. If you might count billions of items, `int` is a risk. Use `long`, or use a fixed width type if you need a known range.
 
 ### Rough estimates
 
@@ -82,7 +82,7 @@ Output is:
 
 This trips up almost every new programmer once.
 
-NOTE: This behavior is often what you want. If you need to split a fixed width into 7 columns, you cannot have fractional characters. Integer division gives you a usable integer width.
+> NOTE: This behavior is often what you want. If you need to split a fixed width into 7 columns, you cannot have fractional characters. Integer division gives you a usable integer width.
 
 ## Getting a decimal result
 
@@ -137,5 +137,5 @@ int main()
 }
 ```
 
-PREFERENCE: Avoid unsigned types unless you have a clear reason. You will see `std::size_t` in real code (for container sizes and indices), but this book will usually stick with `int` and `long` in early chapters to reduce surprises.
+> PREFERENCE: Avoid unsigned types unless you have a clear reason. You will see `std::size_t` in real code (for container sizes and indices), but this book will usually stick with `int` and `long` in early chapters to reduce surprises.
 

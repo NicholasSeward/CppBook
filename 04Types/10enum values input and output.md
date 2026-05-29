@@ -208,7 +208,7 @@ int main()
 {
     std::string input{};
 
-    std::cout << "Direction? ";
+    std::cout << "Direction,  ";
     std::cin >> input;
 
     Direction direction{directionFromText(input)};

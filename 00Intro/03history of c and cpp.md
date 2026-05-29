@@ -25,7 +25,7 @@ C++ is often described as a **multi-paradigm** language. You can write C-style c
 
 Both C and C++ are standardized. New **standards** (C++11, C++14, C++17, C++20, C++23, C++26) add features and clarify rules. Compilers implement specific standard versions.
 
-HISTORY: C++ was intentionally designed to remain backward compatible with most existing C and C++ code. This choice has resulted in some unusual decisions, but it is a key reason C++ became such a widely used foundational language.
+> HISTORY: C++ was intentionally designed to remain backward compatible with most existing C and C++ code. This choice has resulted in some unusual decisions, but it is a key reason C++ became such a widely used foundational language.
 
 ## Why learn C++ today
 

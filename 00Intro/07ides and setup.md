@@ -29,7 +29,7 @@ Install Xcode Command Line Tools (`xcode-select --install`) for `clang++`/`g++`,
 **Linux**  
 Install `g++` with your package manager (`sudo apt install g++` on Debian/Ubuntu). Edit in VS Code or any editor.
 
-PREFERENCE: Name source files with the `.cpp` extension for C++ source. That helps tools pick the right compiler.
+> PREFERENCE: Name source files with the `.cpp` extension for C++ source. That helps tools pick the right compiler.
 
 ## Your first file
 
@@ -50,7 +50,7 @@ int main()
 
 3. Build and run it, either from the terminal or using the play button in your editor.
 
-NOTE: Even a tiny program like this relies on many pieces: your editor, the file system, the compiler, linker, libraries, terminal, and even fonts. Starting with something small helps you pinpoint **which part** of the stack has a problem if it doesn't work as expected.
+> NOTE: Even a tiny program like this relies on many pieces: your editor, the file system, the compiler, linker, libraries, terminal, and even fonts. Starting with something small helps you pinpoint **which part** of the stack has a problem if it doesn't work as expected.
 
 ## Terminal first
 

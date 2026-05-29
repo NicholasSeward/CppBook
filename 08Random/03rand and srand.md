@@ -4,7 +4,7 @@ Before using modern C++ random tools, it helps to recognize the old C-style tool
 
 You will still see them in old examples, quick demos, and beginner code online.
 
-PREFERENCE: Do not use `rand` and `srand` for new C++ programs. Learn to recognize them, then prefer `<random>`. However, I do use them from time to time.
+> PREFERENCE: Do not use `rand` and `srand` for new C++ programs. Learn to recognize them, then prefer `<random>`. However, I do use them from time to time.
 
 ## Using `rand`
 
@@ -111,7 +111,7 @@ This makes the output change from one run to another, but the seed is still gues
 
 That does not matter for a classroom die roller. It matters a lot for a casino, password reset token, loot box, or money-related program.
 
-NOTE: A 32-bit seed has about 4 billion possible values. That sounds large to a human, but it is not large to a computer trying seeds quickly.
+> NOTE: A 32-bit seed has about 4 billion possible values. That sounds large to a human, but it is not large to a computer trying seeds quickly.
 
 ## Why Move On
 

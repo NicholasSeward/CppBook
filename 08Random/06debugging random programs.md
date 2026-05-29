@@ -156,5 +156,5 @@ Watch for these:
 - A random seed is used in a test that should be repeatable.
 - A security-sensitive program uses a general-purpose PRNG.
 
-AI: LLMs were trained on lots of existing C++ code, most of it written before modern style was common. The code you get will usually be correct and usable, but it may be subtly wrong: you’ll see examples that use `rand()`, `%`, fixed seeds, or repeated seeding inside a function.
+> AI: LLMs were trained on lots of existing C++ code, most of it written before modern style was common. The code you get will usually be correct and usable, but it may be subtly wrong: you’ll see examples that use `rand()`, `%`, fixed seeds, or repeated seeding inside a function.
 

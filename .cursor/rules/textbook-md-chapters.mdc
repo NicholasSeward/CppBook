@@ -29,7 +29,7 @@ Use ATX headings (`#`). Do not skip levels.
 
 - One `#` per file. Do not use `#` for callouts or examples.
 - Prefer `##` / `###` over bold lines or pseudo-headings in plain text.
-- Callouts stay **inline** (prefix + paragraph), not as headings.
+- Callouts stay as blockquote paragraphs with a prefix, not as headings.
 
 ## Typical flow
 
@@ -42,9 +42,19 @@ Structure major blocks as `##` sections in this order when they fit:
 5. Optional callouts (below)
 6. Tie back to prior material when needed
 
+## Try it out sections
+
+- When it fits, end a chapter with `## Try it out`.
+- Include 1 to 3 short prompts that ask the reader to modify, extend, or test the chapter's idea.
+- If a prompt needs code, include a small runnable starter playground in a `cpp` block.
+
 ## Callouts
 
-Use **exactly** these prefixes (all caps, trailing colon), one to three sentences each. Do not vary casing (`Protip`, `protip`, etc.).
+Use simple blockquote callouts so they remain readable in plain Markdown and can be styled later. Use **exactly** these prefixes (all caps, trailing colon), one to three sentences each. Do not vary casing (`Protip`, `protip`, etc.).
+
+```markdown
+> NOTE: This is book-specific context.
+```
 
 | Prefix | Purpose |
 |--------|---------|

@@ -28,7 +28,7 @@ int main()
 
 The struct definition is a blueprint. It says every `Fraction` has a `numerator` and a `denominator`.
 
-NOTE: A struct definition ends with a semicolon. That is different from functions and normal code blocks.
+> NOTE: A struct definition ends with a semicolon. That is different from functions and normal code blocks.
 
 ## Member Variables
 
@@ -69,7 +69,7 @@ struct Player
 
 This is different from fundamental types like `int`, `double`, and `bool`, but it is a common convention across many programming languages.
 
-PREFERENCE: Use `TitleCase` for custom types such as structs, classes, and enum types.
+> PREFERENCE: Use `TitleCase` for custom types such as structs, classes, and enum types.
 
 ## Initializing Structs
 
@@ -197,10 +197,10 @@ int main()
 {
     Point point;
 
-    std::cout << "x? ";
+    std::cout << "x,  ";
     std::cin >> point.x;
 
-    std::cout << "y? ";
+    std::cout << "y,  ";
     std::cin >> point.y;
 
     std::cout << point.x << ", " << point.y << "\n";
@@ -210,4 +210,4 @@ int main()
 
 `Point point;` leaves the members uninitialized at first. The program is okay because it writes to `point.x` and `point.y` with `std::cin` before printing them.
 
-PREFERENCE: Give members default values when there is a sensible default. Otherwise, initialize the whole struct clearly when you create it.
+> PREFERENCE: Give members default values when there is a sensible default. Otherwise, initialize the whole struct clearly when you create it.

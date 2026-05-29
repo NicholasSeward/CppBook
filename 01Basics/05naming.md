@@ -54,7 +54,7 @@ int main()
 
 Valid vs invalid examples:
 
-| Name | Valid? | Why |
+| Name | Valid  | Why |
 |------|--------|-----|
 | `playerScore` | yes | letters, camelCase |
 | `_hidden` | yes | underscore allowed |
@@ -75,9 +75,9 @@ Across programming (not only C++), you will see:
 | snake_case | `player_score` | some libraries, C code |
 | SCREAMING_SNAKE_CASE | `MAX_PLAYERS` | constants and macros |
 
-PREFERENCE: In this book, use **camelCase** for variables and functions. Use **PascalCase** for class names when we reach object-oriented programming.
+> PREFERENCE: In this book, use **camelCase** for variables and functions. Use **PascalCase** for class names when we reach object-oriented programming.
 
-NOTE: On a real team, match the **existing codebase**. If every file uses `snake_case`, do not introduce camelCase. When unsure here, use camelCase.
+> NOTE: On a real team, match the **existing codebase**. If every file uses `snake_case`, do not introduce camelCase. When unsure here, use camelCase.
 
 ## Guidelines
 
@@ -92,7 +92,7 @@ NOTE: On a real team, match the **existing codebase**. If every file uses `snake
 |------|---------|-----|
 | `age` | good | clear for a person's age |
 | `a` | either | fine in a three-line loop, weak in a 50-line function |
-| `data` | bad | too vague; data of what? |
+| `data` | bad | too vague; data of what?  |
 | `numStudents` | good | count of students |
 | `n` | either | OK as loop counter, poor for "number of students" at file scope |
 | `temp` | either | OK for swap logic, vague for "tax rate" |
@@ -100,7 +100,7 @@ NOTE: On a real team, match the **existing codebase**. If every file uses `snake
 | `x1`, `x2` | either | OK for math coordinates, poor for "first user" and "second user" |
 | `MAX_SIZE` | good | constant cap, screaming snake is conventional |
 
-```cpp
+```
 // Harder to read at a glance
 int x{};
 int y{};
@@ -114,4 +114,4 @@ std::cin >> homeScore >> awayScore;
 std::cout << homeScore + awayScore;
 ```
 
-PROTIP: Rename while you learn. The first name you pick does not have to be permanent. Clear names save more time than clever short ones.
+> PROTIP: Rename while you learn. The first name you pick does not have to be permanent. Clear names save more time than clever short ones.

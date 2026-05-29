@@ -6,7 +6,7 @@
 
 A character literal uses single quotes:
 
-```cpp
+```
 char letter{'A'};
 char digit{'5'};
 ```
@@ -32,7 +32,7 @@ int main()
 }
 ```
 
-NOTE: The conversion uses `static_cast<int>(c)`. That is a safe, explicit conversion. You will learn more in the conversions chapter.
+> NOTE: The conversion uses `static_cast<int>(c)`. That is a safe, explicit conversion. You will learn more in the conversions chapter.
 
 ## `'5'` is not `5`
 
@@ -85,7 +85,7 @@ int main()
 }
 ```
 
-NOTE: In beginner code you usually read tokens (words and numbers), not single raw characters. This section is here to show what the tools do.
+> NOTE: In beginner code you usually read tokens (words and numbers), not single raw characters. This section is here to show what the tools do.
 
 ## Escape sequences
 
@@ -130,7 +130,7 @@ There are also escape forms for raw byte values and Unicode code points:
 | `\uNNNN` | `\u2665` | a Unicode code point (16 bit form) |
 | `\UNNNNNNNN` | `\U0001F600` | a Unicode code point (32 bit form) |
 
-NOTE: Unicode output depends on your terminal and font. It may print correctly, print as squares, or not print at all.
+> NOTE: Unicode output depends on your terminal and font. It may print correctly, print as squares, or not print at all.
 
 #### Example: Printing Unicode Playing Card Suits
 
@@ -184,9 +184,9 @@ int main()
 ```
 
 To print both hearts and diamonds in red, reset the color after them:
-```cpp
+```
 std::cout << "\033[31mHearts: \u2665\nDiamonds: \u2666\n\033[0m";
 ```
 (And print the others normally.)
 
-NOTE: Not all terminals support color codes, but most modern ones do. If the colors do not show as expected, check your terminal settings.
+> NOTE: Not all terminals support color codes, but most modern ones do. If the colors do not show as expected, check your terminal settings.

@@ -47,7 +47,7 @@ int main()
 }
 ```
 
-PREFERENCE: Always use braces at first. They prevent bugs when you add a second line later.
+> PREFERENCE: Always use braces at first. They prevent bugs when you add a second line later.
 
 ## `if` with `else`
 
@@ -73,7 +73,7 @@ int main()
 }
 ```
 
-NOTE: With `if` and `else`, **exactly one** branch runs. Either the `if` block runs, or the `else` block runs.
+> NOTE: With `if` and `else`, **exactly one** branch runs. Either the `if` block runs, or the `else` block runs.
 
 If there is **no** `else`, **at most one** block runs. If the condition is true, the `if` block runs. If the condition is false, nothing runs and execution continues after the `if`.
 
@@ -115,7 +115,7 @@ Only the first true condition runs. If none are true, the `else` runs (if presen
 
 When cases are connected, **chain** with `else if` instead of writing many separate `if` statements:
 
-```cpp
+```
 // Repetitive and wrong logic risk
 int g{85};
 if (g >= 90) std::cout << "A\n";
@@ -137,13 +137,13 @@ else if (g >= 70)
 }
 ```
 
-PREFERENCE: Use chaining when the cases are mutually exclusive. Do not repeat yourself (DRY) when `else if` makes the intent clear.
+> PREFERENCE: Use chaining when the cases are mutually exclusive. Do not repeat yourself (DRY) when `else if` makes the intent clear.
 
 ## `=` vs `==`
 
 `=` is assignment. `==` compares for equality.
 
-```cpp
+```
 int x{0};
 if (x = 10)
 {
@@ -154,7 +154,7 @@ if (x == 10)
 } // compares, no assignment
 ```
 
-NOTE: Enable compiler warnings. Many compilers catch `if (x = 10)` mistakes.
+> NOTE: Enable compiler warnings. Many compilers catch `if (x = 10)` mistakes.
 
 ## Non booleans as conditions
 
@@ -180,4 +180,4 @@ int main()
 }
 ```
 
-PREFERENCE: Prefer explicit comparisons such as `x != 0` in beginner code.
+> PREFERENCE: Prefer explicit comparisons such as `x != 0` in beginner code.

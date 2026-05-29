@@ -55,7 +55,7 @@ int main()
 
 On many systems, the operating system gathers entropy from real-world or hardware-related sources, such as timing events, hardware random instructions, and other system activity. It mixes those sources into a pool that can be used for seeding.
 
-NOTE: The exact behavior of `std::random_device` depends on the implementation. For normal classroom programs it is fine. For serious security work, use security-specific tools.
+> NOTE: The exact behavior of `std::random_device` depends on the implementation. For normal classroom programs it is fine. For serious security work, use security-specific tools.
 
 ## Do Not Seed Every Time
 

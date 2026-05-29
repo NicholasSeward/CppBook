@@ -46,7 +46,7 @@ int main()
 
 This works, but `Number` does not tell us much. `int age{20};` is probably clearer.
 
-PREFERENCE: Do not alias fundamental types unless the alias communicates real meaning. `Health`, `Score`, or `UserId` can be useful. `Number` usually is not.
+> PREFERENCE: Do not alias fundamental types unless the alias communicates real meaning. `Health`, `Score`, or `UserId` can be useful. `Number` usually is not.
 
 ## Aliases for Long Types
 

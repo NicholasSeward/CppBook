@@ -16,7 +16,7 @@ Why one or two versions back?
 - Core concepts matter more than the newest syntax sugar
 - Newer code can often be adapted later with small edits
 
-NOTE: Standards are mostly **backward compatible** for well written code. Writing C++17 and compiling with a C++20 compiler usually works. The reverse (using C++20 features while asking for C++17) fails.
+> NOTE: Standards are mostly **backward compatible** for well written code. Writing C++17 and compiling with a C++20 compiler usually works. The reverse (using C++20 features while asking for C++17) fails.
 
 ## What we skip on purpose
 
@@ -45,4 +45,4 @@ Compilers can usually target different versions. Check documentation if you swit
 
 We use **GCC** (GNU Compiler Collection). The C++ front end command is **`g++`**. On some systems `clang++` is also common; concepts are the same, flags differ slightly.
 
-NOTE: Snippets in the book UI may use another toolchain (Clang to WebAssembly). For homework and local work, assume **`g++`** unless told otherwise.
+> NOTE: Snippets in the book UI may use another toolchain (Clang to WebAssembly). For homework and local work, assume **`g++`** unless told otherwise.

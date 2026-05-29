@@ -19,7 +19,7 @@ int main()
 
 Use `std::cout` to print and `std::cin` to read input.
 
-PREFERENCE: In this course, do not use `using namespace std;`. Write `std::cout`, `std::cin`, `std::string`, and so on.
+> PREFERENCE: In this course, do not use `using namespace std;`. Write `std::cout`, `std::cin`, `std::string`, and so on.
 
 ## Print / output
 
@@ -228,7 +228,7 @@ int main()
 }
 ```
 
-NOTE: If you use `std::vector`, add `#include <vector>`.
+> NOTE: If you use `std::vector`, add `#include <vector>`.
 
 ## While loops
 
@@ -426,4 +426,4 @@ int main()
 | `while cond:` | `while (cond) { ... }` |
 | `def f(...):` | `returnType f(...) { ... }` |
 
-NOTE: The cheat sheet uses compact `{ ... }` to save space. Full examples in this book use vertically aligned braces.
+> NOTE: The cheat sheet uses compact `{ ... }` to save space. Full examples in this book use vertically aligned braces.

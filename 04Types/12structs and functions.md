@@ -129,4 +129,4 @@ int main()
 
 `const Player& player` avoids copying and promises not to change the player.
 
-PREFERENCE: If a struct is simple and copying is cheap, passing by value is fine. If it is larger and the function only reads it, use `const&`. If the function must modify it, use `&`.
+> PREFERENCE: If a struct is simple and copying is cheap, passing by value is fine. If it is larger and the function only reads it, use `const&`. If the function must modify it, use `&`.

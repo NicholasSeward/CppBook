@@ -26,7 +26,7 @@ int main()
 
 In nested loops, `break` only leaves one level:
 
-```cpp
+```
 for (int r{0}; r < 3; ++r)
 {
     for (int c{0}; c < 3; ++c)
@@ -95,7 +95,7 @@ int main()
 
 Same goal, with `break`:
 
-```cpp
+```
 for (int i{0}; i < 100; ++i)
 {
     if (i * i > 50)
@@ -108,7 +108,7 @@ for (int i{0}; i < 100; ++i)
 
 Without `break`:
 
-```cpp
+```
 for (int i{0}; i < 100 && i * i <= 50; ++i)
 {
     std::cout << i << ' ';
@@ -139,9 +139,9 @@ int main()
 
 The integer passed to `std::exit` is the process exit code (like `return` from `main`).
 
-PREFERENCE: Use `return` from `main` or functions for normal exits. Use `std::exit` only when there is no reasonable way to unwind (rare in beginner programs).
+> PREFERENCE: Use `return` from `main` or functions for normal exits. Use `std::exit` only when there is no reasonable way to unwind (rare in beginner programs).
 
-NOTE: `return` from `main` is the normal, readable way to finish. `std::exit` skips destructors and cleanup in more complex programs. Keep it simple early on.
+> NOTE: `return` from `main` is the normal, readable way to finish. `std::exit` skips destructors and cleanup in more complex programs. Keep it simple early on.
 
 ## Try it
 

@@ -35,9 +35,9 @@ You do not need to memorize the bit layout now. The takeaway is precision is lim
 Typical precision:
 
 - `float` has about 7 significant decimal digits. This comes from its 23-bit mantissa: since there are 2^23 possible distinct values for the fractional part, this roughly translates to 7 significant digits in decimal.
-- `double` has about 15 to 16 significant decimal digits, thanks to its 52-bit mantissa. The 2^52 possible values provide much finer granularity, which allows for higher precision and about 15 to 16 digits in decimal notation.
+- `double` has about 1516 significant decimal digits, thanks to its 52-bit mantissa. The 2^52 possible values provide much finer granularity, which allows for higher precision and about 1516 digits in decimal notation.
 
-PREFERENCE: Use `double` by default unless you have a strong reason to use `float`.
+> PREFERENCE: Use `double` by default unless you have a strong reason to use `float`.
 
 ## Scientific notation in code
 
@@ -77,7 +77,7 @@ int main()
 }
 ```
 
-NOTE: `std::setprecision` is sticky for the stream. It stays until you change it again.
+> NOTE: `std::setprecision` is sticky for the stream. It stays until you change it again.
 
 ## Rounding error
 
@@ -114,7 +114,7 @@ int main()
 
 Sometimes `x + x + x` prints as `0.9999999999999999` instead of `1`.
 
-PREFERENCE: Do not compare floating point values for exact equality unless you have a very specific reason. Compare within a tolerance instead.
+> PREFERENCE: Do not compare floating point values for exact equality unless you have a very specific reason. Compare within a tolerance instead.
 
 ## Special values
 
@@ -149,4 +149,4 @@ int main()
 }
 ```
 
-NOTE: Printing and behavior depends on your standard library and platform. You do not normally rely on these values in beginner programs, but it is good to know they exist.
+> NOTE: Printing and behavior depends on your standard library and platform. You do not normally rely on these values in beginner programs, but it is good to know they exist.

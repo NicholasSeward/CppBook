@@ -34,7 +34,7 @@ Calling `rng()` produces the next raw value and advances the generator's interna
 
 Run the program more than once. Because the seed is fixed, the output should repeat.
 
-HISTORY: Mersenne Twister is older now, but it is still the strongest general-purpose generator provided by C++17's standard library. For security work, use a security-focused library instead.
+> HISTORY: Mersenne Twister is older now, but it is still the strongest general-purpose generator provided by C++17's standard library. For security work, use a security-focused library instead.
 
 ## A Distribution
 

@@ -6,7 +6,7 @@ Looping a known number of times is so common that C++ has a **`for` loop** that 
 
 A counting `while`:
 
-```cpp
+```
 int i{0};
 while (i < 10)
 {
@@ -17,7 +17,7 @@ while (i < 10)
 
 The same idea as `for`:
 
-```cpp
+```
 for (int i{0}; i < 10; ++i)
 {
     std::cout << i << ' ';
@@ -26,7 +26,7 @@ for (int i{0}; i < 10; ++i)
 
 ## Anatomy of a `for` loop
 
-```cpp
+```
 for (initialization; condition; update)
 {
     body
@@ -56,9 +56,9 @@ int main()
 
 This prints `0` through `9`. Ten iterations because `i` starts at 0 and stops before 10.
 
-NOTE: Prefer `<` with a clear end value. Using `!=` can fail if the update skips a value or overshoots.
+> NOTE: Prefer `<` with a clear end value. Using `!=` can fail if the update skips a value or overshoots.
 
-```cpp
+```
 // Risky if update is not exactly +1 each time
 for (int i{0}; i != 10; ++i)
 {
@@ -69,7 +69,7 @@ for (int i{0}; i != 10; ++i)
 
 Being off by one is common. If you wanted `1` through `10`:
 
-```cpp
+```
 for (int i{0}; i < 10; ++i)
 {
 }
@@ -77,13 +77,13 @@ for (int i{0}; i < 10; ++i)
 
 If you wanted ten iterations starting at 0, use `i < 10`.
 
-NOTE: Compilers are fast. Compile, run, see what prints, adjust. Iteration beats guessing.
+> NOTE: Compilers are fast. Compile, run, see what prints, adjust. Iteration beats guessing.
 
-AI: Tools and agents also iterate. Modern assistants often need several compile and fix cycles for loops and edge cases, same as humans.
+> AI: Tools and agents also iterate. Modern assistants often need several compile and fix cycles for loops and edge cases, same as humans.
 
 ## Parts you can omit
 
-```cpp
+```
 int i{0};
 for (; i < 5; ++i)
 {
@@ -94,7 +94,7 @@ for (int j{0}; j < 5; ) // no update in for
 }
 ```
 
-PREFERENCE: Use the standard `for (int i = 0; i < n; ++i)` form when you can. It is the easiest to read and debug.
+> PREFERENCE: Use the standard `for (int i = 0; i < n; ++i)` form when you can. It is the easiest to read and debug.
 
 Avoid `for (;;)` as an infinite loop. Prefer `while (true)` if you truly need an infinite loop.
 
@@ -121,7 +121,7 @@ int main()
 }
 ```
 
-PREFERENCE: Prefer the standard counting form unless you have a clear reason not to.
+> PREFERENCE: Prefer the standard counting form unless you have a clear reason not to.
 
 ## Nested `for` loops
 
@@ -146,7 +146,7 @@ int main()
 
 Refactor with a function when nesting gets hard to follow:
 
-```cpp
+```
 void printLine(int cols)
 {
     for (int c{0}; c < cols; ++c)
@@ -164,7 +164,7 @@ void printLine(int cols)
 | `for` | you know how many iterations (or have a clear counter) |
 | `while` | you repeat until a condition changes (input, unknown length) |
 
-```cpp
+```
 // Countdown with for
 for (int t{10}; t >= 0; --t)
 {

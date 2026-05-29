@@ -6,7 +6,7 @@ This chapter covers everyday math operators, compound assignment, and the remain
 
 A `+` or `-` in front of a value is **unary**:
 
-```cpp
+```
 int x{5};
 int a{-x};   // -5
 int b{+x};   // 5 (unary plus, rare in practice)
@@ -125,7 +125,7 @@ In many languages, `%` always returns a non negative remainder. In C++, the sign
 
 If you want a positive wrap style result (useful for grid or Pac Man style wrapping):
 
-```cpp
+```
 int positiveMod(int x, int y)
 {
     return (x % y + y) % y;

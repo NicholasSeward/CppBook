@@ -32,7 +32,7 @@ int main()
     int i{0};
     int j{0};
 
-    // Which value of i is added? You must know postfix rules.
+    // Which value of i is added,  You must know postfix rules.
     j = i++ + 10;
     std::cout << "i=" << i << ", j=" << j << '\n';  // i=1, j=10
 
@@ -72,7 +72,7 @@ int main()
 }
 ```
 
-PREFERENCE: Put `++` and `--` on their own line. Do not wonder whether a bigger expression uses the value before or after the change. Prefix is sometimes slightly faster, but clarity matters more.
+> PREFERENCE: Put `++` and `--` on their own line. Do not wonder whether a bigger expression uses the value before or after the change. Prefix is sometimes slightly faster, but clarity matters more.
 
 ## The comma operator
 
@@ -93,11 +93,11 @@ int main()
 }
 ```
 
-PREFERENCE: Do not get fancy with the comma operator. Use two statements instead.
+> PREFERENCE: Do not get fancy with the comma operator. Use two statements instead.
 
 ### Fancy comma (discouraged)
 
-```cpp
+```
 // Hard to read
 if ((std::cout << "x=", x), x > 0)
 {

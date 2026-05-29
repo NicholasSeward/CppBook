@@ -39,20 +39,20 @@ int main()
 }
 ```
 
-NOTE: `std::boolalpha` is sticky. Once enabled, it affects later output on the same stream until you disable it with `std::noboolalpha`.
+> NOTE: `std::boolalpha` is sticky. Once enabled, it affects later output on the same stream until you disable it with `std::noboolalpha`.
 
 ## Initialization with `0` or `1`
 
 It is legal to initialize a `bool` with `0` or `1`:
 
-```cpp
+```
 bool a{0};
 bool b{1};
 ```
 
 But most of the time, `true` and `false` are clearer.
 
-PREFERENCE: Use `true` and `false`. Save `0` and `1` for cases where the input format forces it.
+> PREFERENCE: Use `true` and `false`. Save `0` and `1` for cases where the input format forces it.
 
 ## Input with `std::cin`
 
@@ -90,7 +90,7 @@ int main()
 }
 ```
 
-NOTE: Input handling gets tricky when users type unexpected values. For now we assume users follow directions.
+> NOTE: Input handling gets tricky when users type unexpected values. For now we assume users follow directions.
 
 ## Real world yes or no
 

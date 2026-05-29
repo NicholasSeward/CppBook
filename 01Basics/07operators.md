@@ -62,7 +62,7 @@ Most operators are **binary**: they take a left operand and a right operand.
 | `>>` | extraction | `std::cin >> x` |
 | `=` | assignment | `x = 5` |
 
-NOTE: `+` and `-` can be **unary** or **binary** depending on context. `-5` is unary minus. `a - b` is binary subtraction.
+> NOTE: `+` and `-` can be **unary** or **binary** depending on context. `-5` is unary minus. `a - b` is binary subtraction.
 
 ### Ternary (three operands)
 
@@ -74,14 +74,14 @@ C++ has one ternary operator: the **conditional operator**.
 int main()
 {
     int age{20};
-    std::cout << (age >= 18 ? "adult" : "minor") << '\n';
+    std::cout << (age >= 18 ,  "adult" : "minor") << '\n';
     return 0;
 }
 ```
 
 It reads as: if the condition is true, use the first value; otherwise use the second.
 
-NOTE: You will soon learn `if` and `else` statements. They are usually clearer than ternaries when you are starting out. Use the ternary operator sparingly even as you get more experienced.
+> NOTE: You will soon learn `if` and `else` statements. They are usually clearer than ternaries when you are starting out. Use the ternary operator sparingly even as you get more experienced.
 
 ## Chaining operators
 
@@ -97,11 +97,11 @@ int main()
 }
 ```
 
-Does this print `7` or `9`? It prints `7`, because multiplication happens before addition.
+Does this print `7` or `9`,  It prints `7`, because multiplication happens before addition.
 
 You can also chain stream operators (because `<<` returns the stream on the left):
 
-```cpp
+```
 std::cout << "Score: " << score << '\n';
 ```
 
@@ -133,7 +133,7 @@ If you have trouble remembering the order (and the list of operators will get mu
 
 Consider:
 
-```cpp
+```
 int result = 2 + 3 * 4 - 6 / 2;
 ```
 
@@ -154,7 +154,7 @@ So `result` becomes `11`.
 
 With parentheses you control the order and can show each step similarly:
 
-```cpp
+```
 int result = (2 + 3) * (4 - 6 / 2);
 ```
 
@@ -181,7 +181,7 @@ When the compiler runs your program, it **evaluates** expressions: it applies op
 
 This program is legal:
 
-```cpp
+```
 int main()
 {
     1 + 2;
@@ -195,7 +195,7 @@ Imagine walking into a room, saying `89`, and leaving. People might look at you 
 
 If you want to keep a result, **store it** with assignment or initialization:
 
-```cpp
+```
 int total = 1 + 2;
 int counter{0};
 ```
@@ -223,7 +223,7 @@ int main()
 
 Both `x` and `y` end up as `6`. The assignment runs from right to left: `x = 6` runs first, then `y =` receives the value `6` that the inner assignment produced.
 
-NOTE: Chained assignment is easy to misread. `y = x = 6` is fine for a demo. In real code, two separate assignments are often clearer.
+> NOTE: Chained assignment is easy to misread. `y = x = 6` is fine for a demo. In real code, two separate assignments are often clearer.
 
 ### Takeaway
 

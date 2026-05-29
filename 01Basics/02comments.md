@@ -1,8 +1,8 @@
 # Comments
 
-Comments are notes in your source code that the compiler **ignores**. They exist for you and other humans—future you included. Comments are one of the first tools for explaining code, leaving reminders, and turning lines on or off without deleting them.
+Comments are notes in your source code that the compiler **ignores**. They exist for you and other humans, future you included. Comments are one of the first tools for explaining code, leaving reminders, and turning lines on or off without deleting them.
 
-## What is a comment?
+## What is a comment, 
 
 A **comment** is text that is not compiled into the program. The compiler skips it completely. Your program’s behavior does not change because of a comment (unless you use a comment to disable a line of real code).
 
@@ -12,7 +12,7 @@ C++ supports single-line comments with `//`. Everything from `//` to the end of 
 
 A comment can take a full line:
 
-```cpp
+```
 // Print a greeting (full-line comment)
 #include <iostream>
 
@@ -25,9 +25,9 @@ int main()
 
 Use full-line comments for bigger explanations; use end-of-line comments for short notes on the same line as code.
 
-PREFERENCE: Prefer full-line `//` comments placed **immediately above** the code they describe. End-of-line comments are fine when they stay short and the line is still easy to read.
+> PREFERENCE: Prefer full-line `//` comments placed **immediately above** the code they describe. End-of-line comments are fine when they stay short and the line is still easy to read.
 
-PROTIP: Most [integrated development environments](https://en.wikipedia.org/wiki/Integrated_development_environment) (IDEs) and the inline editor in this book let you toggle comments with **Ctrl+/** (or **Cmd+/** on macOS). Exact shortcuts vary by editor. If you repeat a tedious edit, look for a shortcut or command. There often is one.
+> PROTIP: Most [integrated development environments](https://en.wikipedia.org/wiki/Integrated_development_environment) (IDEs) and the inline editor in this book let you toggle comments with **Ctrl+/** (or **Cmd+/** on macOS). Exact shortcuts vary by editor. If you repeat a tedious edit, look for a shortcut or command. There often is one.
 
 ## Multiline comments
 
@@ -46,9 +46,9 @@ int main()
 }
 ```
 
-Some people align `*` down the left edge for readability—that is style only:
+Some people align `*` down the left edge for readability, that is style only:
 
-```cpp
+```
 /*
  * Comment block with aligned stars.
  * Still one block comment.
@@ -57,16 +57,16 @@ Some people align `*` down the left edge for readability—that is style only:
 
 You **cannot nest** block comments in standard C++. The first `*/` closes the comment:
 
-```cpp
+```
 /* outer starts
    /* inner attempt */   // this */ ends the outer comment early!
    oops;                  // now the compiler sees this as code
 */
 ```
 
-PROTIP: Your editor’s **syntax highlighter** shows what is inside a comment. Try “nesting” block comments and watch colors change—that makes it obvious where the compiler thinks the comment really ends.
+> PROTIP: Your editor’s **syntax highlighter** shows what is inside a comment. Try “nesting” block comments and watch colors change, that makes it obvious where the compiler thinks the comment really ends.
 
-## Why use comments?
+## Why use comments, 
 
 Common reasons:
 
@@ -135,7 +135,7 @@ The function and variable names carry the meaning. No comment is required for a 
 
 Do not stress over perfection. Comments are cheap. The main audience is **future you**: if something feels fuzzy today, it will be harder to parse tomorrow.
 
-NOTE: This book sometimes adds comments inside examples to point at new syntax. In your own projects those lines would often be noise—we include them for teaching.
+> NOTE: This book sometimes adds comments inside examples to point at new syntax. In your own projects those lines would often be noise, we include them for teaching.
 
 ## Turn code on and off
 

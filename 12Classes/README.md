@@ -1,3 +1,3 @@
-# Vector
+# Classes
 
 Coming soon.

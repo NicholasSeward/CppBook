@@ -1,7 +1,5 @@
 # Types
 
-Types describe what kind of value a program is working with and what operations make sense for that value.
-
 ## Chapters
 
 - [Bits, Bytes, and Memory](01bits%20bytes%20and%20memory.md)

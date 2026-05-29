@@ -8,6 +8,7 @@ A beginner-friendly C++ textbook organized as Markdown chapters.
 
 ### 00 Intro
 
+- [Intro Index](00Intro/README.md)
 - [Programs and Languages](00Intro/01programs%20and%20languages.md)
 - [Compilation and Runtimes](00Intro/02compilation%20and%20runtimes.md)
 - [History of C and C++](00Intro/03history%20of%20c%20and%20cpp.md)
@@ -16,10 +17,11 @@ A beginner-friendly C++ textbook organized as Markdown chapters.
 - [Testing and Debugging](00Intro/06testing%20and%20debugging.md)
 - [IDEs and Setup](00Intro/07ides%20and%20setup.md)
 - [C++ Versions and g++](00Intro/08cpp%20versions%20and%20gpp.md)
-- [Python to C++ Quick Start](00Intro/09python%20to%20cpp%20quick%20start.md)
+- [Python to C++ Quick Start (Module 1)](00Intro/09python%20to%20cpp%20quick%20start.md)
 
 ### 01 Basics
 
+- [Basics Index](01Basics/README.md)
 - [Hello World](01Basics/01hello%20world.md)
 - [Comments](01Basics/02comments.md)
 - [Variables](01Basics/03variables.md)
@@ -30,10 +32,12 @@ A beginner-friendly C++ textbook organized as Markdown chapters.
 
 ### 02 Functions
 
+- [Functions Index](02Functions/README.md)
 Coming soon.
 
 ### 03 Error Handling
 
+- [Error Handling Index](03ErrorHandling/README.md)
 Coming soon.
 
 ### 04 Types
@@ -55,6 +59,7 @@ Coming soon.
 
 ### 05 Control Flow
 
+- [Control Flow Index](05ControlFlow/README.md)
 - [Execution Path](05ControlFlow/01execution%20path.md)
 - [If and Else](05ControlFlow/02if%20else.md)
 - [If Issues](05ControlFlow/03if%20issues.md)
@@ -62,9 +67,11 @@ Coming soon.
 - [While Loops](05ControlFlow/05while%20loops.md)
 - [For Loops](05ControlFlow/06for%20loops.md)
 - [Break, Continue, and Halting](05ControlFlow/07break%20continue%20and%20halting.md)
+- [Control Flow (index)](05ControlFlow/info.md)
 
 ### 06 Operators
 
+- [Operators Index](06Operators/README.md)
 - [Precedence and Associativity](06Operators/01precedence%20and%20associativity.md)
 - [Arithmetic, Assignment, and Modulus](06Operators/02arithmetic%20assignment%20and%20modulus.md)
 - [Exponentiation and `std::pow`](06Operators/03exponentiation%20and%20pow.md)
@@ -75,6 +82,7 @@ Coming soon.
 
 ### 07 Vector
 
+- [Vector Index](07Vector/README.md)
 Coming soon.
 
 ### 08 Random
@@ -87,42 +95,52 @@ Coming soon.
 - [Seeding and Reusing Generators](08Random/05seeding%20and%20reusing%20generators.md)
 - [Debugging Random Programs](08Random/06debugging%20random%20programs.md)
 
-### 09 Files and Streams
+### 09 Files And Streams
 
+- [Files And Streams Index](09FilesAndStreams/README.md)
 Coming soon.
 
 ### 10 Templates
 
+- [Templates Index](10Templates/README.md)
 Coming soon.
 
-### 11 Algorithms and Lambdas
+### 11 Algorithms And Lambdas
 
+- [Algorithms And Lambdas Index](11AlgorithmsAndLambdas/README.md)
 Coming soon.
 
 ### 12 Classes
 
+- [Classes Index](12Classes/README.md)
 Coming soon.
 
 ### 13 Inheritance
 
+- [Inheritance Index](13Inheritance/README.md)
 Coming soon.
 
 ### 14 Overloading
 
+- [Overloading Index](14Overloading/README.md)
 Coming soon.
 
 ### 15 Pointers
 
+- [Pointers Index](15Pointers/README.md)
 Coming soon.
 
 ### 16 Data Structures
 
+- [Data Structures Index](16DataStructures/README.md)
 Coming soon.
 
 ### 17 GUI Programming
 
+- [GUI Programming Index](17GuiProgramming/README.md)
 Coming soon.
 
 ### 18 Design Patterns
 
+- [Design Patterns Index](18DesignPatterns/README.md)
 Coming soon.

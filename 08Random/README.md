@@ -1,6 +1,4 @@
-# Random Numbers
-
-Pseudorandom numbers let C++ programs make choices, run simulations, and create varied behavior.
+# Random
 
 ## Chapters
 

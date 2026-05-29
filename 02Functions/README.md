@@ -1,3 +1,3 @@
-# Vector
+# Functions
 
 Coming soon.

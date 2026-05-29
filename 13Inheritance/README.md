@@ -1,3 +1,3 @@
-# Vector
+# Inheritance
 
 Coming soon.

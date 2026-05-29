@@ -1,3 +1,3 @@
-# Vector
+# Templates
 
 Coming soon.

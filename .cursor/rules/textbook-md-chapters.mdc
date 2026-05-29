@@ -52,10 +52,29 @@ Structure major blocks as `##` sections in this order when they fit:
 
 ## Callouts
 
-Use simple blockquote callouts so they remain readable in plain Markdown and can be styled later. Use **exactly** these prefixes (all caps, trailing colon), one to three sentences each. Do not vary casing (`Protip`, `protip`, etc.).
+Use Markdown **blockquote** callouts so they remain readable in plain Markdown and can be styled later.
+
+- Every line of a callout must start with `>` (including continuation lines).
+- The first line uses **exactly** one of these prefixes (all caps, trailing colon): `NOTE:`, `PREFERENCE:`, `PROTIP:`, `HISTORY:`, `AI:`.
+- One to three sentences per callout. Do not vary casing (`Protip`, `protip`, etc.).
+- Do **not** write bare `NOTE:` or `PREFERENCE:` without the leading `>`.
 
 ```markdown
 > NOTE: This is book-specific context.
+```
+
+Multi-line callout (repeat `>` on each line):
+
+```markdown
+> NOTE: First sentence of the callout.
+> Second sentence stays inside the blockquote.
+```
+
+Wrong (missing `>`):
+
+```markdown
+NOTE: This will not render as a blockquote.
+PREFERENCE: Neither will this.
 ```
 
 | Prefix | Purpose |

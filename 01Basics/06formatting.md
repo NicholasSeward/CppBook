@@ -156,29 +156,9 @@ Examples:
 
 ## Try it now
 
-### Exercise 1: Reformat by hand
-
-Prompt: Reformat the starter so the braces and indentation match this book's style.
+Reformat the starter program by hand so the braces and indentation match this book's style.
 
 ```cpp
 #include <iostream>
 int main(){int score{72};if(score>=60){std::cout<<"Pass\n";}else{std::cout<<"Try again\n";}return 0;}
-```
-
-### Exercise 2: Split a long line
-
-Prompt: Split the long output statement across multiple readable lines.
-
-```cpp
-#include <iostream>
-
-int main()
-{
-    int finalPrice{42};
-
-    // TODO: Split this long statement into a readable multi-line statement.
-    std::cout << "The final price after tax and discount is " << finalPrice << " dollars\n";
-
-    return 0;
-}
 ```

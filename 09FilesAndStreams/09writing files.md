@@ -73,7 +73,7 @@ The helper lives in the second tab so you can focus on writing in `main.cpp`.
 
 Always test the stream after opening:
 
-```cpp
+```
 if (!fout)
 {
     std::cerr << "Open failed\n";

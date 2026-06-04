@@ -27,7 +27,7 @@ void greet()
 }
 ```
 
-This works in small experiments, but it throws away an important benefit of C++: compiling `.cpp` files separately.
+This might seem to work in small experiments, but it won't work here due to how this book compiles and builds code. The book compiles all `.cpp` files and then links them together. Including a `.cpp` file in this way can result in two `greet` functions, which violates the One Definition Rule in C++.
 
 `#include` acts like copying and pasting the included file's text into the current file.
 
@@ -185,6 +185,7 @@ int main()
 
 // @file: math_header.h
 #pragma once
+#include <cmath>
 ```
 > PREFERENCE: Include what you use. Every file should directly include the headers for features it uses. This avoids fragile dependencies and makes maintenance easier.
 

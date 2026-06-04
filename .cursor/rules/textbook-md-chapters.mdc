@@ -109,7 +109,8 @@ if (condition)
 ```
 
 - Keep same-line braces only when the point is to show bad formatting, an alternate brace style, or a compact snippet where brace style is not the lesson.
-- For multi-file examples, keep all files in one ` ```cpp ` block and separate files with TxtBook `// @file:` markers:
+- In runnable single-file examples, put `int main()` before helper function **definitions**. Use forward declarations above `main` when a helper is defined later in the same block.
+- For multi-file examples, keep all files in one ` ```cpp ` block and separate files with TxtBook `// @file:` markers. List `main.cpp` first, then headers, then other `.cpp` files:
 
 ````markdown
 ```cpp

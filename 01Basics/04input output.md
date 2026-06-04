@@ -179,7 +179,7 @@ Try input: `42 is the answer`
 
 Run the program twice with the same typing if your environment reuses input, or type fresh input each run, and watch what the second read picks up.
 
-> NOTE: Reading a full line of text, or recovering from bad input (letters when you expected a number), needs more tools (`std::getline`, clear the stream state, etc.). For now we assume the user follows directions.
+> NOTE: Reading a full line of text, or recovering from bad input (letters when you expected a number), needs more tools (`std::getline`, clear the stream state, etc.). See [get, getline, and Other istream Tools](../09FilesAndStreams/04get%20getline%20and%20other%20istream%20tools.md) and [Stream States and Robust Input](../09FilesAndStreams/07stream%20states%20and%20robust%20input.md). For now we assume the user follows directions.
 
 ## Try it now
 

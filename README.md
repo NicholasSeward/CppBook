@@ -33,7 +33,22 @@ A beginner-friendly C++ textbook organized as Markdown chapters.
 ### 02 Functions
 
 - [Functions Index](02Functions/README.md)
-Coming soon.
+- [What Functions Are](02Functions/01what%20functions%20are.md)
+- [Function Calls and Flow](02Functions/02function%20calls%20and%20flow.md)
+- [Return Values](02Functions/03return%20values.md)
+- [Void Functions](02Functions/04void%20functions.md)
+- [Parameters and Arguments](02Functions/05parameters%20and%20arguments.md)
+- [Scope](02Functions/06scope.md)
+- [Why Use Functions](02Functions/07why%20use%20functions.md)
+- [Declarations, Definitions, and Forward Declarations](02Functions/08declarations%20definitions%20and%20forward%20declarations.md)
+- [Headers and Multiple Files](02Functions/09headers%20and%20multiple%20files.md)
+- [Namespaces](02Functions/10namespaces.md)
+- [Preprocessor and Header Guards](02Functions/11preprocessor%20and%20header%20guards.md)
+- [Program Design With Functions](02Functions/12program%20design%20with%20functions.md)
+- [Function Overloading](02Functions/13function%20overloading.md)
+- [Default Arguments](02Functions/14default%20arguments.md)
+- [Deleted Functions](02Functions/15deleted%20functions.md)
+- [Templates Teaser](02Functions/16templates%20teaser.md)
 
 ### 03 Error Handling
 
@@ -106,7 +121,16 @@ Coming soon.
 ### 09 Files And Streams
 
 - [Files And Streams Index](09FilesAndStreams/README.md)
-Coming soon.
+- [What Streams Are](09FilesAndStreams/01what%20streams%20are.md)
+- [Standard Streams](09FilesAndStreams/02standard%20streams.md)
+- [Extraction and Whitespace](09FilesAndStreams/03extraction%20and%20whitespace.md)
+- [get, getline, and Other istream Tools](09FilesAndStreams/04get%20getline%20and%20other%20istream%20tools.md)
+- [Formatting Output Streams](09FilesAndStreams/05formatting%20output%20streams.md)
+- [String Streams](09FilesAndStreams/06string%20streams.md)
+- [Stream States and Robust Input](09FilesAndStreams/07stream%20states%20and%20robust%20input.md)
+- [Reading Files](09FilesAndStreams/08reading%20files.md)
+- [Writing Files](09FilesAndStreams/09writing%20files.md)
+- [Append Mode, Reopen, and Seeking](09FilesAndStreams/10append%20mode%20reopen%20and%20seeking.md)
 
 ### 10 Templates
 

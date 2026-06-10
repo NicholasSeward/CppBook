@@ -90,6 +90,46 @@ PREFERENCE: Neither will this.
 - Drafts: `[show example with ...]` for missing code, images, or demos.
 - Finished chapters: replace placeholders with real fenced blocks (` ```lang `) or assets. Keep placeholders only if the user wants an outline.
 
+## TxtBook playgrounds
+
+Lesson `.md` files become interactive playgrounds in TxtBook. Fenced blocks get a **Run** button. C++ shows terminal output below; Markdown shows a live preview.
+
+| Fence tag | Behavior |
+|-----------|----------|
+| `cpp` | Compile on server; terminal output below |
+| `py` | Run in browser (Pyodide) |
+| `md` or `markdown` | Editable source + live preview (callouts, tables, links) |
+
+### Runtime file tabs
+
+When C++ creates or modifies a file, TxtBook adds or updates a tab for that file after **Run**. Seed a starting tab with `// @file: scores.txt` in the fence. Terminal output (for example a `showFileContents` helper) is still useful when teaching buffering before `flush()` or `close()`.
+
+### C++ file markers
+
+Inside one `cpp` fence, split files with `// @file:` lines. Each file gets a tab unless marked `hidden`.
+
+| Marker | Meaning |
+|--------|---------|
+| `// @file: main.cpp` | Lesson file tab (put `main.cpp` first) |
+| `// @file: helper.h` | Header tab |
+| `// @file: show_file.cpp hidden` | Compiled, no tab (helpers readers should not edit) |
+| `// @file: path from:URL hidden` | Fetched at compile time, not stored in repo |
+
+`from:URL` allowed hosts: `raw.githubusercontent.com`, `githubusercontent.com`, `cdn.jsdelivr.net`.
+
+Doctest remote header (one line, then normal test code in the same fence):
+
+    // @file: doctest/doctest.h from:https://raw.githubusercontent.com/doctest/doctest/refs/heads/master/doctest/doctest.h hidden
+
+Use `TEST_CASE` and `CHECK` in the same `cpp` block. Set `DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN` once when the fence is the only translation unit with `main`.
+
+### Authoring rules
+
+- One `cpp` fence per playground; use `// @file:` for multi-file, not multiple fences.
+- List `main.cpp` first, then headers, then `.cpp` files.
+- Use `hidden` for boilerplate helpers (for example `show_file.cpp`).
+- Use `md` playgrounds for formatting demos; use `cpp` for runnable code.
+
 ## Code and examples
 
 - Use `cpp` only for runnable C++ examples. If a code block is a fragment, expression, or non-runnable sketch, use an untagged fence.
@@ -110,43 +150,7 @@ if (condition)
 
 - Keep same-line braces only when the point is to show bad formatting, an alternate brace style, or a compact snippet where brace style is not the lesson.
 - In runnable single-file examples, put `int main()` before helper function **definitions**. Use forward declarations above `main` when a helper is defined later in the same block.
-- For multi-file examples, keep all files in one ` ```cpp ` block and separate files with TxtBook `// @file:` markers. List `main.cpp` first, then headers, then other `.cpp` files:
-
-````markdown
-```cpp
-// @file: main.cpp
-#include <iostream>
-#include "helper.h"
-
-int main()
-{
-    std::cout << "2 + 3 = " << add(2, 3) << "\n";
-    greet("TxtBook");
-    return 0;
-}
-
-// @file: helper.h
-#pragma once
-#include <string>
-
-int add(int a, int b);
-void greet(const std::string& name);
-
-// @file: helper.cpp
-#include <iostream>
-#include "helper.h"
-
-int add(int a, int b)
-{
-    return a + b;
-}
-
-void greet(const std::string& name)
-{
-    std::cout << "Hello, " << name << "!\n";
-}
-```
-````
+- For multi-file C++ in TxtBook, see **TxtBook playgrounds** above. Same rules apply in chapter source files.
 
 ## Files
 

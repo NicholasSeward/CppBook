@@ -50,10 +50,21 @@ A beginner-friendly C++ textbook organized as Markdown chapters.
 - [Deleted Functions](02Functions/15deleted%20functions.md)
 - [Templates Teaser](02Functions/16templates%20teaser.md)
 
-### 03 Error Handling
+### 03 Debugging And Errors
 
-- [Error Handling Index](03ErrorHandling/README.md)
-Coming soon.
+- [Debugging And Errors Index](03DebuggingAndErrors/README.md)
+- [Kinds of Errors](03DebuggingAndErrors/01kinds%20of%20errors.md)
+- [Debugging Process](03DebuggingAndErrors/02debugging%20process.md)
+- [Debugging Tools](03DebuggingAndErrors/03debugging%20tools.md)
+- [Preventing Errors](03DebuggingAndErrors/04preventing%20errors.md)
+- [Testing](03DebuggingAndErrors/05testing.md)
+- [Doctest](03DebuggingAndErrors/06doctest.md)
+- [Unit Test Principles](03DebuggingAndErrors/07unit%20test%20principles.md)
+- [Coverage Metrics](03DebuggingAndErrors/08coverage%20metrics.md)
+- [Logic Errors](03DebuggingAndErrors/09logic%20errors.md)
+- [Handling Errors](03DebuggingAndErrors/10handling%20errors.md)
+- [Cin Input Validation](03DebuggingAndErrors/11cin%20input%20validation.md)
+- [Assert and `static_assert`](03DebuggingAndErrors/12assert%20and%20static%20assert.md)
 
 ### 04 Types
 
@@ -175,9 +186,4 @@ Coming soon.
 ### 18 Design Patterns
 
 - [Design Patterns Index](18DesignPatterns/README.md)
-Coming soon.
-
-### 19 Testing
-
-- [Testing Index](19Testing/README.md)
 Coming soon.

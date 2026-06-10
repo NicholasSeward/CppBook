@@ -32,7 +32,7 @@ int main()
     return 0;
 }
 
-// @file: show_file.cpp
+// @file: show_file.cpp hidden
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -63,11 +63,11 @@ void showFileContents(const std::string& path)
 
 Use `<<` the same way you do with `std::cout`.
 
-`showFileContents` reads the file back and prints it to the console. That is how you check what was written.
+`showFileContents` reads the file back and prints it to the console with clear dividers.
 
-> NOTE: In the book playground, the tabs do not update when your program writes to the file. Trust the output from `showFileContents`, not the static text in the file tab.
+After **Run**, TxtBook also adds or updates a tab for `scores.txt` so you can inspect the file directly. The helper still helps later when you need to read back before `flush()` or `close()` and the tab may not reflect buffered data yet.
 
-The helper lives in the second tab so you can focus on writing in `main.cpp`.
+The helper lives in a **hidden** tab so you can focus on writing in `main.cpp`.
 
 ## Check that the file opened
 
@@ -115,7 +115,7 @@ int main()
     return 0;
 }
 
-// @file: show_file.cpp
+// @file: show_file.cpp hidden
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -182,7 +182,7 @@ int main()
     return 0;
 }
 
-// @file: show_file.cpp
+// @file: show_file.cpp hidden
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -254,7 +254,7 @@ int main()
     return 0;
 }
 
-// @file: show_file.cpp
+// @file: show_file.cpp hidden
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -307,7 +307,7 @@ int main()
     return 0;
 }
 
-// @file: show_file.cpp
+// @file: show_file.cpp hidden
 #include <fstream>
 #include <iostream>
 #include <string>

@@ -258,15 +258,89 @@ Use `>` at the start of a line for quotations or callouts:
 | Share | Push to GitLab or GitHub |
 ```
 
+## Blank lines
+
+In Markdown, a **blank line** is an empty line in the source file. Blank lines are not decoration. They tell the parser where one block ends and the next begins.
+
+**Paragraphs:** One line break inside a paragraph does not start a new paragraph in the preview. You need a blank line between blocks of text.
+
+```markdown
+This is one paragraph.
+
+This is a second paragraph.
+```
+
+Without the blank line, many renderers join the lines into a single paragraph.
+
+**Headings, lists, and fences:** Put a blank line before and after headings, lists, code fences, blockquotes, and horizontal rules when they sit next to normal text. That keeps the structure unambiguous.
+
+**Horizontal rules and headings:** A line of `---` directly under text can be parsed as an underline for a **Setext heading**, not as a divider. A blank line before `---` makes it a horizontal rule instead.
+
+Does not make a rule (Setext heading):
+
+```markdown
+Section title
+---
+```
+
+Makes a rule:
+
+```markdown
+Section title
+
+---
+```
+
+```md
+This paragraph needs a blank line before the next one.
+This line is still the same paragraph in preview.
+
+This is a new paragraph because of the blank line above.
+```
+
 ## Horizontal rules
 
-Three or more dashes on their own line:
+Three or more dashes, asterisks, or underscores on their own line create a **horizontal rule** (a divider line in the preview):
 
 ```markdown
 ---
 ```
 
-Use sparingly to split major sections in long documents.
+Use blank lines around rules so they separate sections cleanly:
+
+```markdown
+First section.
+
+Some text between rules.
+
+---
+
+Middle section.
+
+More text here.
+
+---
+
+Last section.
+```
+
+```md
+First section.
+
+Some text between rules.
+
+---
+
+Middle section.
+
+More text here.
+
+---
+
+Last section.
+```
+
+Use horizontal rules sparingly in long documents. Too many dividers make a page feel choppy.
 
 ## Try it now
 

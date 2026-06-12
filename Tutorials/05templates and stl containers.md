@@ -108,7 +108,7 @@ What happens when `show(1, 2);` is called?
 
 void test(int x = 1, double y = 2.5)
 {
-    x * y; //do something with x and y
+    x *= y; //do something with x and y
     std::cout << "First function\n";
 }
 

@@ -44,11 +44,17 @@ Structure major blocks as `##` sections in this order when they fit:
 
 ## Try it now sections
 
-- When it fits, end a chapter with `## Try it now`.
-- Include 1 to 3 individual exercises.
-- Each exercise should have a simple prompt and starter code.
-- Starter code should be runnable, but leave enough missing or marked with `TODO` comments so the reader practices the chapter's content.
-- If the starter code is C++, use a `cpp` block only when it is a complete runnable program.
+A chapter does **not** have to include `## Try it now`. Use it when hands-on practice fits the topic.
+
+When you do include it:
+
+- End the chapter with `## Try it now` (or add 1 to 3 exercises under that heading).
+- Each exercise is typically a **Prompt:** line plus a **code playground** with starter code the reader edits to complete the task.
+- Use `cpp`, `md`, or other TxtBook fence tags as appropriate. C++ playgrounds should use `// @file:` markers when the lesson needs multiple files (see **TxtBook playgrounds**).
+- Starter code must be runnable (or previewable for `md`), with enough left for the reader to do: missing pieces, wrong-on-purpose bugs, or `TODO` comments.
+- The prompt should be **similar in skill** to the chapter examples but **not a copy** of them. Change the scenario, names, values, or types so the reader applies the idea instead of repeating the same program.
+
+Bullet-only exercises (no playground) are fine for IDE-only tasks (for example "set a breakpoint") or short reflection questions.
 
 ## Callouts
 

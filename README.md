@@ -146,7 +146,14 @@ A beginner-friendly C++ textbook organized as Markdown chapters.
 ### 10 Templates
 
 - [Templates Index](10Templates/README.md)
-Coming soon.
+- [Why Templates](10Templates/01why%20templates.md)
+- [Function Template Basics](10Templates/02function%20template%20basics.md)
+- [Explicit Calls and Deduction](10Templates/03explicit%20calls%20and%20deduction.md)
+- [Multiple Type Parameters](10Templates/04multiple%20type%20parameters.md)
+- [Templates With Overloading](10Templates/05templates%20with%20overloading.md)
+- [Generic Programming](10Templates/06generic%20programming.md)
+- [Nontype Template Parameters](10Templates/07nontype%20template%20parameters.md)
+- [Templates in Headers](10Templates/08templates%20in%20headers.md)
 
 ### 11 Algorithms And Lambdas
 
@@ -176,7 +183,15 @@ Coming soon.
 ### 16 Data Structures
 
 - [Data Structures Index](16DataStructures/README.md)
-Coming soon.
+- [std::string Basics](16DataStructures/01std%20string%20basics.md)
+- [String Manipulation](16DataStructures/02string%20manipulation.md)
+- [STL Containers Overview](16DataStructures/03stl%20containers%20overview.md)
+- [Vector Costs and pop_front](16DataStructures/04vector%20costs%20and%20pop%20front.md)
+- [List and Deque](16DataStructures/05list%20and%20deque.md)
+- [Trees and Hash Tables (Basics)](16DataStructures/06trees%20and%20hash%20tables%20basics.md)
+- [Map and Set (Ordered)](16DataStructures/07map%20and%20set.md)
+- [Unordered Map and Set](16DataStructures/08unordered%20map%20and%20set.md)
+- [Tree vs Hash: Choosing a Container](16DataStructures/09tree%20vs%20hash%20choosing.md)
 
 ### 17 GUI Programming
 

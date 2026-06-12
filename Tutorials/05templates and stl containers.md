@@ -144,11 +144,13 @@ What happens when `test();` is called?
 
 void test(int x = 1, double y = 2.5)
 {
+    x = x * y; //do something with x and y
     std::cout << "First function\n";
 }
 
 void test(double x = 4.5)
 {
+    x = x + 1; //do something with x
     std::cout << "Second function\n";
 }
 

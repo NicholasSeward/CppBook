@@ -77,7 +77,7 @@ int main()
     ++it;
     playlist.insert(it, "Chorus");
 
-    for (const std::string& track : playlist)
+    for (auto track : playlist)
     {
         std::cout << track << '\n';
     }
@@ -125,7 +125,7 @@ It is usually implemented as chunks rather than one contiguous block like `vecto
 void addCommand(const std::string& cmd, std::deque<std::string>& history, int maxSize)
 {
     history.push_back(cmd);
-    if (history.size() > maxSize)
+    while (static_cast<int>(history.size()) > maxSize)
     {
         history.pop_front();
     }
@@ -141,7 +141,7 @@ int main()
     addCommand("quit", history, 3);
 
     std::cout << "Recent commands (oldest to newest):\n";
-    for (const std::string& cmd : history)
+    for (auto cmd : history)
     {
         std::cout << cmd << '\n';
     }

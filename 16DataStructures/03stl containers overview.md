@@ -8,7 +8,7 @@ You have already used `std::vector` heavily. This module adds the rest of the co
 
 **STL** (Standard Template Library) container types are templates:
 
-```cpp
+```
 std::vector<int>
 std::map<int, std::string>
 std::unordered_set<std::string>

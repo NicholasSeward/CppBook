@@ -41,8 +41,3 @@ You see nontype parameters in library code such as `std::array<T, N>`, which sto
 Nontype parameters can push work to compile time (fixed bounds, fixed-size tables). That can help performance in specialized code. For typical homework and small projects, a `std::vector` and a normal loop are simpler.
 
 > NOTE: Nontype template parameters are useful in advanced and library code. They are not a pattern you need to reach for in every project.
-
-## Try it now
-
-1. In one sentence, explain the difference between `typename T` and `int N` in a template parameter list.
-2. Look up `std::array` in a reference. How many template parameters does it take?

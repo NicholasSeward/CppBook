@@ -69,7 +69,7 @@ Most containers support `size()`, `empty()`, `clear()`, and range-for where it m
 
 For read-only key checks in maps, prefer `contains` or `find` over `operator[]`, which creates missing keys:
 
-```cpp
+```
 // Bad for read-only check: inserts 999 with default value if missing
 if (roster[999] == "Ada") { /* ... */ }
 

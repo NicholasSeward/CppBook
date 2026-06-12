@@ -6,7 +6,7 @@ Normal functions split cleanly between `.h` (declaration) and `.cpp` (definition
 
 For an ordinary function you might write:
 
-```cpp
+```
 // math.h
 int add(int a, int b);
 
@@ -18,7 +18,7 @@ For a template, the compiler needs the **full pattern** at the point where it in
 
 This fails when the definition stays hidden in a `.cpp` file:
 
-```cpp
+```
 // max.h
 template <typename T>
 T max(T a, T b);

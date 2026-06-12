@@ -81,4 +81,4 @@ Average lookup is **O(1)** when keys spread out. Long probe runs from many colli
 | Print all keys sorted | walk tree in order | not built in; sort separately if needed (expensive) |
 | Insert new key | place in tree, rebalance if needed | hash to bucket, maybe rehash later |
 
-The next chapters show the C++ containers built on these ideas.
+The next section shows the C++ containers built on these ideas.

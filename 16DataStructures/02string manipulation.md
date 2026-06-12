@@ -6,7 +6,7 @@ Once you can store text in `std::string`, you need tools to search, slice, chang
 
 | Function | Typical use | Returns / notes |
 |----------|-------------|-----------------|
-| `s.size()` / `s.length()` | how many characters | `size_t` |
+| `s.size()` / `s.length()` | how many characters | `int` (store the count) |
 | `s.empty()` | any characters? | `bool` |
 | `s.clear()` | remove all characters | void |
 | `s[i]`, `s.at(i)` | character at index | `char&` |
@@ -41,7 +41,7 @@ int main()
 {
     std::string email{"ada.lovelace@example.com"};
 
-    std::size_t atPos{email.find('@')};
+    int atPos{email.find('@')};
 
     if (atPos == std::string::npos)
     {
@@ -70,8 +70,8 @@ int main()
 {
     std::string line{"  yes  "};
 
-    std::size_t start{line.find_first_not_of(' ')};
-    std::size_t end{line.find_last_not_of(' ')};
+    int start{line.find_first_not_of(' ')};
+    int end{line.find_last_not_of(' ')};
     std::string trimmed{line.substr(start, end - start + 1)};
 
     if (trimmed == "yes")

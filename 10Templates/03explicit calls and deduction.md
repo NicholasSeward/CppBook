@@ -64,7 +64,7 @@ For simple calls like `max(3, 7)`, deduction is enough.
 
 Both arguments must agree on `T` for `max(T a, T b)`:
 
-```cpp
+```
 max(3, 3.5);  // error: T cannot be both int and double
 ```
 

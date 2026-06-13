@@ -49,6 +49,8 @@ A beginner-friendly C++ textbook organized as Markdown chapters.
 - [Default Arguments](02Functions/14default%20arguments.md)
 - [Deleted Functions](02Functions/15deleted%20functions.md)
 - [Templates Teaser](02Functions/16templates%20teaser.md)
+- [Command Line Arguments](02Functions/17command%20line%20arguments.md)
+- [Recursion](02Functions/18(todo)recursion.md)
 
 ### 03 Debugging And Errors
 
@@ -158,7 +160,19 @@ A beginner-friendly C++ textbook organized as Markdown chapters.
 ### 11 Algorithms And Lambdas
 
 - [Algorithms And Lambdas Index](11AlgorithmsAndLambdas/README.md)
-Coming soon.
+- [Why Sort and Binary Search](11AlgorithmsAndLambdas/01why%20sort%20and%20binary%20search.md)
+- [Building a Sort](11AlgorithmsAndLambdas/02bubble%20sort.md)
+- [Big O Notation](11AlgorithmsAndLambdas/03big%20o%20notation.md)
+- [STL Algorithms and std::sort](11AlgorithmsAndLambdas/04stl%20algorithms%20and%20sort.md)
+- [Iterators Basics](11AlgorithmsAndLambdas/05iterators%20basics.md)
+- [Iterator Invalidation](11AlgorithmsAndLambdas/06iterator%20invalidation.md)
+- [Find and Count](11AlgorithmsAndLambdas/07find%20and%20count.md)
+- [STL Algorithm Reference](11AlgorithmsAndLambdas/08stl%20algorithm%20reference.md)
+- [Custom Sort and for_each](11AlgorithmsAndLambdas/09custom%20sort%20and%20for%20each.md)
+- [Timing with chrono](11AlgorithmsAndLambdas/10timing%20with%20chrono.md)
+- [Passing Functions and Callbacks](11AlgorithmsAndLambdas/11passing%20functions%20and%20callbacks.md)
+- [Lambda Basics](11AlgorithmsAndLambdas/12lambda%20basics.md)
+- [Lambda Captures](11AlgorithmsAndLambdas/13lambda%20captures.md)
 
 ### 12 Classes
 
@@ -178,7 +192,7 @@ Coming soon.
 ### 15 Pointers
 
 - [Pointers Index](15Pointers/README.md)
-Coming soon.
+- [Recursion and Linked Lists](15Pointers/01(todo)recursion%20and%20linked%20lists.md)
 
 ### 16 Data Structures
 
@@ -186,14 +200,13 @@ Coming soon.
 - [std::string Basics](16DataStructures/01std%20string%20basics.md)
 - [String Manipulation](16DataStructures/02string%20manipulation.md)
 - [STL Containers Overview](16DataStructures/03stl%20containers%20overview.md)
-- [Vector Costs and pop_front](16DataStructures/04vector%20costs%20and%20pop%20front.md)
+- [Vector Costs and `pop_front`](16DataStructures/04vector%20costs%20and%20pop%20front.md)
 - [List and Deque](16DataStructures/05list%20and%20deque.md)
 - [Trees and Hash Tables (Basics)](16DataStructures/06trees%20and%20hash%20tables%20basics.md)
 - [Map and Set (Ordered)](16DataStructures/07map%20and%20set.md)
 - [Unordered Map and Set](16DataStructures/08unordered%20map%20and%20set.md)
 - [Tree vs Hash: Choosing a Container](16DataStructures/09tree%20vs%20hash%20choosing.md)
-
-### 17 GUI Programming
+- [Recursive Trees](16DataStructures/10(todo)recursive%20trees.md)
 
 - [GUI Programming Index](17GuiProgramming/README.md)
 Coming soon.

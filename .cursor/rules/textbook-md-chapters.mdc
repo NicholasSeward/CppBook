@@ -1,31 +1,46 @@
 ---
-description: Conventions for writing textbook markdown chapters
+description: Conventions for writing textbook markdown sections and chapters
 globs: "**/*.md"
 alwaysApply: false
 ---
 
-# Textbook Markdown Chapters
+# Textbook Markdown
 
-Conversational textbook chapters as `.md` files in numbered topic folders (e.g. `01Basics/topic name.md`).
+Conversational lesson content as `.md` **sections** inside numbered topic **chapters** (folders).
+
+## Book structure
+
+| Term | Meaning | Example |
+|------|---------|---------|
+| **Chapter** | A numbered topic folder and all its lesson files | `11AlgorithmsAndLambdas/` |
+| **Section** | One lesson `.md` file in a chapter folder | `05iterators basics.md` |
+
+When writing or talking about the book:
+
+- Say **section** for a single `.md` file.
+- Say **chapter** for the folder (or the whole topic: "the Algorithms chapter").
+- Inside a section file, `##` / `###` headings are **blocks** or **subsections** within that section, not separate book sections.
+
+Chapter folder `README.md`: title the folder topic once (`#`), then list lesson files under `## Sections`.
 
 ## Voice
 
-- One concept at a time; build on earlier chapters.
+- One concept at a time; build on earlier sections in the same chapter and earlier chapters when needed.
 - Plain language, short paragraphs; explain **why**, not only **what**.
 - End sections with something to **try** (change code, break it on purpose, run variants).
 - Do not use em dashes (`—`), en dashes as punctuation (`–`), or `--` as a stand-in. Use a period, comma, colon, parentheses, or split into two sentences instead.
 - Do not explain why content is or is not in a folder/chapter/section. Teach the content directly instead.
 
-## Headings
+## Headings (inside one section file)
 
 Use ATX headings (`#`). Do not skip levels.
 
 | Level | Use |
 |-------|-----|
-| `#` | Chapter title, **once** at the top; matches the topic (and usually the filename) |
-| `##` | Major sections (hook, core concept, examples, mistakes, summary) |
+| `#` | Section title, **once** at the top; matches the topic (and usually the filename) |
+| `##` | Major blocks (hook, core concept, examples, mistakes, summary) |
 | `###` | Subsections within a `##` block |
-| `####` | Rare; only when a `###` section needs a clear split |
+| `####` | Rare; only when a `###` block needs a clear split |
 
 - One `#` per file. Do not use `#` for callouts or examples.
 - Prefer `##` / `###` over bold lines or pseudo-headings in plain text.
@@ -42,17 +57,17 @@ Structure major blocks as `##` sections in this order when they fit:
 5. Optional callouts (below)
 6. Tie back to prior material when needed
 
-## Try it now sections
+## Try it now blocks
 
-A chapter does **not** have to include `## Try it now`. Use it when hands-on practice fits the topic.
+A section does **not** have to include `## Try it now`. Use it when hands-on practice fits the topic.
 
 When you do include it:
 
-- End the chapter with `## Try it now` (or add 1 to 3 exercises under that heading).
+- End the section with `## Try it now` (or add 1 to 3 exercises under that heading).
 - Each exercise is typically a **Prompt:** line plus a **code playground** with starter code the reader edits to complete the task.
 - Use `cpp`, `md`, or other TxtBook fence tags as appropriate. C++ playgrounds should use `// @file:` markers when the lesson needs multiple files (see **TxtBook playgrounds**).
 - Starter code must be runnable (or previewable for `md`), with enough left for the reader to do: missing pieces, wrong-on-purpose bugs, or `TODO` comments.
-- The prompt should be **similar in skill** to the chapter examples but **not a copy** of them. Change the scenario, names, values, or types so the reader applies the idea instead of repeating the same program.
+- The prompt should be **similar in skill** to the section examples but **not a copy** of them. Change the scenario, names, values, or types so the reader applies the idea instead of repeating the same program.
 
 Bullet-only exercises (no playground) are fine for IDE-only tasks (for example "set a breakpoint") or short reflection questions.
 
@@ -94,7 +109,7 @@ PREFERENCE: Neither will this.
 ## Drafting vs finished
 
 - Drafts: `[show example with ...]` for missing code, images, or demos.
-- Finished chapters: replace placeholders with real fenced blocks (` ```lang `) or assets. Keep placeholders only if the user wants an outline.
+- Finished sections: replace placeholders with real fenced blocks (` ```lang `) or assets. Keep placeholders only if the user wants an outline.
 
 ## TxtBook playgrounds
 
@@ -121,6 +136,29 @@ Inside one `cpp` fence, split files with `// @file:` lines. Each file gets a tab
 | `// @file: show_file.cpp hidden` | Compiled, no tab (helpers readers should not edit) |
 | `// @file: path from:URL hidden` | Fetched at compile time, not stored in repo |
 
+### Command-line arguments (`// @args:`)
+
+When a demo uses `argc` / `argv`, put simulated command-line arguments on the **first line** of the `cpp` fence:
+
+```cpp
+// @args: input.txt --verbose
+// @file: main.cpp
+#include <iostream>
+
+int main(int argc, char* argv[])
+{
+    for (int i{0}; i < argc; ++i)
+    {
+        std::cout << argv[i] << '\n';
+    }
+    return 0;
+}
+```
+
+TxtBook passes those tokens to the program on **Run**, as if the reader typed them after the executable name. Use one `// @args:` line per playground. Omit it when the example does not need arguments.
+
+If the fence also uses `// @file:`, put `// @args:` **above** the first `// @file:` line.
+
 `from:URL` allowed hosts: `raw.githubusercontent.com`, `githubusercontent.com`, `cdn.jsdelivr.net`.
 
 Doctest remote header (one line, then normal test code in the same fence):
@@ -134,6 +172,7 @@ Use `TEST_CASE` and `CHECK` in the same `cpp` block. Set `DOCTEST_CONFIG_IMPLEME
 - One `cpp` fence per playground; use `// @file:` for multi-file, not multiple fences.
 - List `main.cpp` first, then headers, then `.cpp` files.
 - Use `hidden` for boilerplate helpers (for example `show_file.cpp`).
+- For `argc` / `argv` demos, add `// @args:` as the first line of the fence when the example needs command-line input (see **Command-line arguments** above).
 - Use `md` playgrounds for formatting demos; use `cpp` for runnable code.
 
 ## Code and examples
@@ -156,14 +195,15 @@ if (condition)
 
 - Keep same-line braces only when the point is to show bad formatting, an alternate brace style, or a compact snippet where brace style is not the lesson.
 - In runnable single-file examples, put `int main()` before helper function **definitions**. Use forward declarations above `main` when a helper is defined later in the same block.
-- For multi-file C++ in TxtBook, see **TxtBook playgrounds** above. Same rules apply in chapter source files.
+- For multi-file C++ in TxtBook, see **TxtBook playgrounds** above. Same rules apply in section source files.
 
 ## Files
 
-- Folders: `NNTopic` (e.g. `01Basics`)
-- Files: lowercase words, spaces: `topic name.md`
+- **Chapters:** folders `NNTopic` (e.g. `01Basics`, `11AlgorithmsAndLambdas`)
+- **Sections:** lowercase words, spaces: `topic name.md`
+- Chapter `README.md`: index of sections in that chapter
 - No extra front matter unless the build needs it
 
 ## Outlines
 
-Expand bullet/outline notes into full prose. Keep intent, callouts, and teaching order. Drop jargon the reader has not seen yet.
+Expand bullet/outline notes into full prose sections. Keep intent, callouts, and teaching order. Drop jargon the reader has not seen yet.

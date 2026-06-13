@@ -6,15 +6,15 @@ alwaysApply: false
 
 # Module Slides
 
-When asked to make slides for a module, build one Markdown deck from **all** assigned reading for that module. Do not skip chapters or sections that exist in the repo.
+When asked to make slides for a module, build one Markdown deck from **all** assigned reading for that module. Do not skip chapters or their sections that exist in the repo.
 
 ## Sources (in priority order)
 
-1. **Module assignment** — `Modules/module readings.md` (which folders and any partial `04Types` notes apply).
-2. **Chapter content** — every `.md` file in those numbered folders, except `README.md`. Sort by filename/number.
+1. **Module assignment** — `Modules/module readings.md` (which chapter folders and any partial `04Types` notes apply).
+2. **Chapter content** — every section `.md` file in those numbered chapter folders, except `README.md`. Sort by filename/number.
 3. **Custom content** — `Tutorials/` or other supplements only when listed for the module. **Prefer and emphasize textbook chapters** over tutorials or external notes.
 
-If a folder is listed but has no chapter files yet, include a single placeholder slide noting the topic is coming soon.
+If a chapter folder is listed but has no section files yet, include a single placeholder slide noting the topic is coming soon.
 
 ### Partial `04Types`
 
@@ -69,9 +69,9 @@ Use the exact module number and title from `Modules/module readings.md`.
 
 ### 5. Content
 
-- Walk through **all** assigned chapter material in a logical order (match chapter sequence unless a clearer story exists).
-- **Do not omit** major sections from any assigned chapter file.
-- Prefer chapter headings and teaching points over tutorial quiz wording.
+- Walk through **all** assigned chapter material in a logical order (match section sequence within each chapter unless a clearer story exists).
+- **Do not omit** major blocks from any assigned section file.
+- Prefer section headings and teaching points over tutorial quiz wording.
 - Many short slides beat few crowded slides.
 - Code on a slide: one small snippet or signature line when it helps; avoid full listings.
 - Use `> NOTE:` / `> PREFERENCE:` ideas as short callout bullets when they matter for class.
@@ -100,7 +100,7 @@ Use the exact module number and title from `Modules/module readings.md`.
 
 ## Checklist before finishing
 
-- [ ] Every assigned chapter file was reflected in the Content section.
+- [ ] Every assigned section file was reflected in the Content section.
 - [ ] Chapters weighted over tutorials/custom material.
 - [ ] Slides separated with `---`.
 - [ ] File named `Slides (Module X).md` in `Modules/`.

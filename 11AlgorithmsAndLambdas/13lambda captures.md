@@ -138,10 +138,21 @@ Capture happens when the lambda is **created**, not when it runs.
 A reference capture to a local variable is dangerous if the lambda outlives that variable:
 
 ```cpp
-std::function<int()> makeBad()
+#include <functional>
+#include <iostream>
+
+int main()
 {
-    int x{10};
-    return [&]() { return x; };  // x dies when makeBad returns
+    int* x = new int{42};
+    // Lambda captures x by reference (pointer)
+    std::function<int()> dangling = [x]() { return *x; };
+
+    delete x; // free memory - x is now dangling
+    // Now call the lambda -- should crash, return garbage, or maybe work depending!
+    // This is undefined behavior and super dangerous.
+    std::cout << "Result after delete: " << dangling() << '\n';
+
+    return 0;
 }
 ```
 

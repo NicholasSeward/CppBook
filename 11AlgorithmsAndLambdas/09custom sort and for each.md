@@ -127,7 +127,7 @@ C++20 adds **range** versions of many algorithms. You pass the container directl
 
 C++17 (what this course uses):
 
-```cpp
+```
 std::sort(words.begin(), words.end(), shorterFirst);
 std::for_each(values.begin(), values.end(), doubleValue);
 ```

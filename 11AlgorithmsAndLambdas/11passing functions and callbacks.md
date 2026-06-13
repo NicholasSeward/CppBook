@@ -39,6 +39,7 @@ int main()
 C++ can store a function's address in a **function pointer**. The syntax is hard to read.
 
 ```cpp
+#include <cstdint>
 #include <iostream>
 
 void sayHi()
@@ -48,15 +49,13 @@ void sayHi()
 
 int main()
 {
-    std::cout << sayHi << '\n';  // address-ish value, not a friendly name
-
-    void (*fp)(){sayHi};
+    void (*fp)() = sayHi;
     fp();
     return 0;
 }
 ```
 
-Printing `sayHi` does not run the function. You usually see a memory address (or something address-like), not `"Hi"`.
+`fp()` runs `sayHi` and prints `Hi`. The number printed first is an address-like value for the function, not the greeting itself. Writing `sayHi` alone does not call the function.
 
 > PREFERENCE: Do not use raw function pointers in new code unless an older API forces you to. Prefer `std::function` or templates (or lambdas, next sections).
 

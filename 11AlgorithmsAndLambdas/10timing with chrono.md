@@ -42,7 +42,7 @@ int main()
 
 For benchmarking, snapshot **before** and **after** the work, subtract, then `count()`:
 
-```cpp
+```
 auto start{std::chrono::high_resolution_clock::now()};
 // work here
 auto end{std::chrono::high_resolution_clock::now()};
@@ -99,7 +99,7 @@ Double input size until runtime crosses a target (for example 5 seconds). You sh
 int main()
 {
     int n{1};
-    while (n <= 1'000'000)
+    while (true)
     {
         std::vector<int> values(n);
         std::mt19937 rng{123};
@@ -114,7 +114,7 @@ int main()
         auto end{std::chrono::high_resolution_clock::now()};
 
         auto ms{std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()};
-        std::cout << "n=" << n << " ms=" << ms << '\n';
+        std::cout << "n=" << n << " ms=" << ms << std::endl;
 
         if (ms > 5000)
         {
@@ -145,8 +145,6 @@ Measuring changes what you measure. Lab timings are not production timings.
 
 > PROTIP: Turn off heavy logging inside timed sections. Build with optimizations when comparing real algorithms. Run several trials and look for a trend, not one magic number.
 
-> NOTE: [Lambda Basics](12lambda%20basics.md) shows shorter inline callbacks for comparators and `for_each`. Named functions and `std::function` work fine in C++17 too.
-
 ## Try it now
 
 ### Exercise 1: Time bubble vs sort
@@ -154,7 +152,6 @@ Measuring changes what you measure. Lab timings are not production timings.
 Prompt: Fill a vector of size 5000 with random ints. Time your bubble sort (or one pass only) vs `std::sort`. Print both millisecond counts.
 
 ```cpp
-// @file: main.cpp
 #include <algorithm>
 #include <chrono>
 #include <iostream>

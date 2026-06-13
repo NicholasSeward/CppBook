@@ -278,6 +278,7 @@ With iterators, **`!= end` is not a boundary check**. It only asks “are we exa
 
 This pattern looks like the index loop above, but it is unsafe when the length is not a perfect multiple of the step:
 
+```cpp
 #include <iostream>
 #include <vector>
 #include <thread>
@@ -295,6 +296,7 @@ int main()
 
     return 0;
 }
+```
 
 With 10 elements, `it` visits positions `0`, `3`, `6`, `9`, then **`+= 3` jumps to position 12**. That is **past** `end()` (position 10), but `12 != 10`, so the loop keeps going and dereferences an invalid iterator.
 

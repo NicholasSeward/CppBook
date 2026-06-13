@@ -101,7 +101,7 @@ int main()
     std::cout << "Before: ";
     printVector(values);
 
-    for (int i{0}; i < values.size() - 1; ++i)
+    for (int i{0}; i < static_cast<int>(values.size()) - 1; ++i)
     {
         if (values.at(i) > values.at(i + 1))
         {
@@ -137,7 +137,7 @@ void printVector(const std::vector<int>& values)
 
 void onePass(std::vector<int>& values)
 {
-    for (int i{0}; i < values.size() - 1; ++i)
+    for (int i{0}; i < static_cast<int>(values.size()) - 1; ++i)
     {
         if (values.at(i) > values.at(i + 1))
         {
@@ -150,7 +150,7 @@ int main()
 {
     std::vector<int> values{5, 1, 4, 3, 8, 2, 6, 7};
 
-    for (int pass{0}; pass < values.size() - 1; ++pass)
+    for (int pass{0}; pass < static_cast<int>(values.size()) - 1; ++pass)
     {
         onePass(values);
         std::cout << "Pass " << pass + 1 << ": ";
@@ -173,10 +173,10 @@ Wrap passes in one function. Track whether any swap happened. If a pass swaps no
 
 void bubbleSort(std::vector<int>& values)
 {
-    for (int pass{0}; pass < values.size() - 1; ++pass)
+    for (int pass{0}; pass < static_cast<int>(values.size()) - 1; ++pass)
     {
         bool swapped{false};
-        for (int i{0}; i < values.size() - 1 - pass; ++i)
+        for (int i{0}; i < static_cast<int>(values.size()) - 1 - pass; ++i)
         {
             if (values.at(i) > values.at(i + 1))
             {

@@ -38,7 +38,7 @@ Passing by reference lets the function work with the original vector.
 
 void doubleAll(std::vector<int>& values)
 {
-    for (int count{0}; count < values.size(); ++count)
+    for (int count{0}; count < static_cast<int>(values.size()); ++count)
     {
         values.at(count) *= 2;
     }

@@ -14,7 +14,7 @@ That style is better for **automation**: scripts, other programs, and servers ca
 
 A typical entry point that accepts arguments:
 
-```cpp
+```
 int main(int argc, char* argv[])
 ```
 

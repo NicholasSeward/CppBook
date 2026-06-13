@@ -59,7 +59,7 @@ hahaha
 
 The same job with a loop (no callbacks):
 
-```cpp
+```
 for (int i{0}; i < n; ++i)
 {
     std::cout << str;

@@ -16,7 +16,7 @@ int main()
 {
     std::vector<int> values{10, 20, 30};
 
-    for (int i{0}; i < values.size(); ++i)
+    for (int i{0}; i < static_cast<int>(values.size()); ++i)
     {
         std::cout << values.at(i) << ' ';
     }
@@ -205,7 +205,7 @@ int main()
 {
     std::vector<int> values{10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
 
-    for (int i{0}; i < values.size(); i += 3)
+    for (int i{0}; i < static_cast<int>(values.size()); i += 3)
     {
         std::cout << values.at(i) << ' ';
     }

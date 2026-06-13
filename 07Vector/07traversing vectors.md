@@ -14,7 +14,7 @@ int main()
 {
     std::vector<int> values{10, 20, 30, 40, 50};
 
-    for (int count{0}; count < values.size(); ++count)
+    for (int count{0}; count < static_cast<int>(values.size()); ++count)
     {
         std::cout << values.at(count) << " ";
     }
@@ -34,7 +34,7 @@ int main()
 {
     std::vector<int> values{10, 20, 30, 40, 50};
 
-    for (int count{0}; count <= values.size(); ++count)
+    for (int count{0}; count <= static_cast<int>(values.size()); ++count)
     {
         std::cout << values.at(count) << " ";
     }
@@ -54,7 +54,7 @@ int main()
 {
     std::vector<int> values{10, 20, 30, 40, 50};
 
-    for (int count{0}; count < values.size() - 1; ++count)
+    for (int count{0}; count < static_cast<int>(values.size()) - 1; ++count)
     {
         std::cout << values.at(count) << " ";
         std::cout << values.at(count + 1) << "\n";
@@ -68,7 +68,7 @@ int main()
 > PROTIP: When you need to walk a vector and you are not sure which loop style to reach for, start with this pattern every time. Type it from muscle memory, confirm it runs, then change only what the problem needs (stop one early, step by 2, use the index in a formula, and so on).
 
 ```
-for (int i{0}; i < values.size(); ++i)
+for (int i{0}; i < static_cast<int>(values.size()); ++i)
 {
     // use values.at(i)
 }

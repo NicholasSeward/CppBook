@@ -100,7 +100,7 @@ int main()
 
     std::vector<int> copyA{values};
     auto start{std::chrono::high_resolution_clock::now()};
-    for (int i{0}; i < copyA.size(); ++i)
+    for (int i{0}; i < static_cast<int>(copyA.size()); ++i)
     {
         copyA.at(i) *= copyA.at(i);
     }

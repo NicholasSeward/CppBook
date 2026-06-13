@@ -62,12 +62,18 @@ A type followed by `*` (for example `int*`) is a **pointer**: it holds a **memor
 | `++p` | move `p` to the **next** address (next slot in an array or vector) |
 
 ```cpp
-int nums[]{10, 20, 30};
-int* p{&nums[0]};       // address of first element
+#include <iostream>
 
-std::cout << *p << '\n';  // 10: value at that address
-++p;                      // next address (next element)
-std::cout << *p << '\n';  // 20
+int main() {
+    int nums[]{10, 20, 30};
+    int* p{&nums[0]};       // address of first element
+
+    std::cout << *p << '\n';  // 10: value at that address
+    ++p;                      // next address (next element)
+    std::cout << *p << '\n';  // 20
+
+    return 0;
+}
 ```
 
 We will cover pointers and addresses properly in a later chapter. For this module, the one operation you need often is **dereference**: `*p` or `*it` means “the value here.”
@@ -106,7 +112,7 @@ You can also write `values.data()` instead of `&values.at(0)` for the start poin
 
 STL algorithms accept raw pointers on contiguous data. This works:
 
-```cpp
+```
 std::sort(values.data(), values.data() + values.size());
 ```
 
@@ -223,23 +229,26 @@ This loop never stops:
 
 ```cpp
 #include <iostream>
+#include <thread>
+#include <chrono>
 
 int main()
 {
     for (int i{0}; i != 10; i += 3)
     {
-        std::cout << i << ' ';
+        std::cout << i << std::endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Delay for visibility
     }
-    // prints 0 3 6 9 12 15 ... forever
+    // prints 0 3 6 9 12 15 ... forever, but slowly so you can see the output
     return 0;
 }
 ```
 
 `i` jumps past `10` (`9` → `12`), so `i != 10` stays true. With indices, use **`< size`**, not **`!= size`**, when you step by more than 1.
 
-### Iterator loops: use `it != end`
+### Iterator loops: use `it != end`, and step one at a time
 
-The usual iterator pattern walks until you reach the **sentinel** `end()`, not until you hit a numeric limit:
+The usual iterator pattern checks **`it != end`** before each use, then advances with **`++it`** (one step):
 
 ```cpp
 #include <iostream>
@@ -247,9 +256,9 @@ The usual iterator pattern walks until you reach the **sentinel** `end()`, not u
 
 int main()
 {
-    std::vector<int> values{10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+    std::vector<int> values{10, 20, 30, 40, 50};
 
-    for (auto it{values.begin()}; it != values.end(); it += 3)
+    for (auto it{values.begin()}; it != values.end(); ++it)
     {
         std::cout << *it << ' ';
     }
@@ -259,7 +268,41 @@ int main()
 }
 ```
 
-`end()` marks “no more elements.” You stop when `it` **reaches** that sentinel, even if you arrived by skipping (`+= 3`). You do not have to land on an exact index number.
+`end()` is a sentinel: “no more elements.” The loop stops when `it` **equals** `end()`.
+
+That is different from index loops with **`i < size`**. With an index, `< size` is a **boundary check**: even if you step by 3, the loop stops as soon as `i` reaches or passes the size.
+
+With iterators, **`!= end` is not a boundary check**. It only asks “are we exactly at the sentinel?” If you advance by more than one (`it += 3`), you can **leap over** `end()` without ever landing on it. The condition stays true, and the next `*it` is undefined behavior.
+
+### Do not skip past `end` with `+= 3`
+
+This pattern looks like the index loop above, but it is unsafe when the length is not a perfect multiple of the step:
+
+#include <iostream>
+#include <vector>
+#include <thread>
+#include <chrono>
+
+int main()
+{
+    std::vector<int> values{10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+
+    for (auto it{values.begin()}; it != values.end(); it += 3)
+    {
+        std::cout << *it << std::endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    }
+
+    return 0;
+}
+
+With 10 elements, `it` visits positions `0`, `3`, `6`, `9`, then **`+= 3` jumps to position 12**. That is **past** `end()` (position 10), but `12 != 10`, so the loop keeps going and dereferences an invalid iterator.
+
+Same failure mode as `i != 10` with `i += 3`: you can **skip over** the stopping point.
+
+> NOTE: Iterators do not “stop at the end” for you when you take big steps. **`++it` until `!= end`** is the safe default. If you need every third element, prefer an **index loop** with `i < static_cast<int>(values.size())` and `i += 3`, or advance one step at a time and only use `*it` on the indices you want.
+
+If you must skip with iterators on a random-access container (`vector`, `string`, `deque`), check before you jump (for example, make sure `it + step` does not pass `end()`). That is easy to get wrong; an index loop is often clearer.
 
 ### Why not `it < end`?
 
@@ -269,11 +312,12 @@ On `list` or `set`, iterators are **not** random-access. There is no “left of 
 
 | Loop style | Stopping condition | Skip steps (`+= 3`) |
 |------------|-------------------|---------------------|
-| Index on `vector` | `i < size` | yes |
-| Index on `vector` | `i != size` | risky: can skip past size and loop forever |
-| Iterator (any container) | `it != end` | yes on `vector` / `string` / `deque`; on `list`, use repeated `++` instead of `+= 3` |
+| Index on `vector` | `i < size` | safe: `< size` stops even if you skip past the last index |
+| Index on `vector` | `i != size` | unsafe: can skip past `size` and loop forever |
+| Iterator (any container) | `it != end` with `++it` | safe: one step toward the sentinel each time |
+| Iterator with `it += 3` | `it != end` | unsafe: can leap over `end` without equaling it |
 
-> PREFERENCE: Index loop → `i < container.size()`. Iterator loop → `it != container.end()`. Do not swap those rules.
+> PREFERENCE: Index loop → `i < static_cast<int>(container.size())`. Iterator loop → `it != container.end()` with **`++it`**. Do not swap those rules, and do not use large iterator steps unless you explicitly guard against passing `end`.
 
 > PREFERENCE: Use a range-based for loop when you do not need the index or iterator. Use iterators when calling STL algorithms or when there is no index (for example on `std::set`).
 

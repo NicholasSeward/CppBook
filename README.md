@@ -201,7 +201,16 @@ A beginner-friendly C++ textbook organized as Markdown chapters.
 ### 13 Inheritance
 
 - [Inheritance Index](13Inheritance/README.md)
-Coming soon.
+- [Introduction to Inheritance](13Inheritance/01introduction%20to%20inheritance.md)
+- [Base and Derived Classes](13Inheritance/02base%20and%20derived%20classes.md)
+- [Modeling Person, Employee, and More](13Inheritance/03modeling%20person%20employee%20and%20more.md)
+- [Constructing Derived Objects](13Inheritance/04constructing%20derived%20objects.md)
+- [Destruction Order](13Inheritance/05destruction%20order.md)
+- [Object Slicing and Polymorphism](13Inheritance/06object%20slicing%20and%20polymorphism.md)
+- [Protected Members](13Inheritance/07protected%20members.md)
+- [Public, Protected, and Private Inheritance](13Inheritance/08inheritance%20access%20control.md)
+- [Extending and Hiding Base Behavior](13Inheritance/09extending%20and%20hiding%20base%20behavior.md)
+- [Multiple Inheritance](13Inheritance/10multiple%20inheritance.md)
 
 ### 14 Overloading
 

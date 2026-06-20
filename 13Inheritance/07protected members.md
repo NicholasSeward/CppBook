@@ -44,7 +44,7 @@ public:
 
     void print() const
     {
-        std::cout << name << " (" << employeeId << ")\n";
+        std::cout << name << ", age " << age << " (id " << employeeId << ")\n";
     }
 };
 

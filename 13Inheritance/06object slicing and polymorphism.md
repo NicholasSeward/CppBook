@@ -29,7 +29,7 @@ public:
 
     virtual void describe() const
     {
-        std::cout << name << ", person\n";
+        std::cout << name << ", age " << age << ", person\n";
     }
 
     virtual ~Person() = default;
@@ -64,7 +64,7 @@ int main()
 }
 ```
 
-Output: **`Lin, person`** (not employee id 101).
+Output: **`Lin, age 28, person`** (not employee id 101).
 
 ## Pointers preserve the full object
 
@@ -87,7 +87,7 @@ public:
 
     virtual void describe() const
     {
-        std::cout << name << ", person\n";
+        std::cout << name << ", age " << age << ", person\n";
     }
 
     virtual ~Person() = default;
@@ -121,7 +121,7 @@ int main()
 }
 ```
 
-Output: **`Lin, employee 101`**.
+Output: **`Lin, age 28, employee 101`**.
 
 ## Many shapes, one loop
 

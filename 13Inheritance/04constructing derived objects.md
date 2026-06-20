@@ -44,7 +44,7 @@ public:
         : name{std::move(personName)}
         , age{personAge}
     {
-        std::cout << "Person constructed\n";
+        std::cout << "Person constructed: " << name << ", age " << age << '\n';
     }
 };
 
@@ -58,7 +58,7 @@ public:
         : Person{personName, personAge}
         , employeeId{id}
     {
-        std::cout << "Employee constructed\n";
+        std::cout << "Employee constructed: id " << employeeId << '\n';
     }
 };
 
@@ -72,8 +72,8 @@ int main()
 Output:
 
 ```
-Person constructed
-Employee constructed
+Person constructed: Lin, age 28
+Employee constructed: id 101
 ```
 
 If you omit **`Person{...}`** and `Person` has no default constructor, the program **does not compile**. If `Person` *does* have a default constructor, the compiler calls that implicitly (often not what you want).
@@ -82,16 +82,11 @@ If you omit **`Person{...}`** and `Person` has no default constructor, the progr
 
 When the base has a default constructor and you say nothing, C++ calls it for you:
 
-```cpp
-class Person
-{
-public:
-    Person() = default;
-    Person(std::string n, int a) { /* ... */ }
-};
-
+```
 class Employee : public Person
 {
+    int employeeId{};
+
 public:
     Employee(int id)
         : employeeId{id}  // implicitly calls Person{}
@@ -110,6 +105,6 @@ Prompt: Using the first example in this section (`Person` then `Employee` messag
 
 :::details Answer
 
-**`Person constructed`** prints first. Base before derived.
+**`Person constructed: ...`** prints first (base before derived).
 
 :::

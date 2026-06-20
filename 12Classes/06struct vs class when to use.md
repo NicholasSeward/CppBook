@@ -109,4 +109,6 @@ Prompt: For each description, write either `struct` or `class` in the comment.
 
 (No code to run; short reflection.)
 
-Answers: 1 → struct, 2 → class, 3 → struct
+:::details Answer
+1 → struct, 2 → class, 3 → struct
+:::

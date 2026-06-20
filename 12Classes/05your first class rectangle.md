@@ -120,7 +120,7 @@ Consistency matters more than which scheme you pick. Match your project and stop
 
 ## Overloading and defaults on member functions
 
-Member functions follow the same rules as free functions: you can **overload** them and give **default arguments**.
+Member functions follow the same rules as free functions: you can **overload** them (same name, different parameters) or give **default arguments** to one function.
 
 ```cpp
 #include <iostream>
@@ -131,17 +131,17 @@ private:
     double ounces{};
 
 public:
-    Cup()
-        : ounces{0.0}
-    {
-    }
-
-    void fill(double amount = 8.0)
+    void fill(double amount)
     {
         ounces += amount;
     }
 
-    void drink(double amount)
+    void fill()
+    {
+        fill(8.0);
+    }
+
+    void drink(double amount = 4.0)
     {
         if (amount > ounces)
         {
@@ -153,34 +153,28 @@ public:
         }
     }
 
-    void empty()
+    double remaining() const
     {
-        ounces = 0.0;
-    }
-
-    double percentFull(double capacity) const
-    {
-        if (capacity <= 0.0)
-        {
-            return 0.0;
-        }
-        return (ounces / capacity) * 100.0;
+        return ounces;
     }
 };
 
 int main()
 {
     Cup mug{};
-    mug.fill();           // default 8 oz
-    mug.drink(3.0);
-    std::cout << mug.percentFull(12.0) << "% full\n";
-    mug.empty();
-    std::cout << mug.percentFull(12.0) << "% full\n";
+    mug.fill();       // overload: fill()
+    mug.fill(2.0);    // overload: fill(double)
+    mug.drink();      // default argument: 4.0 oz
+    mug.drink(1.0);   // explicit amount
+    std::cout << mug.remaining() << " oz left\n";
     return 0;
 }
 ```
 
-`fill()`, `fill(4.0)`, and overloaded names like `empty()` vs `drink()` read like verbs on the object: "mug, fill yourself; mug, drink three ounces."
+- **`fill()` / `fill(2.0)`** — two functions, same name, different parameter lists. The compiler picks the overload from the argument count (same idea as [function overloading](../02Functions/13function%20overloading.md)).
+- **`drink()` / `drink(1.0)`** — one function. When you omit the argument, C++ supplies the default (`4.0`).
+
+Use overloads when the versions are genuinely different functions. Use defaults when one implementation handles every case and only the last parameter(s) may be omitted.
 
 ## Try it now
 

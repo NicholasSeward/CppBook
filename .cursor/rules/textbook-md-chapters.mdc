@@ -74,8 +74,52 @@ When you do include it:
 - Use `cpp`, `md`, or other TxtBook fence tags as appropriate. C++ playgrounds should use `// @file:` markers when the lesson needs multiple files (see **TxtBook playgrounds**).
 - Starter code must be runnable (or previewable for `md`), with enough left for the reader to do: missing pieces, wrong-on-purpose bugs, or `TODO` comments.
 - The prompt should be **similar in skill** to the section examples but **not a copy** of them. Change the scenario, names, values, or types so the reader applies the idea instead of repeating the same program.
+- After the playground (or a prompt-only exercise), add optional collapsible help using **details** blocks (below): hints, an answer, a solution, or any combination that fits.
 
 Bullet-only exercises (no playground) are fine for IDE-only tasks (for example "set a breakpoint") or short reflection questions.
+
+### Hints, answers, and solutions
+
+Use collapsible **details** blocks so readers can try first, then expand help without scrolling past spoilers.
+
+Start with `:::details Label`, put hidden content below, then end with a line containing only `:::`.
+
+```markdown
+:::details Hint
+
+Try breaking the problem into smaller steps before writing code.
+
+:::
+
+:::details Answer
+
+`42`
+
+:::
+
+:::details Solution
+
+**Reasoning:** One or two sentences on *why* this works, not only what to type.
+
+(full solution in a `cpp` fenced block when the exercise uses code)
+
+:::
+```
+
+| Label | Use |
+|-------|-----|
+| `Hint` / `Hints` | A nudge: what to look at, which idea from the section applies, a first step. No full answer. Use plural when you split help across more than one block. |
+| `Answer` | The result only: a value, output line, or short factual reply. Good for "what prints?" or numeric exercises. |
+| `Solution` / `Solutions` | Full worked answer plus **Reasoning:** (plain prose before any code). Include runnable code when the exercise has a playground. Use plural for multi-part tasks. |
+
+Rules:
+
+- The label after `:::details` is the button text. Common labels: `Hint`, `Hints`, `Answer`, `Solution`, `Solutions`. Short variants are fine (`Solution (one approach)`).
+- The closing `:::` must be alone on its own line.
+- Add only the blocks the exercise needs. Put hints before answers or solutions. An exercise may have hints alone, an answer alone, a solution alone, or any mix.
+- **Answer** = what; **Solution** = how and why. Use both when the reader should check a result before reading the walkthrough.
+- Solution **Reasoning:** should tie back to the section's concept (for example *why* `const` is required on a const reference, *why* `this->` disambiguates a shadowed member).
+- Do not put hints, answers, or solutions inside the starter playground fence; keep them in details blocks after the fence.
 
 ## Callouts
 

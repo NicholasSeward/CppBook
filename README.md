@@ -177,7 +177,26 @@ A beginner-friendly C++ textbook organized as Markdown chapters.
 ### 12 Classes
 
 - [Classes Index](12Classes/README.md)
-Coming soon.
+- [From Procedural to OOP](12Classes/01from%20procedural%20to%20oop.md)
+- [Objects and Struct Behavior](12Classes/02objects%20and%20struct%20behavior.md)
+- [Encapsulation and Invariants](12Classes/03encapsulation%20and%20invariants.md)
+- [Class Basics](12Classes/04class%20basics.md)
+- [Your First Class: Rectangle](12Classes/05your%20first%20class%20rectangle.md)
+- [Struct vs Class: When to Use Which](12Classes/06struct%20vs%20class%20when%20to%20use.md)
+- [Const Member Functions](12Classes/07const%20member%20functions.md)
+- [Access Control](12Classes/08access%20control.md)
+- [Getters and Setters](12Classes/09getters%20and%20setters.md)
+- [Preserving Invariants](12Classes/10preserving%20invariants.md)
+- [Interface and Implementation](12Classes/11interface%20and%20implementation.md)
+- [Constructors and Initializer Lists](12Classes/12constructors%20and%20initializer%20lists.md)
+- [Default, Delegating, and Copy Constructors](12Classes/13default%20delegating%20and%20copy%20constructors.md)
+- [The `this` Pointer and Chaining](12Classes/14this%20pointer%20and%20chaining.md)
+- [Header and Implementation Files](12Classes/15header%20and%20implementation%20files.md)
+- [Inline, Static, and the ODR](12Classes/16inline%20static%20and%20odr.md)
+- [Enums Inside Classes](12Classes/17enums%20in%20classes.md)
+- [Destructors](12Classes/18destructors.md)
+- [Class Templates](12Classes/19class%20templates.md)
+- [Friend Functions](12Classes/20friend%20functions.md)
 
 ### 13 Inheritance
 

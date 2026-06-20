@@ -57,6 +57,12 @@ Structure major blocks as `##` sections in this order when they fit:
 5. Optional callouts (below)
 6. Tie back to prior material when needed
 
+## Diagrams
+
+Use **Mermaid** fenced blocks when a diagram clarifies flow, structure, or relationships better than prose alone. Open a fence with the `mermaid` tag (flowcharts, sequence diagrams, class diagrams, and similar).
+
+Use diagrams as needed, not by default. One clear diagram beats several overlapping ones.
+
 ## Try it now blocks
 
 A section does **not** have to include `## Try it now`. Use it when hands-on practice fits the topic.

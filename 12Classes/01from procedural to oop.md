@@ -104,12 +104,15 @@ OOP was promoted as a way to bend that cost curve. You pay a bit more upfront (d
 xychart-beta
     title "Rough trend: effort vs project size"
     x-axis ["Small", "Medium", "Large", "Very large"]
-    y-axis "Relative development effort" 0 --> 100
-    line "Procedural style" [10, 30, 65, 95]
-    line "OOP style" [15, 28, 42, 58]
+    y-axis "Relative effort" 0 --> 100
+    line [10, 30, 65, 95]
+    line [15, 28, 42, 58]
 ```
 
-The crossover is not exact science. The point is qualitative: OOP trades a higher starting cost for slower growth as complexity increases.
+🟥 Procedural style (first line)  
+🟦 OOP style (second line)
+
+The crossover is not exact science. The point is qualitative: OOP trades a higher starting cost for slower growth as complexity increases. For many students, the lines cross around a **second programming course** sized project.
 
 ## What counts as an object?
 

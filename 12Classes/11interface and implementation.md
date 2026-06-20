@@ -6,57 +6,98 @@ Good interfaces stay stable. Implementations can change.
 
 ## Same interface, different internals
 
-Both stacks expose `push`, `pop`, and `top`. One uses a `vector`, one uses a linked list. Callers who only use the public methods should not need to know which.
+Two classes can expose the **same public methods** while storing data differently inside. Callers who only use `deposit`, `withdraw`, and `balanceAmount` should not need to know whether the balance is kept as **integer cents** or **floating-point dollars**.
+
+**Implementation A: balance stored as cents (`int`)**
 
 ```cpp
 #include <iostream>
-#include <vector>
 
-class IntStackVector
+class BankAccount
 {
 private:
-    std::vector<int> data{};
+    int balanceCents{};
 
 public:
-    void push(int value)
+    BankAccount(double startBalance)
+        : balanceCents{static_cast<int>(startBalance * 100)}
     {
-        data.push_back(value);
     }
 
-    void pop()
+    void deposit(double amount)
     {
-        if (!data.empty())
-        {
-            data.pop_back();
-        }
+        balanceCents += static_cast<int>(amount * 100);
     }
 
-    int top() const
+    void withdraw(double amount)
     {
-        return data.back();
+        balanceCents -= static_cast<int>(amount * 100);
     }
 
-    bool empty() const
+    double balanceAmount() const
     {
-        return data.empty();
+        return balanceCents / 100.0;
     }
 };
 
 int main()
 {
-    IntStackVector s{};
-    s.push(10);
-    s.push(20);
-    std::cout << s.top() << '\n';
-    s.pop();
-    std::cout << s.top() << '\n';
+    BankAccount acct{100.0};
+    acct.deposit(25.50);
+    acct.withdraw(10.25);
+    std::cout << acct.balanceAmount() << '\n';
     return 0;
 }
 ```
 
-A linked-list version could swap `std::vector` for nodes and pointers but keep **`push` / `pop` / `top` / `empty`** with the same meanings. Tests written against the interface still pass.
+**Implementation B: balance stored as dollars (`double`)**
+
+```cpp
+#include <iostream>
+
+class BankAccount
+{
+private:
+    double balance{};
+
+public:
+    BankAccount(double startBalance)
+        : balance{startBalance}
+    {
+    }
+
+    void deposit(double amount)
+    {
+        balance += amount;
+    }
+
+    void withdraw(double amount)
+    {
+        balance -= amount;
+    }
+
+    double balanceAmount() const
+    {
+        return balance;
+    }
+};
+
+int main()
+{
+    BankAccount acct{100.0};
+    acct.deposit(25.50);
+    acct.withdraw(10.25);
+    std::cout << acct.balanceAmount() << '\n';
+    return 0;
+}
+```
+
+Same calls in `main`, same output for this example (`115.25`). Different private fields, different arithmetic inside the methods. You could swap implementations behind the interface without changing caller code.
+
+The cents version avoids some floating-point rounding drift; the `double` version is simpler to write. Both are valid tradeoffs as long as the **public contract** stays clear.
 
 That separation is the practical payoff of encapsulation: **define the lines of interaction**, hide the rest.
+
 
 ## Public interface vs private workers
 

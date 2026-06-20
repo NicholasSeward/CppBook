@@ -1,60 +1,17 @@
-# Inline, Static, and the ODR
+# Static and Inline Members
 
-Large programs compile many `.cpp` files separately. The **One Definition Rule (ODR)** keeps linkers from seeing duplicate symbols for the same function or variable.
+Some class members belong to the **type as a whole**, not to one object. They are **shared** by every instance (or callable without an instance at all).
 
-## Inline functions
+Two keywords cover most of that in headers:
 
-**`inline`** on a function (especially in a header) tells the compiler it is OK to define the function in multiple translation units. The linker merges them.
-
-Modern guidance: use **`inline`** on small functions defined in headers. Avoid **`static`** on free functions in headers for this purpose (old C habit).
-
-```cpp
-#include <iostream>
-
-inline int maxInt(int a, int b)
-{
-    return a > b ? a : b;
-}
-
-int main()
-{
-    std::cout << maxInt(3, 7) << '\n';
-    return 0;
-}
-```
-
-Class member functions **defined inside the class body** are implicitly **`inline`**.
-
-```cpp
-#include <iostream>
-
-class Box
-{
-public:
-    Box(int w, int h)
-        : width{w}
-        , height{h}
-    {
-    }
-
-    int volume() const { return width * height; }  // implicitly inline
-
-private:
-    int width{};
-    int height{};
-};
-
-int main()
-{
-    Box b{3, 4};
-    std::cout << b.volume() << '\n';
-    return 0;
-}
-```
+| Keyword | On a class member |
+|---------|-------------------|
+| **`static`** | Shared at class level (one function or one variable for the whole class) |
+| **`inline`** | Lets a **static data member** be **assigned in the `.h` file** (C++17) |
 
 ## Static member functions
 
-**`static`** member functions belong to the **class**, not to one object. They cannot use non-static data members directly (no `this`).
+A **`static`** member function is tied to the **class**, not to one object's `this`. Call it with **`ClassName::functionName`**.
 
 ```cpp
 #include <iostream>
@@ -75,20 +32,83 @@ int main()
 }
 ```
 
-Call with **`ClassName::functionName`**, not through an instance.
+It cannot use non-`static` data members directly. If it does not need any class data, it could be a plain free function instead. **`static`** is still useful when the helper should live under the type name (`MathUtil::max`).
 
-If a function does not need object state, ask whether it should be a **free function** in a namespace instead. `static` members are useful when the name should live with the type (`std::string` helpers, factory methods, counters shared by all instances).
+## Static data members (shared)
 
-## Static data members (preview)
+A **`static`** data member is **one variable shared by all objects** of the class, not a separate copy per object.
 
-Classes can also have **`static`** data shared by all objects (instance counts, shared config). Definition usually goes in a `.cpp` file. Details appear when you need them.
+Without **`inline`**, you **declare** it in the header and **define** it once in a `.cpp` file:
 
-## Summary
+```cpp
+// Player.h
+class Player
+{
+public:
+    static int liveCount;
+};
+```
 
-| Keyword | Typical use |
-|---------|-------------|
-| **`inline`** | Small functions in headers; avoid ODR violations |
-| **`static`** (member function) | Utility tied to type, no object instance required |
+```cpp
+// Player.cpp
+int Player::liveCount = 0;
+```
+
+## Inline static data members
+
+**`static inline`** data is still **shared**, but you may **assign the value in the header**:
+
+```cpp
+#include <iostream>
+
+class Player
+{
+public:
+    static inline int liveCount = 0;
+
+    Player()
+    {
+        ++liveCount;
+    }
+};
+
+int main()
+{
+    Player a{};
+    Player b{};
+    std::cout << Player::liveCount << '\n';
+    return 0;
+}
+```
+
+**`static`** = one counter for the whole class. **`inline`** = `= 0` can live in the `.h` file without a separate line in a `.cpp` file.
+
+Putting both ideas in one class:
+
+```cpp
+#include <iostream>
+
+class GameStats
+{
+public:
+    static inline int gamesPlayed = 0;
+
+    static void recordGame()
+    {
+        ++gamesPlayed;
+    }
+};
+
+int main()
+{
+    GameStats::recordGame();
+    GameStats::recordGame();
+    std::cout << GameStats::gamesPlayed << '\n';
+    return 0;
+}
+```
+
+`gamesPlayed` is shared data with an initializer in the header. `recordGame` is a shared function that updates it. No `GameStats` object required.
 
 ## Try it now
 
@@ -113,3 +133,28 @@ int main()
 ```
 
 Expected: `0` then `1` (or `false` / `true` with `std::boolalpha`)
+
+:::details Hint
+
+`static` member functions use `ClassName::` to call. Return `n > 0` from `isPositive`.
+
+:::
+
+:::details Solution
+
+**Reasoning:** `isPositive` is a class-level helper. Callers write `MathUtil::isPositive(5)` without creating a `MathUtil` object.
+
+```cpp
+static bool isPositive(int n)
+{
+    return n > 0;
+}
+```
+
+In `main`:
+
+```cpp
+std::cout << MathUtil::isPositive(-1) << ' ' << MathUtil::isPositive(5) << '\n';
+```
+
+:::

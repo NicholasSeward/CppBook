@@ -192,7 +192,7 @@ A beginner-friendly C++ textbook organized as Markdown chapters.
 - [Default, Delegating, and Copy Constructors](12Classes/13default%20delegating%20and%20copy%20constructors.md)
 - [The `this` Pointer and Chaining](12Classes/14this%20pointer%20and%20chaining.md)
 - [Header and Implementation Files](12Classes/15header%20and%20implementation%20files.md)
-- [Inline, Static, and the ODR](12Classes/16inline%20static%20and%20odr.md)
+- [Static and Inline Members](12Classes/16inline%20static%20and%20odr.md)
 - [Enums Inside Classes](12Classes/17enums%20in%20classes.md)
 - [Destructors](12Classes/18destructors.md)
 - [Class Templates](12Classes/19class%20templates.md)

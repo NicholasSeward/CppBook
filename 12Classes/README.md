@@ -19,7 +19,7 @@ Object-oriented programming in C++: structs with behavior, classes with encapsul
 - [Default, Delegating, and Copy Constructors](13default%20delegating%20and%20copy%20constructors.md)
 - [The `this` Pointer and Chaining](14this%20pointer%20and%20chaining.md)
 - [Header and Implementation Files](15header%20and%20implementation%20files.md)
-- [Inline, Static, and the ODR](16inline%20static%20and%20odr.md)
+- [Static and Inline Members](16inline%20static%20and%20odr.md)
 - [Enums Inside Classes](17enums%20in%20classes.md)
 - [Destructors](18destructors.md)
 - [Class Templates](19class%20templates.md)

@@ -29,7 +29,7 @@ int main()
 }
 ```
 
-If you write **any** constructor yourself, the compiler **does not** generate a default unless you ask:
+If you write **any** constructor yourself, the compiler **does not** generate a default unless you provide one:
 
 ```cpp
 #include <iostream>
@@ -46,7 +46,7 @@ public:
     }
 
     Widget()
-        : Widget{0}  // explicitly provide default via delegation
+        : count{0}
     {
     }
 
@@ -64,7 +64,11 @@ int main()
 }
 ```
 
-> PREFERENCE: Prefer a constructor that sets sensible initial state over "default construct then call five setters." Compare:
+Here `Widget()` sets `count` directly. Later, **Delegating constructors** shows how to forward to `Widget(int)` instead of repeating that logic.
+
+> PREFERENCE: Prefer a constructor that sets sensible initial state over "default construct then call five setters." 
+
+Compare:
 
 ```
 Widget w{};
@@ -155,7 +159,44 @@ int main()
 
 ## Delegating constructors
 
-One constructor can call another in the same class:
+One constructor can **forward** to another in the **initializer list**. The target constructor runs first and owns the member initialization. The delegating constructor body runs after.
+
+```cpp
+#include <iostream>
+
+class Widget
+{
+private:
+    int count{};
+
+public:
+    Widget(int start)
+        : count{start}
+    {
+    }
+
+    Widget()
+        : Widget{0}  // delegate to Widget(int)
+    {
+    }
+
+    int value() const
+    {
+        return count;
+    }
+};
+
+int main()
+{
+    Widget w{};
+    std::cout << w.value() << '\n';
+    return 0;
+}
+```
+
+`Widget()` does not assign `count` itself. It calls `Widget{0}`, so the `int` constructor's logic runs in one place.
+
+When several constructors share setup, delegation avoids copy-pasting initializer lists:
 
 ```cpp
 #include <iostream>
@@ -168,14 +209,19 @@ private:
     int id{};
 
 public:
+    User(std::string userName, int userId)
+        : name{std::move(userName)}
+        , id{userId}
+    {
+    }
+
     User()
         : User{"guest", 0}
     {
     }
 
-    User(std::string userName, int userId)
-        : name{std::move(userName)}
-        , id{userId}
+    User(std::string userName)
+        : User{std::move(userName), 0}
     {
     }
 
@@ -188,12 +234,16 @@ public:
 int main()
 {
     User guest{};
+    User named{"Ada"};
     guest.print();
+    named.print();
     return 0;
 }
 ```
 
-The delegating constructor must list the other constructor in the initializer list. Avoid duplicate initialization logic.
+Both `User()` and `User(std::string)` delegate to `User(std::string, int)`. Change how new users get an `id` in that one constructor and every path picks it up.
+
+> NOTE: A delegating constructor's initializer list must contain **only** the call to another constructor of the same class, not a mix of member initializers and delegation.
 
 ## Copy constructor
 
@@ -277,4 +327,61 @@ int main()
 
 Prompt: Add a default constructor to `Greeter` so `Greeter g{};` prints `Hello` when `g.print()` runs.
 
-Use the two-constructor `Greeter` example as a model, or `= default` plus an initializer list.
+```cpp
+#include <iostream>
+#include <string>
+
+class Greeter
+{
+private:
+    std::string message;
+
+public:
+    Greeter(std::string msg)
+        : message{std::move(msg)}
+    {
+    }
+
+    // TODO: default constructor
+
+    void print() const
+    {
+        std::cout << message << '\n';
+    }
+};
+
+int main()
+{
+    Greeter g{};  // should default to "Hello"
+    g.print();
+    return 0;
+}
+```
+
+:::details Hint
+
+The compiler will not generate a default constructor because `Greeter(std::string)` already exists. Add `Greeter()` with `: message{"Hello"}` or delegate to `Greeter{"Hello"}`.
+
+:::
+
+:::details Solution
+
+**Reasoning:** Once you declare any constructor, you must supply a no-argument constructor yourself if you want `Greeter g{}`. Initializing `message` in that constructor avoids a separate setter call.
+
+```cpp
+Greeter()
+    : message{"Hello"}
+{
+}
+```
+
+Or with delegation:
+
+```cpp
+Greeter()
+    : Greeter{"Hello"}
+{
+}
+```
+
+:::

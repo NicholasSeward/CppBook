@@ -101,16 +101,16 @@ The OOP version is not magic yet. It is one step toward **localizing** knowledge
 OOP was promoted as a way to bend that cost curve. You pay a bit more upfront (designing types, boundaries, interfaces). In return, coupling drops, reuse goes up, and changes stay local. For small homework programs the overhead is not worth it. For a second-course project with many cooperating pieces, objects often pay for themselves.
 
 ```mermaid
-xychart-beta
+xychart
     title "Rough trend: effort vs project size"
     x-axis ["Small", "Medium", "Large", "Very large"]
     y-axis "Relative effort" 0 --> 100
-    line [10, 30, 65, 95]
-    line [15, 28, 42, 58]
+    line [10, 30, 65, 95] color="#e63946"
+    line [15, 28, 42, 58] color="#457b9d"
 ```
 
-🟥 Procedural style (first line)  
-🟦 OOP style (second line)
+🟥 Procedural style
+🟦 OOP style
 
 The crossover is not exact science. The point is qualitative: OOP trades a higher starting cost for slower growth as complexity increases. For many students, the lines cross around a **second programming course** sized project.
 

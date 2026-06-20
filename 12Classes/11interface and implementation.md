@@ -130,6 +130,8 @@ Smaller, well-behaved interfaces mean **less to test** and fewer ways for caller
 
 ### Exercise 1: Interface sketch
 
-Prompt: List three **public** function names you would put on a `Timer` class (start, stop, elapsed seconds). Do not implement them. Focus on names a caller would understand without knowing internals.
+Prompt: List three **public** function names you would put on a `Timer` class. Do not implement them. Focus on names a caller would understand without knowing internals.
 
-Example answers: `start()`, `stop()`, `elapsedSeconds()`
+:::details Example Answers
+`start()`, `stop()`, `elapsedSeconds()`
+:::

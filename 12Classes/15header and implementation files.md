@@ -83,28 +83,12 @@ The **One Definition Rule (ODR)** says most entities may be defined only once ac
 
 ### Exercise 1: Move to `.cpp`
 
-Prompt: The playground below has a complete class in one file. Split it into `Circle.h`, `Circle.cpp`, and `main.cpp` using `::` for definitions. Keep behavior the same.
+Prompt: Fill in `Circle.h`, `Circle.cpp`, and `main.cpp`. Declare `Circle` in the header (private `radius`, constructor, `area() const`). Define the constructor and `area()` in the `.cpp` using `::`. `main` should build a circle with radius `2.0` and print its area.
 
 ```cpp
 // @file: main.cpp
+#include "Circle.h"
 #include <iostream>
-
-class Circle
-{
-private:
-    double radius{};
-
-public:
-    Circle(double r)
-        : radius{r}
-    {
-    }
-
-    double area() const
-    {
-        return 3.14159 * radius * radius;
-    }
-};
 
 int main()
 {
@@ -112,6 +96,56 @@ int main()
     std::cout << c.area() << '\n';
     return 0;
 }
+
+// @file: Circle.h
+#pragma once
+
+// TODO: declare class Circle
+
+// @file: Circle.cpp
+#include "Circle.h"
+
+// TODO: define Circle::Circle and Circle::area
 ```
 
-Move the class declaration to `Circle.h` and bodies to `Circle.cpp`. Update `main.cpp` to `#include "Circle.h"`.
+:::details Hint
+
+Mirror the **Rectangle** layout earlier in this section: `#pragma once` in the header, `#include "Circle.h"` in the `.cpp`, and `Circle::` before each member definition. Use `3.14159 * radius * radius` for area.
+
+:::
+
+:::details Solution
+
+**Reasoning:** The header holds the class shape callers need; the `.cpp` holds one definition of each member function. `main.cpp` only includes the header because it uses the type, not the bodies.
+
+```cpp
+// @file: Circle.h
+#pragma once
+
+class Circle
+{
+private:
+    double radius{};
+
+public:
+    Circle(double r);
+    double area() const;
+};
+
+// @file: Circle.cpp
+#include "Circle.h"
+
+Circle::Circle(double r)
+    : radius{r}
+{
+}
+
+double Circle::area() const
+{
+    return 3.14159 * radius * radius;
+}
+```
+
+Expected output: `12.5664`
+
+:::

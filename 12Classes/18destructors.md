@@ -52,9 +52,11 @@ Output order:
 
 ## Default destructor
 
-If you write no destructor, the compiler generates an empty **default destructor** that destroys members in reverse order. For `std::string` and `std::vector` members, that is usually enough (**RAII**).
+If you write no destructor, the compiler generates an empty **default destructor** that destroys members in reverse order. For `std::string` and `std::vector` members, that is usually enough.
 
-Destructors mattered more when every class manually `delete`d raw memory. Smart pointers and STL containers push cleanup into members so destructors "just work."
+> NOTE: **RAII** (Resource Acquisition Is Initialization) means you **acquire** a resource when an object is **constructed** and **release** it when the object is **destroyed**. The destructor is the cleanup hook. `std::string` frees its memory, `std::ofstream` closes its file, and so on, without you writing extra code. That is RAII in action: scope ends, objects die, resources tidy themselves up.
+
+Destructors mattered more when every class manually deleted raw memory. Smart pointers and STL containers push cleanup into members so destructors "just work."
 
 ## When you still write one
 
@@ -102,12 +104,123 @@ int main()
 
 ## Scope end vs `std::exit`
 
-Destructors for local objects run when their **scope** ends. **`std::exit`** terminates the program without running destructors for local objects on that thread (static objects may still be destroyed at process exit). Prefer returning from `main` or letting scope end normally during learning exercises.
+Normal path: when a local object goes out of scope, its destructor runs. **`std::exit`** ends the program **immediately** and **skips** destructors for local objects on that thread.
+
+Run this, then change `std::exit(0)` to `return 0` and run again:
+
+```cpp
+#include <cstdlib>
+#include <iostream>
+#include <string>
+
+class Message
+{
+private:
+    std::string text;
+
+public:
+    Message(std::string msg)
+        : text{std::move(msg)}
+    {
+        std::cout << "Born: " << text << '\n';
+    }
+
+    ~Message()
+    {
+        std::cout << "Dying: " << text << '\n';
+    }
+};
+
+int main()
+{
+    Message m{"Goodbye"};
+    std::cout << "Calling std::exit...\n";
+    std::exit(0);
+}
+```
+
+With **`std::exit(0)`**, output is:
+
+```
+Born: Goodbye
+Calling std::exit...
+```
+
+No **`Dying:`** line. The destructor never runs.
+
+Replace **`std::exit(0);`** with **`return 0;`**, run again:
+
+```cpp
+int main()
+{
+    Message m{"Goodbye"};
+    std::cout << "Leaving main...\n";
+    return 0;
+}
+```
+
+Output:
+
+```
+Born: Goodbye
+Leaving main...
+Dying: Goodbye
+```
+
+> PREFERENCE: Prefer **`return`** from `main` or letting scope end. Reserve **`std::exit`** for rare shutdown paths where you accept that local destructors will not run (and any RAII cleanup tied to them is skipped).
+
+## Closing thought
+
+Destruction is the mirror of construction: objects **born** in a scope are **destroyed** when that scope ends. That automatic pairing is what makes RAII work. Write a destructor when your class owns cleanup the compiler cannot guess; otherwise trust members like `std::string` to destroy themselves. Just do not assume destructors run if you **`std::exit`** out of the middle of a function.
 
 ## Try it now
 
-### Exercise 1: Count destructions
+### Exercise 1: Count and order destructions
 
-Prompt: Create two `Message` objects in `main` (different strings). How many "Dying:" lines print when the program ends?
+Prompt: Create two `Message` objects in `main` with different strings. Run the program. How many **`Dying:`** lines print, and **in what order** (which message text each time)?
 
-Answer: **2** (one per object)
+```cpp
+#include <iostream>
+#include <string>
+
+class Message
+{
+private:
+    std::string text;
+
+public:
+    Message(std::string msg)
+        : text{std::move(msg)}
+    {
+        std::cout << "Born: " << text << '\n';
+    }
+
+    ~Message()
+    {
+        std::cout << "Dying: " << text << '\n';
+    }
+};
+
+int main()
+{
+    // TODO: create two Message objects (different strings)
+    return 0;
+}
+```
+
+:::details Answer
+
+**Count:** **2** — one **`Dying:`** line per object.
+
+**Order:** reverse of construction. If you wrote `Message first{"Alpha"};` then `Message second{"Beta"};`, you get **`Dying: Beta`**, then **`Dying: Alpha`**. Objects in the same scope are destroyed in **reverse order of construction** (the last one created is destroyed first).
+
+Example full output:
+
+```
+Born: Alpha
+Born: Beta
+Dying: Beta
+Dying: Alpha
+```
+
+:::

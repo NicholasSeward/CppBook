@@ -40,7 +40,7 @@ A **`static`** data member is **one variable shared by all objects** of the clas
 
 Without **`inline`**, you **declare** it in the header and **define** it once in a `.cpp` file:
 
-```cpp
+```
 // Player.h
 class Player
 {
@@ -49,7 +49,7 @@ public:
 };
 ```
 
-```cpp
+```
 // Player.cpp
 int Player::liveCount = 0;
 ```

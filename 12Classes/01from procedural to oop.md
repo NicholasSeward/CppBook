@@ -101,7 +101,7 @@ The OOP version is not magic yet. It is one step toward **localizing** knowledge
 OOP was promoted as a way to bend that cost curve. You pay a bit more upfront (designing types, boundaries, interfaces). In return, coupling drops, reuse goes up, and changes stay local. For small homework programs the overhead is not worth it. For a second-course project with many cooperating pieces, objects often pay for themselves.
 
 ```mermaid
-xychart
+xychart-beta
     title "Rough trend: effort vs project size"
     x-axis ["Small", "Medium", "Large", "Very large"]
     y-axis "Relative effort" 0 --> 100

@@ -5,7 +5,7 @@ Creating a derived object **builds the base first**, then the derived part. You 
 ## Layer cake of data members
 
 ```mermaid
-flowchart BT
+flowchart TB
     subgraph Supervisor
         teamSize
     end

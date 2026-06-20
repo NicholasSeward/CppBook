@@ -9,7 +9,7 @@ Inheritance vocabulary shows up under several names. They mean the same relation
 
 Syntax:
 
-```cpp
+```
 class Derived : public Base
 {
 };

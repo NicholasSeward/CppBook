@@ -98,42 +98,11 @@ int main()
 
 > PREFERENCE: You can omit the leading `private:` on a class and rely on the default. This book keeps it **explicit** so readers always see the boundary between hidden data and public interface.
 
-## Optional: commented-out `private`
-
-When learning, you might temporarily comment out `private:` and make members public to see that everything still "works" while invariants break. Do not ship code that way.
-
-```cpp
-#include <iostream>
-
-class Rectangle
-{
-    // private:   // commented for experiment only
-public:
-    double width{};
-    double height{};
-
-    double area() const
-    {
-        return width * height;
-    }
-};
-
-int main()
-{
-    Rectangle r{4.0, 5.0};
-    r.width = 10.0;  // compiles because width is public
-    std::cout << r.area() << '\n';
-    return 0;
-}
-```
-
-With `private:` disabled, outside code can corrupt state. With it enabled and setter functions in place, you control how state changes.
-
 ## Try it now
 
 ### Exercise 1: Fix access
 
-Prompt: `health` should not be public. Move it to `private` and add a public `healthPoints() const` that returns it.
+Prompt: `health` should not be public. Move it to `private` and add a public `healthPoints() const` that returns it. The constructor is already set up for `main`.
 
 ```cpp
 #include <iostream>
@@ -144,6 +113,12 @@ class Player
 public:
     std::string name;
     int health{};  // TODO: make private, add healthPoints()
+
+    Player(std::string n, int hp)
+        : name{n}
+        , health{hp}
+    {
+    }
 };
 
 int main()

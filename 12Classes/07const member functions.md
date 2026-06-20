@@ -112,6 +112,11 @@ public:
     {
     }
 
+    double widthValue() const
+    {
+        return width;
+    }
+
     double heightValue() /* TODO: add const here */
     {
         return height;
@@ -120,7 +125,7 @@ public:
 
 void printHeight(const Rectangle& r)
 {
-    std::cout << r.heightValue() << '\n';
+    std::cout << r.widthValue() << " by " << r.heightValue() << '\n';
 }
 
 int main()

@@ -95,6 +95,10 @@ int main()
 }
 ```
 
+In `struct S`, `s.a = 10` is legal: members are **public** by default. Uncomment `c.a = 10` for `class C` and the compiler reports an **error**: `a` is **private** by default, so code outside the class cannot access it.
+
+This demo never reads or writes `C::a` from inside the class either, so `a` is **unused**. With warnings enabled (for example `-Wall`), some compilers warn about an unused private member. That is separate from the access error, but it is a hint that private data usually belongs in member functions, not as dead fields.
+
 Everything you learn about constructors, member functions, and `const` applies to both. This chapter focuses on **`class`** because that is where encapsulation matters most.
 
 ## Try it now

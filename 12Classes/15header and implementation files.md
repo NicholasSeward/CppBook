@@ -21,9 +21,7 @@ int main()
     std::cout << desk.area() << '\n';
     return 0;
 }
-```
 
-```cpp
 // @file: Rectangle.h
 #pragma once
 
@@ -37,9 +35,7 @@ public:
     Rectangle(double w, double h);
     double area() const;
 };
-```
 
-```cpp
 // @file: Rectangle.cpp
 #include "Rectangle.h"
 

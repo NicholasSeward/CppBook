@@ -357,31 +357,3 @@ int main()
     return 0;
 }
 ```
-
-:::details Hint
-
-The compiler will not generate a default constructor because `Greeter(std::string)` already exists. Add `Greeter()` with `: message{"Hello"}` or delegate to `Greeter{"Hello"}`.
-
-:::
-
-:::details Solution
-
-**Reasoning:** Once you declare any constructor, you must supply a no-argument constructor yourself if you want `Greeter g{}`. Initializing `message` in that constructor avoids a separate setter call.
-
-```cpp
-Greeter()
-    : message{"Hello"}
-{
-}
-```
-
-Or with delegation:
-
-```cpp
-Greeter()
-    : Greeter{"Hello"}
-{
-}
-```
-
-:::

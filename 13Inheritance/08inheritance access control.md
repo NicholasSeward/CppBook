@@ -4,7 +4,7 @@ When you write **`class Derived : public Base`**, the **`public`** keyword contr
 
 This book **always uses `public` inheritance** so access stays the same as in the base:
 
-```cpp
+```
 class Employee : public Person
 {
 };

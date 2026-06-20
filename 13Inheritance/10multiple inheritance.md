@@ -2,7 +2,7 @@
 
 C++ allows a class to inherit from **more than one** base:
 
-```cpp
+```
 class Copier : public Scanner, public Printer
 {
 };

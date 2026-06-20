@@ -103,7 +103,7 @@ Uncommenting **`d.log(3.5)`** fails because **`Derived::log(int)`** hides **both
 
 Rarely, you pull base overloads back into scope:
 
-```cpp
+```
 class Derived : public Base
 {
 public:

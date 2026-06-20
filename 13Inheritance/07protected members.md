@@ -60,7 +60,7 @@ int main()
 
 If **`name`** were **`private`**, this would not compile unless **`Person`** offered a getter.
 
-> NOTE: This book still prefers **`private`** data with a small public interface when you can test a class on its own. Use **`protected`** when many derived classes need the same base fields and getters would only exist for children.
+> NOTE: This book still prefers **`private`** data with a small public interface when you can test a class on its own. A derived class you also wrote is **less likely** to break the base class's rules than random outside code, but **`protected`** still lets a child change base data without going through your checks. Staying **`private`** and exposing only what you intend (getters, small **`protected`** helpers) helps avoid **accidental invariant violations**.
 
 ## Try it now
 

@@ -49,7 +49,7 @@ What does the program print when run?
 
 Modify `Animal` to include a constructor:
 
-```cpp
+```
 public:
     Animal()
     {
@@ -72,15 +72,15 @@ True or false: the constructor is called automatically when an object is created
 
 Modify the class to add:
 
-```cpp
+```
 private:
     int age{5};
 ```
 
-Do not add getters yet. In `main`, try uncommenting a direct access line:
+Do not add getters yet. In `main`, try adding a direct access line:
 
-```cpp
-// std::cout << a.age << '\n';
+```
+std::cout << a.age << '\n';
 ```
 
 ### 3.
@@ -97,7 +97,7 @@ Fill in the blank: **_____**
 
 Modify the class to add:
 
-```cpp
+```
 public:
     void setAge(int a)
     {
@@ -112,7 +112,7 @@ public:
 
 Modify `main()`:
 
-```cpp
+```
 std::cout << a.getAge() << '\n';
 ```
 
@@ -133,7 +133,7 @@ What does the program print?
 
 Replace the default constructor with:
 
-```cpp
+```
 Animal(int ageValue)
     : age{ageValue}
 {
@@ -143,7 +143,7 @@ Animal(int ageValue)
 
 Create the object in `main` with:
 
-```cpp
+```
 Animal a{5};
 ```
 
@@ -162,7 +162,7 @@ How is the `age` member initialized?
 
 Modify the constructor to:
 
-```cpp
+```
 Animal(int ageValue = 10)
     : age{ageValue}
 {
@@ -171,7 +171,7 @@ Animal(int ageValue = 10)
 
 Remove the body message if you like. In `main`:
 
-```cpp
+```
 Animal dog{5};
 std::cout << dog.getAge() << '\n';
 ```
@@ -195,7 +195,7 @@ friend void showAge(Animal a);
 
 Add this function **outside** the class:
 
-```cpp
+```
 void showAge(Animal a)
 {
     std::cout << "Age: " << a.age << '\n';
@@ -204,7 +204,7 @@ void showAge(Animal a)
 
 In `main()`:
 
-```cpp
+```
 Animal b{7};
 showAge(b);
 ```
@@ -224,7 +224,7 @@ Why can `showAge()` access `age`?
 
 Add a member `showAge()` and an `operator+`:
 
-```cpp
+```
 void showAge() const
 {
     std::cout << "Age: " << age << '\n';
@@ -238,7 +238,7 @@ Animal operator+(Animal other)
 
 Modify `main()`:
 
-```cpp
+```
 Animal b{};   // default age 10
 Animal c{11};
 Animal d{b + c};
@@ -259,7 +259,7 @@ Fill in the blank.
 
 Create an `Engine` class **before** `Animal`:
 
-```cpp
+```
 class Engine
 {
 public:
@@ -272,7 +272,7 @@ public:
 
 Modify `Animal` to contain an engine:
 
-```cpp
+```
 private:
     int age{};
     Engine engine{};
@@ -280,7 +280,7 @@ private:
 
 Restore a default constructor on `Animal` that prints:
 
-```cpp
+```
 Animal()
 {
     std::cout << "Animal created!\n";
@@ -289,7 +289,7 @@ Animal()
 
 In `main()`:
 
-```cpp
+```
 Animal a{};
 ```
 
@@ -308,14 +308,14 @@ What prints when `Animal a{};` runs? (Member objects are constructed before the 
 
 Modify `Animal` so `age` is **protected** instead of private:
 
-```cpp
+```
 protected:
     int age{};
 ```
 
 Create a `Dog` class:
 
-```cpp
+```
 class Dog : public Animal
 {
 public:
@@ -333,7 +333,7 @@ public:
 
 Modify `main()`:
 
-```cpp
+```
 Dog d{5};
 d.showDogAge();
 ```

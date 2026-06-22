@@ -189,7 +189,7 @@ True or false: if we call `Animal dog{5};`, the object uses the default paramete
 
 Add inside `Animal`:
 
-```cpp
+```
 friend void showAge(Animal a);
 ```
 

@@ -1,3 +1,24 @@
 # GUI Programming
 
-Coming soon.
+Interactive graphics with **SDL2**: game loop, events, drawing, textures, text, audio, and building for desktop and TxtBook playgrounds.
+
+## Sections
+
+- [What Is GUI Programming?](01what%20is%20gui%20programming.md)
+- [The Game Loop and Events](02game%20loop%20and%20events.md)
+- [GUI Libraries and Portability](03gui%20libraries%20and%20portability.md)
+- [SDL2 Init and Cleanup](04sdl2%20init%20and%20cleanup.md)
+- [Window, Renderer, and Game Loop](05window%20renderer%20and%20game%20loop.md)
+- [Error Checking and Rollback](06error%20checking%20and%20rollback.md)
+- [Double Buffering and Coordinates](07double%20buffering%20and%20coordinates.md)
+- [Bouncing Square and Frame Timing](08bouncing%20square%20and%20frame%20timing.md)
+- [Frame Timing and Delta Time](09frame%20timing%20and%20delta%20time.md)
+- [Keyboard and Mouse Input](10keyboard%20and%20mouse%20input.md)
+- [Colors and Gfx Primitives](11colors%20and%20gfx%20primitives.md)
+- [Images and Textures](12images%20and%20textures.md)
+- [Fonts and Text](13fonts%20and%20text.md)
+- [Audio With SDL2_mixer](14audio%20with%20mixer.md)
+- [Assets and the Build](15assets%20and%20the%20build.md)
+- [A Simple Engine and Delta Time](16simple%20engine%20and%20delta%20time.md)
+- [SDL2 Cheat Sheet](17sdl2%20cheat%20sheet.md)
+- [CMake, vcpkg, and Further Reading](18cmake%20vcpkg%20and%20links.md)

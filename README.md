@@ -236,8 +236,27 @@ Coming soon.
 - [Tree vs Hash: Choosing a Container](16DataStructures/09tree%20vs%20hash%20choosing.md)
 - [Recursive Trees](16DataStructures/10(todo)recursive%20trees.md)
 
+### 17 GUI Programming
+
 - [GUI Programming Index](17GuiProgramming/README.md)
-Coming soon.
+- [What Is GUI Programming?](17GuiProgramming/01what%20is%20gui%20programming.md)
+- [The Game Loop and Events](17GuiProgramming/02game%20loop%20and%20events.md)
+- [GUI Libraries and Portability](17GuiProgramming/03gui%20libraries%20and%20portability.md)
+- [SDL2 Init and Cleanup](17GuiProgramming/04sdl2%20init%20and%20cleanup.md)
+- [Window, Renderer, and Game Loop](17GuiProgramming/05window%20renderer%20and%20game%20loop.md)
+- [Error Checking and Rollback](17GuiProgramming/06error%20checking%20and%20rollback.md)
+- [Double Buffering and Coordinates](17GuiProgramming/07double%20buffering%20and%20coordinates.md)
+- [Bouncing Square and Frame Timing](17GuiProgramming/08bouncing%20square%20and%20frame%20timing.md)
+- [Frame Timing and Delta Time](17GuiProgramming/09frame%20timing%20and%20delta%20time.md)
+- [Keyboard and Mouse Input](17GuiProgramming/10keyboard%20and%20mouse%20input.md)
+- [Colors and Gfx Primitives](17GuiProgramming/11colors%20and%20gfx%20primitives.md)
+- [Images and Textures](17GuiProgramming/12images%20and%20textures.md)
+- [Fonts and Text](17GuiProgramming/13fonts%20and%20text.md)
+- [Audio With SDL2_mixer](17GuiProgramming/14audio%20with%20mixer.md)
+- [Assets and the Build](17GuiProgramming/15assets%20and%20the%20build.md)
+- [A Simple Engine and Delta Time](17GuiProgramming/16simple%20engine%20and%20delta%20time.md)
+- [SDL2 Cheat Sheet](17GuiProgramming/17sdl2%20cheat%20sheet.md)
+- [CMake, vcpkg, and Further Reading](17GuiProgramming/18cmake%20vcpkg%20and%20links.md)
 
 ### 18 Design Patterns
 

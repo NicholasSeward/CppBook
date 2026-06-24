@@ -71,8 +71,9 @@ When you do include it:
 
 - End the section with `## Try it now` (or add 1 to 3 exercises under that heading).
 - Each exercise is typically a **Prompt:** line plus a **code playground** with starter code the reader edits to complete the task.
-- Use `cpp`, `md`, or other TxtBook fence tags as appropriate. C++ playgrounds should use `// @file:` markers when the lesson needs multiple files (see **TxtBook playgrounds**).
+- Use `cpp`, `md`, `sdl2`, or other TxtBook fence tags as appropriate. C++ playgrounds should use `// @file:` markers when the lesson needs multiple files (see **TxtBook playgrounds**). SDL2 playgrounds use `sdl2` fences (see **SDL2 playgrounds**).
 - Starter code must be runnable (or previewable for `md`), with enough left for the reader to do: missing pieces, wrong-on-purpose bugs, or `TODO` comments.
+- Use generic fences for small snippets that can't be run.
 - The prompt should be **similar in skill** to the section examples but **not a copy** of them. Change the scenario, names, values, or types so the reader applies the idea instead of repeating the same program.
 - After the playground (or a prompt-only exercise), add optional collapsible help using **details** blocks (below): hints, an answer, a solution, or any combination that fits.
 
@@ -170,6 +171,7 @@ Lesson `.md` files become interactive playgrounds in TxtBook. Fenced blocks get 
 | `cpp` | Compile on server; terminal output below |
 | `py` | Run in browser (Pyodide) |
 | `md` or `markdown` | Editable source + live preview (callouts, tables, links) |
+| `sdl2` | Compile with Emscripten + SDL2; draw to a **640×480** browser canvas (see **SDL2 playgrounds**) |
 
 ### Runtime file tabs
 
@@ -223,7 +225,100 @@ Use `TEST_CASE` and `CHECK` in the same `cpp` block. Set `DOCTEST_CONFIG_IMPLEME
 - List `main.cpp` first, then headers, then `.cpp` files.
 - Use `hidden` for boilerplate helpers (for example `show_file.cpp`).
 - For `argc` / `argv` demos, add `// @args:` as the first line of the fence when the example needs command-line input (see **Command-line arguments** above).
-- Use `md` playgrounds for formatting demos; use `cpp` for runnable code.
+- Use `md` playgrounds for formatting demos; use `cpp` for runnable code; use `sdl2` for interactive GUI demos in the GUI chapter.
+
+### SDL2 playgrounds
+
+`sdl2` fenced blocks compile with **Emscripten + SDL2** and draw to a canvas of specified size (typically 640x480) in the browser. Write a normal desktop-style `while (running)` loop.
+
+TxtBook enables **Asyncify**, so call **`SDL_Delay(16)`** once per frame to yield to the browser (same pattern as capping frame rate on desktop).
+
+#### Linked libraries
+
+SDL2 core plus **SDL2_image**, **SDL2_ttf**, **SDL2_mixer**, and **SDL2_gfx** are linked automatically. Use these includes:
+
+```cpp
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL2_gfxPrimitives.h>
+```
+
+#### Assets
+
+Add **`// @asset: path`** lines at the top of the fence, to copy files into the wasm filesystem before **Run**.
+
+- Paths are **relative to the current lesson or repo file** (same rules as markdown images).
+- Optional remote fetch: `// @asset: sprite.png from:https://…` (same allowed hosts as `// @file: … from:URL`).
+
+Put shared demo assets beside the lesson (for example `17GuiProgramming/assets/dude.png`) or in a subfolder referenced in `@asset` lines.
+
+#### Authoring rules (SDL2)
+
+- One `sdl2` fence per playground (like `cpp`).
+- Put `// @asset:` lines **above** `#include` lines.
+- Load images, fonts, and audio **once** before the game loop, not every frame.
+- Standard window size in the playground is **640×480**; clamp or scale positions accordingly.
+- Use `SDL_Log` / `SDL_GetError`, `IMG_GetError`, `TTF_GetError`, `Mix_GetError` for load failures in demos that teach error checking.
+- Prefer `\n` in log strings; match book brace style in longer examples.
+
+#### Full assets demo pattern
+
+A complete pattern (sprite, font, click sound, gfx glow): store files under the chapter `assets/` folder (or `sdl2/` beside the lesson), reference them with `@asset`, then load once in `main`:
+
+```sdl2
+// @asset: assets/dude.png
+// @asset: assets/font.ttf
+// @asset: assets/boing.wav
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL2_gfxPrimitives.h>
+
+int main(int, char**)
+{
+    SDL_SetHint(SDL_HINT_EMSCRIPTEN_KEYBOARD_ELEMENT, "#canvas");
+    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+    IMG_Init(IMG_INIT_PNG);
+    TTF_Init();
+    Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 1, 512);
+
+    SDL_Window* window = SDL_CreateWindow(
+        "TxtBook SDL2",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        640,
+        480,
+        SDL_WINDOW_SHOWN);
+
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    SDL_Texture* playerTex = IMG_LoadTexture(renderer, "assets/dude.png");
+
+    bool running{true};
+    SDL_Event event{};
+
+    while (running)
+    {
+        while (SDL_PollEvent(&event))
+        {
+            if (event.type == SDL_QUIT)
+            {
+                running = false;
+            }
+        }
+
+        SDL_SetRenderDrawColor(renderer, 70, 130, 220, 255);
+        SDL_RenderClear(renderer);
+        SDL_RenderPresent(renderer);
+        SDL_Delay(16);
+    }
+
+    return 0;
+}
+```
+
 
 ## Code and examples
 
@@ -246,6 +341,7 @@ if (condition)
 - Keep same-line braces only when the point is to show bad formatting, an alternate brace style, or a compact snippet where brace style is not the lesson.
 - In runnable single-file examples, put `int main()` before helper function **definitions**. Use forward declarations above `main` when a helper is defined later in the same block.
 - For multi-file C++ in TxtBook, see **TxtBook playgrounds** above. Same rules apply in section source files.
+- For SDL2 GUI demos in TxtBook, use **`sdl2`** fences and **SDL2 playgrounds** above. Console-only SDL snippets in early sections may stay untagged or use `cpp` when there is no canvas.
 
 ## Files
 

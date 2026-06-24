@@ -1,9 +1,9 @@
 **Arrow keys** move the sprite; **click** randomizes the background and plays a sound; **Esc** to quit.
 
 ```sdl2
-// @asset: assets/player.png
-// @asset: assets/ui.ttf
-// @asset: assets/click.ogg
+// @asset: assets/dude.png
+// @asset: assets/font.ttf
+// @asset: assets/boing.wav
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
@@ -31,21 +31,21 @@ int main(int, char**) {
 
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    SDL_Texture* playerTex = IMG_LoadTexture(renderer, "sdl2/player.png");
+    SDL_Texture* playerTex = IMG_LoadTexture(renderer, "assets/dude.png");
     if (!playerTex) {
         SDL_Log("IMG_LoadTexture: %s", IMG_GetError());
         return 1;
     }
 
-    TTF_Font* font = TTF_OpenFont("sdl2/ui.ttf", 22);
+    TTF_Font* font = TTF_OpenFont("assets/font.ttf", 22);
     if (!font) {
         SDL_Log("TTF_OpenFont: %s", TTF_GetError());
         return 1;
     }
 
-    Mix_Music* click = Mix_LoadMUS("sdl2/click.ogg");
-    if (!click) {
-        SDL_Log("Mix_LoadMUS: %s", Mix_GetError());
+    Mix_Chunk* boing = Mix_LoadWAV("assets/boing.wav");
+    if (!boing) {
+        SDL_Log("Mix_LoadWAV: %s", Mix_GetError());
         return 1;
     }
 
@@ -99,7 +99,7 @@ int main(int, char**) {
                 bgR = static_cast<Uint8>(std::rand() % 256);
                 bgG = static_cast<Uint8>(std::rand() % 256);
                 bgB = static_cast<Uint8>(std::rand() % 256);
-                Mix_PlayMusic(click, 0);
+                Mix_PlayChannel(-1, boing, 0);
             }
         }
 

@@ -9,14 +9,15 @@ SDL delivers input as **events**. Common types:
 | `SDL_MOUSEBUTTONDOWN` / `UP` | Button pressed or released |
 | `SDL_QUIT` | Close window |
 
-## Keyboard movement
+Key symbols use names like **`SDLK_LEFT`**, **`SDLK_SPACE`**, **`SDLK_a`**. Full list: [SDL2 wiki — SDLKeycodeLookup](https://wiki.libsdl.org/SDL2/SDLKeycodeLookup) and [CategoryKeycode](https://wiki.libsdl.org/SDL2/CategoryKeycode).
+
+## Keyboard movement (per key press)
 
 ```sdl2
 #include <SDL2/SDL.h>
 
 int main(int, char**)
 {
-    SDL_SetHint(SDL_HINT_EMSCRIPTEN_KEYBOARD_ELEMENT, "#canvas");
     SDL_Init(SDL_INIT_VIDEO);
 
     SDL_Window* window = SDL_CreateWindow(
@@ -87,25 +88,89 @@ int main(int, char**)
 
 Key symbol: `event.key.keysym.sym` (for example `SDLK_LEFT`).
 
-## Mouse position and clicks
+## Held keys with a set
+
+`SDL_KEYDOWN` fires once per physical press. For **smooth movement while holding** a key, track which keys are down:
 
 ```cpp
-if (event.type == SDL_MOUSEMOTION)
+#include <unordered_set>
+
+std::unordered_set<SDL_Keycode> keysDown;
+
+// In the event loop:
+if (event.type == SDL_KEYDOWN)
 {
-    int mx = event.motion.x;
-    int my = event.motion.y;
+    keysDown.insert(event.key.keysym.sym);
+}
+if (event.type == SDL_KEYUP)
+{
+    keysDown.erase(event.key.keysym.sym);
 }
 
-if (event.type == SDL_MOUSEBUTTONDOWN)
+// Later in update logic:
+if (keysDown.count(SDLK_LEFT))
 {
-    if (event.button.button == SDL_BUTTON_LEFT)
-    {
-        // click at event.button.x, event.button.y
-    }
+    x -= step;
 }
 ```
 
-Or poll current position:
+## Mouse motion
+
+```sdl2
+#include <SDL2/SDL.h>
+
+int main(int, char**)
+{
+    SDL_Init(SDL_INIT_VIDEO);
+
+    SDL_Window* window = SDL_CreateWindow(
+        "Mouse motion",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        640,
+        480,
+        SDL_WINDOW_SHOWN);
+
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+    int mx{320};
+    int my{240};
+    bool running{true};
+    SDL_Event event{};
+
+    while (running)
+    {
+        while (SDL_PollEvent(&event))
+        {
+            if (event.type == SDL_QUIT)
+            {
+                running = false;
+            }
+            if (event.type == SDL_MOUSEMOTION)
+            {
+                mx = event.motion.x;
+                my = event.motion.y;
+            }
+        }
+
+        SDL_SetRenderDrawColor(renderer, 25, 28, 38, 255);
+        SDL_RenderClear(renderer);
+
+        SDL_SetRenderDrawColor(renderer, 255, 180, 60, 255);
+        SDL_Rect cursor{mx - 8, my - 8, 16, 16};
+        SDL_RenderFillRect(renderer, &cursor);
+
+        SDL_RenderPresent(renderer);
+        SDL_Delay(16);
+    }
+
+    return 0;
+}
+```
+
+Move the mouse — the orange square follows **`event.motion.x`** and **`event.motion.y`**.
+
+You can also poll current position without waiting for motion events:
 
 ```cpp
 int mx{};
@@ -125,7 +190,6 @@ bool pointInRect(int px, int py, SDL_Rect r)
 
 int main(int, char**)
 {
-    SDL_SetHint(SDL_HINT_EMSCRIPTEN_KEYBOARD_ELEMENT, "#canvas");
     SDL_Init(SDL_INIT_VIDEO);
 
     SDL_Window* window = SDL_CreateWindow(
@@ -193,5 +257,15 @@ Prompt: Which event type fires continuously while the mouse moves?
 :::details Answer
 
 **`SDL_MOUSEMOTION`**
+
+:::
+
+### Exercise 2: Held vs tap
+
+Prompt: Why is a `keysDown` set better than only handling `SDL_KEYDOWN` for continuous player movement?
+
+:::details Answer
+
+**`SDL_KEYDOWN`** repeats slowly on some systems and only fires on press. A **set** updated on down/up lets you check every frame whether a key is **still held**.
 
 :::

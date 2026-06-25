@@ -40,8 +40,16 @@ int main(int, char**)
             }
         }
 
-        SDL_SetRenderDrawColor(renderer, 40, 44, 52, 255);
+        static int frame{0};
+        ++frame;
+        int pulse = 40 + (frame % 60);
+        SDL_SetRenderDrawColor(renderer, pulse, 44, 52, 255);
         SDL_RenderClear(renderer);
+
+        SDL_SetRenderDrawColor(renderer, 255, 220, 80, 255);
+        SDL_Rect dot{frame % (640 - 20), 230, 20, 20};
+        SDL_RenderFillRect(renderer, &dot);
+
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
     }

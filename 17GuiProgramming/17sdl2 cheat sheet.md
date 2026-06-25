@@ -16,7 +16,6 @@ Quick reference for the libraries used in this chapter.
 | Rectangles | `SDL_RenderFillRect`, `SDL_RenderDrawRect` |
 | Textures | `SDL_CreateTextureFromSurface`, `SDL_QueryTexture`, `SDL_RenderCopy`, `SDL_DestroyTexture` |
 | Events | `SDL_PollEvent`, `SDL_WaitEvent` |
-| Keyboard hint (browser) | `SDL_SetHint(SDL_HINT_EMSCRIPTEN_KEYBOARD_ELEMENT, "#canvas")` |
 | Mouse | `SDL_GetMouseState` |
 | Time | `SDL_GetTicks`, `SDL_Delay` |
 

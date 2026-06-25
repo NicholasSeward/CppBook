@@ -17,7 +17,6 @@ This section shows steps 2–4 without rollback on failure (error checking comes
 
 int main(int, char**)
 {
-    SDL_SetHint(SDL_HINT_EMSCRIPTEN_KEYBOARD_ELEMENT, "#canvas");
     SDL_Init(SDL_INIT_VIDEO);
 
     SDL_Window* window = SDL_CreateWindow(
@@ -53,7 +52,9 @@ int main(int, char**)
         SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);
         SDL_RenderClear(renderer);
 
-        SDL_Rect bar{100, 200, 200, 80};
+        static int slide{0};
+        slide = (slide + 2) % 440;
+        SDL_Rect bar{slide, 200, 200, 80};
         SDL_SetRenderDrawColor(renderer, 0, 180, 255, 255);
         SDL_RenderFillRect(renderer, &bar);
 
@@ -78,6 +79,21 @@ void drawBar(SDL_Renderer* renderer, SDL_Rect rect)
 ```
 
 One renderer, one window, one frame at a time: clear, draw everything, then `SDL_RenderPresent`.
+
+For a board game class (tic-tac-toe, Connect Four), a common pattern is:
+
+```cpp
+class Board
+{
+public:
+    void draw(SDL_Renderer* renderer) const
+    {
+        // draw grid, pieces, highlights
+    }
+};
+```
+
+`main` clears the screen, calls `board.draw(renderer)`, then presents — the board owns how it looks.
 
 ## Frame steps inside the loop
 

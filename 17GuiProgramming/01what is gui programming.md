@@ -12,24 +12,17 @@ Until now, most of your programs talked through a **console**: text in, text out
 
 ## TxtBook SDL2 playgrounds
 
-This chapter uses **`sdl2`** fenced playgrounds in TxtBook. They compile with Emscripten and draw to a browser canvas (typically **640×480**).
-
-> NOTE: **Browser disclaimer.** A lot of machinery runs behind the scenes to make SDL2 work in the browser. **Build times can be long.** Examples are tested in Chrome. Perfectly valid desktop SDL2 code may behave differently in the browser. You can even make a tab unresponsive (for example by removing `SDL_Delay` inside the loop). Use the playgrounds, but be prepared to **refresh the tab** or restart the browser. Save work in other tabs first.
+This chapter uses **`sdl2`** fenced playgrounds in TxtBook. Read **[Browser Disclaimer and SDL2 Playgrounds](00browser%20disclaimer%20and%20sdl2%20playgrounds.md)** first — build times, browser quirks, and the `SDL_Delay(16)` habit are explained there.
 
 > PROTIP: Call **`SDL_Delay(16)`** once per frame so the browser stays responsive and you cap frame rate near 60 FPS.
 
+## Game objects that draw themselves
+
+As projects grow, you often wrap game state in a **class**. Connect Four, tic-tac-toe, a platformer level — each can expose a **`draw(SDL_Renderer* renderer)`** method. `main` (or a small engine) clears the screen, then asks each object to paint itself. Section [Window, Renderer, and Game Loop](05window%20renderer%20and%20game%20loop.md) shows passing the renderer around; the [Examples](19example%20tic%20tac%20toe.md) at the end of the chapter use this pattern.
+
 ## Chapter assets
 
-Examples that need files use paths under this chapter's **`assets/`** folder:
-
-| File | Use |
-|------|-----|
-| `assets/dude.png` | Sprite / texture demos |
-| `assets/font.ttf` | Font / text demos |
-| `assets/boing.wav` | Short sound effect |
-| `assets/music.ogg` | Background music demo |
-
-Reference them in playgrounds with `// @asset: assets/dude.png` (and similar) at the top of the fence.
+Examples that need files use paths under this chapter's **`assets/`** folder — see section 00 for the file list and `@asset` syntax.
 
 ## Try it now
 

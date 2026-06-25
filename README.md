@@ -50,7 +50,7 @@ A beginner-friendly C++ textbook organized as Markdown chapters.
 - [Deleted Functions](02Functions/15deleted%20functions.md)
 - [Templates Teaser](02Functions/16templates%20teaser.md)
 - [Command Line Arguments](02Functions/17command%20line%20arguments.md)
-- [Recursion](02Functions/18(todo)recursion.md)
+- [Recursion](02Functions/18recursion.md)
 
 ### 03 Debugging And Errors
 
@@ -220,7 +220,7 @@ Coming soon.
 ### 15 Pointers
 
 - [Pointers Index](15Pointers/README.md)
-- [Recursion and Linked Lists](15Pointers/01(todo)recursion%20and%20linked%20lists.md)
+- [Recursion and Linked Lists](15Pointers/01recursion%20and%20linked%20lists.md)
 
 ### 16 Data Structures
 
@@ -234,11 +234,12 @@ Coming soon.
 - [Map and Set (Ordered)](16DataStructures/07map%20and%20set.md)
 - [Unordered Map and Set](16DataStructures/08unordered%20map%20and%20set.md)
 - [Tree vs Hash: Choosing a Container](16DataStructures/09tree%20vs%20hash%20choosing.md)
-- [Recursive Trees](16DataStructures/10(todo)recursive%20trees.md)
+- [Recursive Trees](16DataStructures/10%28todo%29recursive%20trees.md)
 
 ### 17 GUI Programming
 
 - [GUI Programming Index](17GuiProgramming/README.md)
+- [Browser Disclaimer and SDL2 Playgrounds](17GuiProgramming/00browser%20disclaimer%20and%20sdl2%20playgrounds.md)
 - [What Is GUI Programming?](17GuiProgramming/01what%20is%20gui%20programming.md)
 - [The Game Loop and Events](17GuiProgramming/02game%20loop%20and%20events.md)
 - [GUI Libraries and Portability](17GuiProgramming/03gui%20libraries%20and%20portability.md)
@@ -257,6 +258,11 @@ Coming soon.
 - [A Simple Engine and Delta Time](17GuiProgramming/16simple%20engine%20and%20delta%20time.md)
 - [SDL2 Cheat Sheet](17GuiProgramming/17sdl2%20cheat%20sheet.md)
 - [CMake, vcpkg, and Further Reading](17GuiProgramming/18cmake%20vcpkg%20and%20links.md)
+- [Example: Tic-Tac-Toe](17GuiProgramming/19example%20tic%20tac%20toe.md)
+- [Example: Simple Platformer](17GuiProgramming/20example%20simple%20platformer.md)
+- [Example: Flappy Bird Clone](17GuiProgramming/21example%20flappy%20bird.md)
+- [GUI Programming (SDL2) — outline](17GuiProgramming/edits.md)
+- [Test](17GuiProgramming/test.md)
 
 ### 18 Design Patterns
 

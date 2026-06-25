@@ -7,7 +7,6 @@ Put init, loop, and draw together: a square moves each frame and bounces off the
 
 int main(int, char**)
 {
-    SDL_SetHint(SDL_HINT_EMSCRIPTEN_KEYBOARD_ELEMENT, "#canvas");
     SDL_Init(SDL_INIT_VIDEO);
 
     SDL_Window* window = SDL_CreateWindow(

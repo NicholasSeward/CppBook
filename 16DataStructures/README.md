@@ -11,4 +11,4 @@
 - [Map and Set (Ordered)](07map%20and%20set.md)
 - [Unordered Map and Set](08unordered%20map%20and%20set.md)
 - [Tree vs Hash: Choosing a Container](09tree%20vs%20hash%20choosing.md)
-- [Recursive Trees](10(todo)recursive%20trees.md) *(coming soon)*
+- [Recursive Trees](10%28todo%29recursive%20trees.md)

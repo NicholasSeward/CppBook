@@ -1,8 +1,6 @@
 # Classes
 
-Object-oriented programming in C++: structs with behavior, classes with encapsulation, constructors, and the machinery around them.
-
-## Sections
+## Chapters
 
 - [From Procedural to OOP](01from%20procedural%20to%20oop.md)
 - [Objects and Struct Behavior](02objects%20and%20struct%20behavior.md)

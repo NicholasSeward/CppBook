@@ -1,8 +1,6 @@
 # Inheritance
 
-Build new classes from existing ones: base and derived types, construction order, object slicing, polymorphism, and when **not** to inherit.
-
-## Sections
+## Chapters
 
 - [Introduction to Inheritance](01introduction%20to%20inheritance.md)
 - [Base and Derived Classes](02base%20and%20derived%20classes.md)

@@ -1,9 +1,8 @@
 # GUI Programming
 
-Interactive graphics with **SDL2**: game loop, events, drawing, textures, text, audio, and building for desktop and TxtBook playgrounds.
+## Chapters
 
-## Sections
-
+- [Browser Disclaimer and SDL2 Playgrounds](00browser%20disclaimer%20and%20sdl2%20playgrounds.md)
 - [What Is GUI Programming?](01what%20is%20gui%20programming.md)
 - [The Game Loop and Events](02game%20loop%20and%20events.md)
 - [GUI Libraries and Portability](03gui%20libraries%20and%20portability.md)
@@ -22,3 +21,8 @@ Interactive graphics with **SDL2**: game loop, events, drawing, textures, text, 
 - [A Simple Engine and Delta Time](16simple%20engine%20and%20delta%20time.md)
 - [SDL2 Cheat Sheet](17sdl2%20cheat%20sheet.md)
 - [CMake, vcpkg, and Further Reading](18cmake%20vcpkg%20and%20links.md)
+- [Example: Tic-Tac-Toe](19example%20tic%20tac%20toe.md)
+- [Example: Simple Platformer](20example%20simple%20platformer.md)
+- [Example: Flappy Bird Clone](21example%20flappy%20bird.md)
+- [GUI Programming (SDL2) — outline](edits.md)
+- [Test](test.md)

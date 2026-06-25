@@ -44,21 +44,23 @@ Typical startup order:
 Shutdown (reverse):
 
 1. Free textures, fonts, sounds
-2. Destroy renderer, window
+2. `SDL_DestroyRenderer`, `SDL_DestroyWindow`
 3. `Mix_Quit`, `TTF_Quit`, `IMG_Quit`
 4. `SDL_Quit`
 
-> NOTE: In TxtBook **`sdl2`** playgrounds you may skip `SDL_Destroy*` at the end so the last frame stays visible. On a **desktop** build, always destroy in reverse order.
+Always destroy what you create — even in TxtBook playgrounds. Good habits on small demos carry over to real projects.
 
-## Browser keyboard hint
-
-In TxtBook, arrow keys need focus on the canvas:
+## Full cleanup example
 
 ```cpp
-SDL_SetHint(SDL_HINT_EMSCRIPTEN_KEYBOARD_ELEMENT, "#canvas");
+SDL_DestroyTexture(tex);
+SDL_DestroyRenderer(renderer);
+SDL_DestroyWindow(window);
+IMG_Quit();
+SDL_Quit();
 ```
 
-Call once after `SDL_Init`.
+See [SDL2 wiki — CategoryInit](https://wiki.libsdl.org/SDL2/CategoryInit) for init flags and subsystem details.
 
 ## Try it now
 
@@ -68,6 +70,6 @@ Prompt: You created window, then renderer, then loaded a texture. What do you de
 
 :::details Answer
 
-The **texture** first, then **renderer**, then **window**, then `SDL_Quit` (and extension quits in reverse of their init).
+The **texture** first, then **renderer**, then **window**, then extension quits and `SDL_Quit` (reverse of creation).
 
 :::

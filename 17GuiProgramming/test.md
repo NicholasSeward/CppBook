@@ -11,8 +11,8 @@
 #include <SDL2/SDL2_gfxPrimitives.h>
 #include <cstdlib>
 
-int main(int, char**) {
-    SDL_SetHint(SDL_HINT_EMSCRIPTEN_KEYBOARD_ELEMENT, "#canvas");
+int main(int, char**)
+{
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
     IMG_Init(IMG_INIT_PNG);
     TTF_Init();
@@ -129,7 +129,6 @@ int main(int, char**) {
         SDL_Delay(16);
     }
 
-    // Skip SDL_Destroy* so TxtBook can freeze the last presented frame.
     return 0;
 }
 ```

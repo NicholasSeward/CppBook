@@ -1,8 +1,6 @@
 # Algorithms And Lambdas
 
-Sorting, STL algorithms, iterators, timing, callbacks, and lambdas.
-
-## Sections
+## Chapters
 
 - [Why Sort and Binary Search](01why%20sort%20and%20binary%20search.md)
 - [Building a Sort](02bubble%20sort.md)

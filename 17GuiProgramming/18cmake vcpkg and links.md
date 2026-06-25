@@ -46,7 +46,15 @@ Use a toolchain file: `cmake -DCMAKE_TOOLCHAIN_FILE=[vcpkg]/scripts/buildsystems
 
 ## Full assets demo
 
-Section 01 introduced chapter assets. A combined demo (sprite, font, gfx glow, click sound) lives in [test.md](test.md) for TxtBook testing. Use it as a reference when wiring all extensions together.
+Section 00 lists chapter assets. A combined demo (sprite, font, gfx glow, click sound) lives in [test.md](test.md) for TxtBook testing. Use it as a reference when wiring all extensions together.
+
+## Example games
+
+Put the chapter ideas together in three longer demos:
+
+- [Example: Tic-Tac-Toe](19example%20tic%20tac%20toe.md) — mouse input, board class, `draw(renderer)`
+- [Example: Simple Platformer](20example%20simple%20platformer.md) — gravity, platforms, sprite, sfx + background music
+- [Example: Flappy Bird Clone](21example%20flappy%20bird.md) — flap physics, scrolling pipes, score
 
 ## Try it now
 

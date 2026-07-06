@@ -92,7 +92,7 @@ Key symbol: `event.key.keysym.sym` (for example `SDLK_LEFT`).
 
 `SDL_KEYDOWN` fires once per physical press. For **smooth movement while holding** a key, track which keys are down:
 
-```cpp
+```
 #include <unordered_set>
 
 std::unordered_set<SDL_Keycode> keysDown;
@@ -172,7 +172,7 @@ Move the mouse — the orange square follows **`event.motion.x`** and **`event.m
 
 You can also poll current position without waiting for motion events:
 
-```cpp
+```
 int mx{};
 int my{};
 Uint32 buttons = SDL_GetMouseState(&mx, &my);

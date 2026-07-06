@@ -17,7 +17,15 @@ SDL2_gfx often takes a single **`Uint32`** in **`0xAABBGGRR`** order (alpha, blu
 
 > NOTE: Other APIs use `0xRRGGBBAA` or floats `0.0–1.0`. **Read the docs** for the library you call.
 
+SDL2_gfx functions ending in **`Color`** (not **`RGBA`**) take one packed **`Uint32`**:
+
+```cpp
+filledCircleColor(renderer, x, y, radius, 0xFF0000FF); // opaque red
+```
+
 ## Circles with SDL2_gfx
+
+Same colors, two styles: top row uses packed **`Uint32`** (`*Color`); bottom row uses separate **RGBA bytes** (`*RGBA`).
 
 ```sdl2
 #include <SDL2/SDL.h>
@@ -37,9 +45,13 @@ int main(int, char**)
 
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
+    const Uint32 red{0xFF0000FF};
+    const Uint32 blue{0xFFFF0000};
+    const Uint32 green{0xFF00FF00};
+    const Uint32 white{0xFFFFFFFF};
+
     bool running{true};
     SDL_Event event{};
-    int spin{0};
 
     while (running)
     {
@@ -51,16 +63,18 @@ int main(int, char**)
             }
         }
 
-        spin = (spin + 2) % 360;
-
         SDL_SetRenderDrawColor(renderer, 25, 25, 30, 255);
         SDL_RenderClear(renderer);
 
-        filledCircleRGBA(renderer, 160, 240, 60, 255, 80, 80, 255);
-        filledCircleRGBA(renderer, 320, 240, 60, 80, 200, 255, 255);
-        filledCircleRGBA(renderer, 480, 240, 60, 80, 255, 120, 255);
+        filledCircleColor(renderer, 160, 150, 50, red);
+        filledCircleColor(renderer, 320, 150, 50, blue);
+        filledCircleColor(renderer, 480, 150, 50, green);
+        circleColor(renderer, 320, 150, 58, white);
 
-        circleRGBA(renderer, 320, 240, 80, 255, 255, 255, 255);
+        filledCircleRGBA(renderer, 160, 330, 50, 255, 0, 0, 255);
+        filledCircleRGBA(renderer, 320, 330, 50, 0, 0, 255, 255);
+        filledCircleRGBA(renderer, 480, 330, 50, 0, 255, 0, 255);
+        circleRGBA(renderer, 320, 330, 58, 255, 255, 255, 255);
 
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
@@ -70,7 +84,9 @@ int main(int, char**)
 }
 ```
 
-Common SDL2_gfx calls: `lineRGBA`, `boxRGBA`, `filledBoxRGBA`, `circleRGBA`, `filledCircleRGBA`, `roundedBoxRGBA`.
+Top: **`filledCircleColor`** / **`circleColor`**. Bottom: **`filledCircleRGBA`** / **`circleRGBA`** with matching red, blue, and green.
+
+Other gfx pairs: `lineRGBA` / `lineColor`, `boxRGBA` / `boxColor`, `roundedBoxRGBA`.
 
 ## Falling circles with bounce count
 

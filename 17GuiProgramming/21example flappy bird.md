@@ -39,11 +39,10 @@ public:
     {
         birdY = 240.0f;
         birdVy = 0.0f;
-        birdAngle = 100.0f;
+        birdAngle = 75.0f;
         score = 0;
         alive = true;
         gameTime = 0.0f;
-        spawnTimer = 0.0f;
         logTimer = 0.0f;
         scrollSpeed = 55.0f;
         gapH = 200;
@@ -89,10 +88,10 @@ public:
         birdY += birdVy * dt;
 
         const float vyFlap{-280.0f};
-        const float vyFall{380.0f};
-        float t{(birdVy - vyFlap) / (vyFall - vyFlap)};
+        const float vyShort{120.0f};
+        float t{(birdVy - vyFlap) / (vyShort - vyFlap)};
         t = std::max(0.0f, std::min(1.0f, t));
-        const float targetAngle{80.0f + t * 40.0f};
+        const float targetAngle{60.0f + t * 30.0f};
         birdAngle += (targetAngle - birdAngle) * std::min(1.0f, dt * 10.0f);
 
         if (birdY - static_cast<float>(hitRadius) < 0.0f)
@@ -103,14 +102,6 @@ public:
         if (birdY + static_cast<float>(hitRadius) > 480.0f)
         {
             alive = false;
-        }
-
-        spawnTimer += dt;
-        const float spawnInterval{kPipeSpacing / scrollSpeed};
-        if (spawnTimer >= spawnInterval)
-        {
-            spawnTimer -= spawnInterval;
-            spawnPipe(640.0f);
         }
 
         for (Pipe& pipe : pipes)
@@ -139,6 +130,8 @@ public:
         pipes.erase(
             std::remove_if(pipes.begin(), pipes.end(), [](const Pipe& p) { return p.x < -60.0f; }),
             pipes.end());
+
+        spawnPipeIfNeeded();
     }
 
     void draw(SDL_Renderer* renderer, SDL_Texture* dude) const
@@ -189,7 +182,6 @@ private:
     int score{0};
     bool alive{true};
     float gameTime{0.0f};
-    float spawnTimer{0.0f};
     float logTimer{0.0f};
     float scrollSpeed{55.0f};
     int gapH{200};
@@ -204,6 +196,21 @@ private:
         const int maxGapY{480 - pipe.gapH - margin};
         pipe.gapY = margin + std::rand() % std::max(1, maxGapY - margin);
         pipes.push_back(pipe);
+    }
+
+    void spawnPipeIfNeeded()
+    {
+        float rightmost{-kPipeSpacing};
+        for (const Pipe& pipe : pipes)
+        {
+            rightmost = std::max(rightmost, pipe.x);
+        }
+
+        if (pipes.empty() || rightmost < 640.0f - kPipeSpacing)
+        {
+            const float spawnX{pipes.empty() ? 640.0f : rightmost + kPipeSpacing};
+            spawnPipe(spawnX);
+        }
     }
 
     bool hits(SDL_Rect r) const
@@ -295,10 +302,9 @@ int main(int, char**)
 **Highlighted pieces:**
 
 - **`FlappyGame::draw(renderer)`** — game owns pipes, bird, and HUD.
-- **`SDL_RenderCopyEx`** — half-scale **`dude.png`**, pivot at center; angle **80°–120°** (clockwise in SDL) from **`birdVy`**, smoothed each frame.
+- **`SDL_RenderCopyEx`** — half-scale **`dude.png`**; angle **60°** right after flap → **90°** after a short fall, smoothed each frame.
 - **Hit circle** — **70%** of half-sprite radius; pipe collision uses circle-vs-rect test.
-
-- **Scrolling** — `scrollSpeed` rises over time; spawn interval is `kPipeSpacing / scrollSpeed` so pipes stay evenly spaced.
+- **Pipe spacing** — spawn at **`rightmost + kPipeSpacing`** when the last pipe scrolls far enough left (fixed **240 px** gaps).
 - **Difficulty** — new pipes use a smaller **`gapH`** over time; values logged each second.
 
 This finishes the chapter examples. Review the [SDL2 Cheat Sheet](17sdl2%20cheat%20sheet.md) or build a desktop copy with [CMake and vcpkg](18cmake%20vcpkg%20and%20links.md).

@@ -3,15 +3,18 @@
 `SDL_Delay(16)` is a blunt instrument. Better approach:
 
 1. Record time at start of frame (`SDL_GetTicks`).
-2. Do work.
+2. Do work (input, update, draw).
 3. Compute elapsed ms.
 4. Delay only the **remainder** to hit a target FPS.
-5. Store **delta time** for movement: `position += velocity * dt`.
+5. Use **delta time** for movement: `position += velocity * deltaTimeSeconds`.
 
-## Measured frame limiter
+## Bouncing ball with adjustable FPS
+
+A ball starts near the **top** with **`vy = 0`** and **`vx` about 10 pixels per frame at 60 FPS** (stored as **600 units per second** so motion uses delta time). **Up/Down** arrows raise or lower the target FPS by 5 (minimum **5**). Once per second the log prints **target** and **actual** FPS.
 
 ```sdl2
 #include <SDL2/SDL.h>
+#include <SDL2/SDL2_gfxPrimitives.h>
 
 int main(int, char**)
 {
@@ -27,12 +30,17 @@ int main(int, char**)
 
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    const int targetFps{60};
-    const float targetFrameMs{1000.0f / static_cast<float>(targetFps)};
+    const int ballRadius{14};
+    float ballX{120.0f};
+    float ballY{static_cast<float>(ballRadius + 8)};
+    float vx{600.0f}; // ~10 px/frame at 60 FPS (pixels per second)
+    float vy{0.0f};
+    const float gravity{900.0f};
 
-    Uint32 lastTicks{SDL_GetTicks()};
+    int targetFps{60};
     int frameCount{0};
-    Uint32 fpsTimer{lastTicks};
+    Uint32 fpsTimer{SDL_GetTicks()};
+    Uint32 lastFrameTicks{fpsTimer};
 
     bool running{true};
     SDL_Event event{};
@@ -40,6 +48,12 @@ int main(int, char**)
     while (running)
     {
         Uint32 frameStart{SDL_GetTicks()};
+        float dt{static_cast<float>(frameStart - lastFrameTicks) / 1000.0f};
+        lastFrameTicks = frameStart;
+        if (dt > 0.1f)
+        {
+            dt = 0.1f;
+        }
 
         while (SDL_PollEvent(&event))
         {
@@ -47,13 +61,65 @@ int main(int, char**)
             {
                 running = false;
             }
+            if (event.type == SDL_KEYDOWN)
+            {
+                if (event.key.keysym.sym == SDLK_UP)
+                {
+                    targetFps += 5;
+                }
+                if (event.key.keysym.sym == SDLK_DOWN)
+                {
+                    targetFps -= 5;
+                }
+                if (targetFps < 5)
+                {
+                    targetFps = 5;
+                }
+            }
+        }
+
+        vy += gravity * dt;
+        ballX += vx * dt;
+        ballY += vy * dt;
+
+        if (ballX - ballRadius < 0.0f)
+        {
+            ballX = static_cast<float>(ballRadius);
+            vx = -vx;
+        }
+        if (ballX + ballRadius > 640.0f)
+        {
+            ballX = 640.0f - static_cast<float>(ballRadius);
+            vx = -vx;
+        }
+        if (ballY - ballRadius < 0.0f)
+        {
+            ballY = static_cast<float>(ballRadius);
+            vy = -vy;
+        }
+        if (ballY + ballRadius > 480.0f)
+        {
+            ballY = 480.0f - static_cast<float>(ballRadius);
+            vy = -vy * 0.85f;
         }
 
         SDL_SetRenderDrawColor(renderer, 30, 30, 40, 255);
         SDL_RenderClear(renderer);
+
+        filledCircleRGBA(
+            renderer,
+            static_cast<Sint16>(ballX),
+            static_cast<Sint16>(ballY),
+            ballRadius,
+            255,
+            200,
+            80,
+            255);
+
         SDL_RenderPresent(renderer);
 
         Uint32 frameEnd{SDL_GetTicks()};
+        float targetFrameMs{1000.0f / static_cast<float>(targetFps)};
         float frameMs{static_cast<float>(frameEnd - frameStart)};
         float delayMs{targetFrameMs - frameMs};
         if (delayMs > 0.0f)
@@ -64,7 +130,7 @@ int main(int, char**)
         ++frameCount;
         if (frameEnd - fpsTimer >= 1000)
         {
-            SDL_Log("FPS: %d", frameCount);
+            SDL_Log("target %d FPS, actual %d FPS", targetFps, frameCount);
             frameCount = 0;
             fpsTimer = frameEnd;
         }
@@ -74,6 +140,8 @@ int main(int, char**)
 }
 ```
 
+Click the canvas, then use **Up/Down** to change the cap. The ball should keep roughly the same speed in **pixels per second** even when actual FPS drops; only the motion smoothness changes.
+
 ## Why delta time matters
 
 Moving **4 pixels per frame** feels fine at 60 FPS and too fast at 120 FPS. Instead:
@@ -82,16 +150,26 @@ Moving **4 pixels per frame** feels fine at 60 FPS and too fast at 120 FPS. Inst
 x += speedX * deltaTimeSeconds;
 ```
 
-Same speed in **units per second** on any frame rate. A simple engine exposes `deltaTime` each step (see section 15).
+Same speed in **units per second** on any frame rate. A simple engine exposes `deltaTime` each step (see [section 16](16simple%20engine%20and%20delta%20time.md)).
 
 ## Try it now
 
 ### Exercise 1: Heavy frame
 
-Prompt: One frame takes 25 ms but your target is 16.7 ms. Should `SDL_Delay` add more delay that frame?
+Prompt: One frame takes 25 ms but your target is 16.7 ms (60 FPS). Should `SDL_Delay` add more delay that frame?
 
 :::details Answer
 
 **No.** Work already exceeded the budget. `delayMs` would be negative; skip extra delay (and consider optimizing that frame).
+
+:::
+
+### Exercise 2: Target vs actual
+
+Prompt: You set target FPS to 30 with Down arrow, but the log says `actual 28`. Is that necessarily a bug?
+
+:::details Answer
+
+**Not always.** **Target** is what you aim for with the limiter; **actual** is counted over a real second of wall-clock time and can differ slightly due to timer granularity and work time per frame.
 
 :::

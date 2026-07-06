@@ -19,7 +19,7 @@ SDL2_gfx often takes a single **`Uint32`** in **`0xAABBGGRR`** order (alpha, blu
 
 SDL2_gfx functions ending in **`Color`** (not **`RGBA`**) take one packed **`Uint32`**:
 
-```cpp
+```
 filledCircleColor(renderer, x, y, radius, 0xFF0000FF); // opaque red
 ```
 

@@ -10,13 +10,13 @@
 
 **SDL2_image** can load a file straight to a texture:
 
-```cpp
+```
 SDL_Texture* tex = IMG_LoadTexture(renderer, "assets/dude.png");
 ```
 
 Or load a surface and upload:
 
-```cpp
+```
 SDL_Surface* surface = IMG_Load("assets/dude.png");
 SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, surface);
 SDL_FreeSurface(surface);
@@ -31,7 +31,7 @@ Use the **texture** each frame; free the surface after upload.
 - **Source rect** — which part of the texture to use. Pass **`nullptr`** to mean **the whole texture**.
 - **Dest rect** — where and how large to draw on screen.
 
-```cpp
+```
 SDL_Rect dest{x, y, w, h};
 SDL_RenderCopy(renderer, tex, nullptr, &dest);
 ```
@@ -40,7 +40,7 @@ SDL_RenderCopy(renderer, tex, nullptr, &dest);
 
 **Crop** with a source rect (sprite sheet):
 
-```cpp
+```
 SDL_Rect src{0, 0, 32, 32};
 SDL_Rect dest{x, y, 64, 64};
 SDL_RenderCopy(renderer, tex, &src, &dest);
@@ -50,7 +50,7 @@ SDL_RenderCopy(renderer, tex, &src, &dest);
 
 **Rotate** with **`SDL_RenderCopyEx`** (angle in degrees, center pivot):
 
-```cpp
+```
 SDL_RenderCopyEx(renderer, tex, nullptr, &dest, angleDegrees, nullptr, SDL_FLIP_NONE);
 ```
 

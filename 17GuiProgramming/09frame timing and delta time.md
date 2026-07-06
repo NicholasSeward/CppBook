@@ -10,11 +10,19 @@
 
 ## Bouncing ball with adjustable FPS
 
-A ball starts near the **top** with **`vy = 0`** and **`vx` about 10 pixels per frame at 60 FPS** (stored as **600 units per second** so motion uses delta time). **Up/Down** arrows raise or lower the target FPS by 5 (minimum **5**). Once per second the log prints **target** and **actual** FPS.
+A ball starts near the **top** with **`vx` about 10 pixels per frame at 60 FPS** (600 units per second with delta time). Vertical motion uses **`y = f(t)`** — a periodic function of elapsed time — so the bounce height never fades. **Up/Down** arrows raise or lower the target FPS by 5 (minimum **5**). Once per second the log prints **target** and **actual** FPS.
 
 ```sdl2
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
+#include <cmath>
+
+float bounceY(float t, float yTop, float yFloor)
+{
+    const float omega{2.0f * 3.14159265f * 0.75f};
+    const float s{std::sin(omega * t)};
+    return yTop + (yFloor - yTop) * s * s;
+}
 
 int main(int, char**)
 {
@@ -31,11 +39,13 @@ int main(int, char**)
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     const int ballRadius{14};
+    const float yTop{static_cast<float>(ballRadius + 8)};
+    const float yFloor{480.0f - static_cast<float>(ballRadius)};
+
     float ballX{120.0f};
-    float ballY{static_cast<float>(ballRadius + 8)};
-    float vx{600.0f}; // ~10 px/frame at 60 FPS (pixels per second)
-    float vy{0.0f};
-    const float gravity{900.0f};
+    float ballY{yTop};
+    float vx{600.0f};
+    float t{0.0f};
 
     int targetFps{60};
     int frameCount{0};
@@ -78,9 +88,9 @@ int main(int, char**)
             }
         }
 
-        vy += gravity * dt;
+        t += dt;
         ballX += vx * dt;
-        ballY += vy * dt;
+        ballY = bounceY(t, yTop, yFloor);
 
         if (ballX - ballRadius < 0.0f)
         {
@@ -91,16 +101,6 @@ int main(int, char**)
         {
             ballX = 640.0f - static_cast<float>(ballRadius);
             vx = -vx;
-        }
-        if (ballY - ballRadius < 0.0f)
-        {
-            ballY = static_cast<float>(ballRadius);
-            vy = -vy;
-        }
-        if (ballY + ballRadius > 480.0f)
-        {
-            ballY = 480.0f - static_cast<float>(ballRadius);
-            vy = -vy * 0.85f;
         }
 
         SDL_SetRenderDrawColor(renderer, 30, 30, 40, 255);
@@ -140,7 +140,9 @@ int main(int, char**)
 }
 ```
 
-Click the canvas, then use **Up/Down** to change the cap. The ball should keep roughly the same speed in **pixels per second** even when actual FPS drops; only the motion smoothness changes.
+**`f(t)`** here is `yTop + (yFloor - yTop) * sin²(ωt)`. At `t = 0` the ball is at the top with zero vertical speed; at the bottom `sin²(ωt) = 1` and vertical speed is zero again — a lossless bounce. **`t += dt`** each frame, so the arc keeps the same timing even when FPS changes.
+
+Click the canvas, then use **Up/Down** to change the cap. Horizontal speed still uses **`vx * dt`**; vertical motion follows **`f(t)`** instead of integrating velocity with damping.
 
 ## Why delta time matters
 

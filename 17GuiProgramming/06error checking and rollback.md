@@ -4,7 +4,7 @@ SDL functions return **0 or a null pointer** on failure. Check each step. If som
 
 ## Pattern
 
-```cpp
+```
 if (SDL_Init(SDL_INIT_VIDEO) != 0)
 {
     SDL_Log("SDL_Init: %s", SDL_GetError());
@@ -46,7 +46,7 @@ Use `SDL_Log("message: %s", SDL_GetError());` so TxtBook and desktop both show r
 
 Texture and font loads fail at runtime if the path is wrong or the asset was not copied into the build (or wasm filesystem):
 
-```cpp
+```
 SDL_Texture* tex = IMG_LoadTexture(renderer, "assets/dude.png");
 if (tex == nullptr)
 {

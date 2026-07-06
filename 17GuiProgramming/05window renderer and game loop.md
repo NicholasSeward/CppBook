@@ -34,6 +34,7 @@ int main(int, char**)
 
     bool running{true};
     SDL_Event event{};
+    int slide{0};
 
     while (running)
     {
@@ -52,7 +53,6 @@ int main(int, char**)
         SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);
         SDL_RenderClear(renderer);
 
-        static int slide{0};
         slide = (slide + 2) % 440;
         SDL_Rect bar{slide, 200, 200, 80};
         SDL_SetRenderDrawColor(renderer, 0, 180, 255, 255);
@@ -70,7 +70,7 @@ int main(int, char**)
 
 Think of **`SDL_Renderer*`** as a **paintbrush** tied to one window. Whoever holds the pointer can draw for that frame. You typically pass it to helper functions:
 
-```cpp
+```
 void drawBar(SDL_Renderer* renderer, SDL_Rect rect)
 {
     SDL_SetRenderDrawColor(renderer, 0, 180, 255, 255);
@@ -82,7 +82,7 @@ One renderer, one window, one frame at a time: clear, draw everything, then `SDL
 
 For a board game class (tic-tac-toe, Connect Four), a common pattern is:
 
-```cpp
+```
 class Board
 {
 public:

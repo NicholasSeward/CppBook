@@ -52,7 +52,7 @@ Always destroy what you create — even in TxtBook playgrounds. Good habits on s
 
 ## Full cleanup example
 
-```cpp
+```
 SDL_DestroyTexture(tex);
 SDL_DestroyRenderer(renderer);
 SDL_DestroyWindow(window);

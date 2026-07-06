@@ -29,6 +29,7 @@ int main(int, char**)
 
     bool running{true};
     SDL_Event event{};
+    int frame{0};
 
     while (running)
     {
@@ -40,7 +41,6 @@ int main(int, char**)
             }
         }
 
-        static int frame{0};
         ++frame;
         int pulse = 40 + (frame % 60);
         SDL_SetRenderDrawColor(renderer, pulse, 44, 52, 255);

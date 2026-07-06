@@ -32,6 +32,7 @@ public:
     float vy{0.0f};
     bool onGround{false};
     bool jumped{false};
+    float coyote{0.0f};
     int texW{32};
     int texH{48};
     int hitW{24};
@@ -85,10 +86,20 @@ public:
             vx = moveSpeed;
         }
 
-        if (jumpPressed && onGround)
+        if (onGround)
+        {
+            coyote = 0.12f;
+        }
+        else
+        {
+            coyote -= dt;
+        }
+
+        if (jumpPressed && (onGround || coyote > 0.0f))
         {
             vy = jumpSpeed;
             onGround = false;
+            coyote = 0.0f;
             jumped = true;
         }
 
@@ -107,6 +118,8 @@ public:
 
         onGround = false;
         SDL_Rect box = hitBox();
+        const float feet{static_cast<float>(box.y + box.h)};
+        const float prevFeet{feet - vy * dt};
 
         for (const Platform& plat : platforms)
         {
@@ -115,9 +128,10 @@ public:
                 continue;
             }
 
-            if (vy > 0.0f && box.y + box.h - static_cast<int>(vy * dt) <= plat.rect.y + 4)
+            const float platTop{static_cast<float>(plat.rect.y)};
+            if (vy >= 0.0f && prevFeet <= platTop + 4.0f && feet >= platTop)
             {
-                y = static_cast<float>(plat.rect.y - hitOffY - hitH);
+                y = platTop - static_cast<float>(hitOffY + hitH);
                 vy = 0.0f;
                 onGround = true;
             }
@@ -171,7 +185,7 @@ int main(int, char**)
     Mix_VolumeMusic(20);
 
     bool running{true};
-    bool jumpQueued{false};
+    float jumpBuffer{0.0f};
     SDL_Event event{};
     Uint32 lastTicks{SDL_GetTicks()};
 
@@ -193,15 +207,20 @@ int main(int, char**)
             }
             if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_SPACE)
             {
-                jumpQueued = true;
+                jumpBuffer = 0.15f;
             }
         }
 
-        player.update(dt, platforms, jumpQueued);
-        jumpQueued = false;
+        if (jumpBuffer > 0.0f)
+        {
+            jumpBuffer -= dt;
+        }
+
+        player.update(dt, platforms, jumpBuffer > 0.0f);
 
         if (player.jumped)
         {
+            jumpBuffer = 0.0f;
             Mix_PlayChannel(-1, boing, 0);
         }
 

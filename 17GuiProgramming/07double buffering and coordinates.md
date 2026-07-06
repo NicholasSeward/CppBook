@@ -80,17 +80,20 @@ int main(int, char**)
         SDL_RenderClear(renderer);
 
         SDL_SetRenderDrawColor(renderer, 255, 80, 80, 255);
-        SDL_RenderFillRect(renderer, &SDL_Rect{10, 10, 40, 40});
+        SDL_Rect topLeft{10, 10, 40, 40};
+        SDL_RenderFillRect(renderer, &topLeft);
 
         SDL_SetRenderDrawColor(renderer, 80, 255, 80, 255);
-        SDL_RenderFillRect(renderer, &SDL_Rect{590, 430, 40, 40});
+        SDL_Rect bottomRight{590, 430, 40, 40};
+        SDL_RenderFillRect(renderer, &bottomRight);
 
         SDL_SetRenderDrawColor(renderer, 255, 255, 100, 255);
-        SDL_RenderFillRect(renderer, &SDL_Rect{
+        SDL_Rect moving{
             static_cast<int>(markerX),
             static_cast<int>(markerY),
             40,
-            40});
+            40};
+        SDL_RenderFillRect(renderer, &moving);
 
         SDL_RenderPresent(renderer);
         SDL_Delay(16);

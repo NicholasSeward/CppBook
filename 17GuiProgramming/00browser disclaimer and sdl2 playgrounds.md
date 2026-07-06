@@ -41,7 +41,7 @@ Reference them with `// @asset: assets/dude.png` (and similar) at the top of the
 
 | Resource | URL |
 |----------|-----|
-| SDL2 wiki | [wiki.libsdl.org](https://wiki.libsdl.org/) |
+| SDL2 wiki | [wiki.libsdl.org/SDL2/FrontPage](https://wiki.libsdl.org/SDL2/FrontPage) |
 | SDL2 API reference | [wiki.libsdl.org/SDL2/FrontPage](https://wiki.libsdl.org/SDL2/FrontPage) |
 | Lazy Foo SDL tutorials | [lazyfoo.net/tutorials/SDL](https://lazyfoo.net/tutorials/SDL/) |
 

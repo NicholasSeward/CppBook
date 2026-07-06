@@ -57,7 +57,7 @@ SDL2 can also use **hardware acceleration** for 2D rendering when a GPU is avail
 
 | Resource | URL |
 |----------|-----|
-| SDL2 wiki | [wiki.libsdl.org](https://wiki.libsdl.org/) |
+| SDL2 wiki | [wiki.libsdl.org/SDL2/FrontPage](https://wiki.libsdl.org/SDL2/FrontPage) |
 | Qt docs | [doc.qt.io](https://doc.qt.io/) |
 
 ## Try it now

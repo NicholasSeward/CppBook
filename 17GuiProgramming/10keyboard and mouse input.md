@@ -9,7 +9,7 @@ SDL delivers input as **events**. Common types:
 | `SDL_MOUSEBUTTONDOWN` / `UP` | Button pressed or released |
 | `SDL_QUIT` | Close window |
 
-Key symbols use names like **`SDLK_LEFT`**, **`SDLK_SPACE`**, **`SDLK_a`**. Full list: [SDL2 wiki — SDLKeycodeLookup](https://wiki.libsdl.org/SDL2/SDLKeycodeLookup) and [CategoryKeycode](https://wiki.libsdl.org/SDL2/CategoryKeycode).
+Key symbols use names like **`SDLK_LEFT`**, **`SDLK_SPACE`**, **`SDLK_a`**. Full list: [SDL_KeyCode](https://wiki.libsdl.org/SDL2/SDL_KeyCode) and [CategoryKeycode](https://wiki.libsdl.org/SDL2/CategoryKeycode).
 
 ## Keyboard movement (per key press)
 

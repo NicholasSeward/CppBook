@@ -21,7 +21,7 @@ When motion uses **delta time**, frame rate should affect **smoothness**, not wh
 
 float bounceY(float t, float yTop, float yFloor)
 {
-    const float omega{2.0f * 3.14159265f * 0.75f};
+    const float omega{2.0f * 3.14159265f * 0.15f};
     const float s{std::sin(omega * t)};
     return yTop + (yFloor - yTop) * s * s;
 }
@@ -46,7 +46,7 @@ int main(int, char**)
 
     float ballX{120.0f};
     float ballY{yTop};
-    float vx{600.0f};
+    float vx{100.0f};
     float t{0.0f};
 
     int targetFps{60};
@@ -171,5 +171,17 @@ Prompt: You set target FPS to 30 with Down arrow, but the log says `actual 28`. 
 :::details Answer
 
 **Not always.** **Target** is what you aim for with the limiter; **actual** is counted over a real second of wall-clock time and can differ slightly due to timer granularity and work time per frame.
+
+:::
+
+### Exercise 3: 400 target, 330 actual
+
+Prompt: You crank target FPS to 400 and the log says `actual 330`. Are you really **seeing** 330 frames on screen every second?
+
+:::details Answer
+
+**Not necessarily.** **Actual** counts how often your loop ran and presented — not what your eyes or monitor display.
+
+Lots of things sit in between: the **browser layer** (TxtBook/Emscripten), OS scheduling, vsync, and your **monitor refresh rate**. Most monitors top out at **60 Hz**; many gaming panels do **120** or **240**. If the display only refreshes 60 times per second, extra presents may not show as separate frames even when the loop runs faster.
 
 :::

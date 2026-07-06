@@ -39,10 +39,10 @@ Use a toolchain file: `cmake -DCMAKE_TOOLCHAIN_FILE=[vcpkg]/scripts/buildsystems
 
 | Resource | URL |
 |----------|-----|
-| SDL2 wiki | [wiki.libsdl.org](https://wiki.libsdl.org/) |
+| SDL2 wiki | [wiki.libsdl.org/SDL2/FrontPage](https://wiki.libsdl.org/SDL2/FrontPage) |
 | SDL2 API reference | [wiki.libsdl.org/SDL2/FrontPage](https://wiki.libsdl.org/SDL2/FrontPage) |
 | Lazy Foo SDL tutorials | [lazyfoo.net/tutorials/SDL](https://lazyfoo.net/tutorials/SDL/) |
-| TwinklebearDev SDL2 | [gist.github.com/Twinklebear](https://gist.github.com/Twinklebear) (SDL2 lesson series) |
+| TwinklebearDev SDL2 | [github.com/Twinklebear/TwinklebearDev-Lessons](https://github.com/Twinklebear/TwinklebearDev-Lessons) (lessons + [willusher.io](https://www.willusher.io/pages/sdl2/)) |
 
 ## Full assets demo
 

@@ -2,86 +2,19 @@
 
 ## Double buffering
 
-If you drew directly to the visible screen while the user watched, you would see **flicker** and **torn** frames (half-old, half-new image).
+While you are drawing, the user should not see half-finished work. **Double buffering** means drawing to a hidden **back buffer**, then showing the finished picture in one step.
 
-**Double buffering** keeps two buffers:
+With **`SDL_Renderer`**, SDL handles the two buffers for you. Your job each frame is:
 
-1. **Back buffer** — where you draw this frame (hidden).
-2. **Front buffer** — what the user currently sees.
-
-Each frame you draw on the back buffer, then **`SDL_RenderPresent`** **flips** (swaps) them. The old front becomes the new back. That swap is fast and avoids showing half-finished work.
-
-Because you are always drawing on top of whatever was in the back buffer last frame, **stale pixels can linger** if you only update part of the screen. That can look like flicker when the two buffers disagree.
-
-## When buffers fight
-
-SDL's renderer keeps **two buffers** in play. After each **`SDL_RenderPresent`**, the buffer you just finished drawing becomes visible, and the other buffer becomes your new draw target — but it still holds **whatever image was shown two frames ago**. If you skip **`SDL_RenderClear`** or only repaint part of the screen, the two buffers drift out of sync. Each present **flips** between mismatched images and the result **flickers**.
-
-The demo below does that on purpose. **Before the loop**, we build two different images — one with a full clear, one drawn on top of the old back buffer without clearing. After two **`SDL_RenderPresent`** calls, each buffer holds a different picture. The loop then **only presents** (flips) between them; no new drawing. **`SDL_Delay(500)`** slows the swap so you can see it without rapid flashing.
-
-```sdl2
-#include <SDL2/SDL.h>
-
-int main(int, char**)
-{
-    SDL_Init(SDL_INIT_VIDEO);
-
-    SDL_Window* window = SDL_CreateWindow(
-        "Fighting buffers",
-        SDL_WINDOWPOS_CENTERED,
-        SDL_WINDOWPOS_CENTERED,
-        640,
-        480,
-        SDL_WINDOW_SHOWN);
-
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-
-    SDL_SetRenderDrawColor(renderer, 35, 40, 90, 255);
-    SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, 255, 220, 80, 255);
-    SDL_Rect yellow{220, 180, 200, 200};
-    SDL_RenderFillRect(renderer, &yellow);
-    SDL_RenderPresent(renderer);
-
-    SDL_SetRenderDrawColor(renderer, 80, 255, 120, 255);
-    SDL_Rect green{280, 220, 200, 200};
-    SDL_RenderFillRect(renderer, &green);
-    SDL_RenderPresent(renderer);
-
-    bool running{true};
-    SDL_Event event{};
-
-    while (running)
-    {
-        while (SDL_PollEvent(&event))
-        {
-            if (event.type == SDL_QUIT)
-            {
-                running = false;
-            }
-        }
-
-        SDL_RenderPresent(renderer);
-        SDL_Delay(500);
-    }
-
-    return 0;
-}
-```
-
-Each present **flips** to the other pre-built buffer — blue with yellow square vs. the smeared green-on-old-image version. Press the window close button to quit.
-
-## The fix: redraw everything
-
-For now, the usual approach is simple and works well:
-
-1. **`SDL_RenderClear`** — wipe the back buffer (often a solid background color).
-2. Draw **everything** for this frame.
+1. **`SDL_RenderClear`** — start with a clean back buffer (usually a solid color).
+2. **Draw** everything for this frame.
 3. **`SDL_RenderPresent`** — show it.
 
-Modern CPUs — even without GPU acceleration — can redraw hundreds of simple items at 60 FPS. **Partial updates** (only redraw what changed) save work but need careful design; games often skip that until they need it.
+Draw calls update the back buffer only. Nothing reaches the window until **`SDL_RenderPresent`**.
 
-See [SDL2 wiki — SDL_RenderPresent](https://wiki.libsdl.org/SDL2/SDL_RenderPresent).
+After each present, SDL treats the back buffer as **empty/undefined** for the next frame. Do not skip **`SDL_RenderClear`** hoping old pixels are still there — [SDL's docs](https://wiki.libsdl.org/SDL2/SDL_RenderPresent) tell you to clear every frame even if you redraw the whole screen.
+
+That three-step pattern is enough for this course. Optimizing away full redraws is possible later; most 2D games just clear and draw everything each frame.
 
 ## Coordinate system
 
@@ -90,13 +23,11 @@ SDL uses a **screen-style** origin, not the Y-up graph from algebra class.
 ```
 (0,0) ──────────────► +X
   │
-  │
-  │
   ▼
  +Y
 ```
 
-- **(0, 0)** is the **top-left** of the window (or canvas).
+- **(0, 0)** is the **top-left** of the window.
 - **+X** goes **right**.
 - **+Y** goes **down**.
 
@@ -149,20 +80,17 @@ int main(int, char**)
         SDL_RenderClear(renderer);
 
         SDL_SetRenderDrawColor(renderer, 255, 80, 80, 255);
-        SDL_Rect topLeft{10, 10, 40, 40};
-        SDL_RenderFillRect(renderer, &topLeft);
+        SDL_RenderFillRect(renderer, &SDL_Rect{10, 10, 40, 40});
 
         SDL_SetRenderDrawColor(renderer, 80, 255, 80, 255);
-        SDL_Rect bottomRight{590, 430, 40, 40};
-        SDL_RenderFillRect(renderer, &bottomRight);
+        SDL_RenderFillRect(renderer, &SDL_Rect{590, 430, 40, 40});
 
         SDL_SetRenderDrawColor(renderer, 255, 255, 100, 255);
-        SDL_Rect moving{
+        SDL_RenderFillRect(renderer, &SDL_Rect{
             static_cast<int>(markerX),
             static_cast<int>(markerY),
             40,
-            40};
-        SDL_RenderFillRect(renderer, &moving);
+            40});
 
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
@@ -172,11 +100,11 @@ int main(int, char**)
 }
 ```
 
-Red square: small **x**, small **y** (top-left). Green square: large **x**, large **y** (bottom-right). Yellow square moves each frame so you can see the loop running.
+Red: top-left. Green: bottom-right. Yellow: moves each frame.
 
 ## Float positions, int pixels
 
-Screens use **integer** pixel coordinates, but game logic often stores **`float` or `double`** positions. Example: slide 10 pixels in one second at 60 FPS — about **0.166 pixels per frame**. If you only tracked `int` position, you would round to zero every frame and **never move**. Accumulate in floats, **cast to `int`** when building `SDL_Rect` or calling draw functions.
+Screens use **integer** pixels, but game logic often uses **`float`** positions. Moving 10 pixels in one second at 60 FPS is about **0.17 pixels per frame** — an `int` would stay at 0 every frame. Store **`float`**, **cast to `int`** when you build an `SDL_Rect`.
 
 ## Try it now
 
@@ -190,20 +118,12 @@ Prompt: You want a sprite to move toward the bottom of the window. Do you increa
 
 :::
 
-Prompt: In the fighting-buffers demo, the loop only calls `SDL_RenderPresent`. Why does the image still change?
+### Exercise 2: Clear every frame
+
+Prompt: Why call `SDL_RenderClear` at the start of each frame?
 
 :::details Answer
 
-The two buffers were set up **before** the loop with different pictures. Each present **swaps** front and back, so you alternate between them even with no new drawing.
-
-:::
-
-### Exercise 3: Clearing every frame
-
-Prompt: Why does flicker go away if you call `SDL_RenderClear` on **every** frame before drawing?
-
-:::details Answer
-
-**`SDL_RenderClear`** wipes the back buffer so both buffers stay in sync. Each present flips a **complete** frame instead of a mix of old and new pixels.
+It gives you a known starting state. SDL does not guarantee the back buffer still holds last frame's pixels after **`SDL_RenderPresent`**.
 
 :::

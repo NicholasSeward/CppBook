@@ -95,13 +95,6 @@ public:
         renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
         lastTicks = SDL_GetTicks();
 
-        for (int i{0}; i < 12; ++i)
-        {
-            objects.emplace_back(
-                static_cast<float>(80 + (i * 47) % 500),
-                static_cast<float>(60 + (i * 31) % 360));
-        }
-
         return renderer != nullptr;
     }
 
@@ -139,12 +132,12 @@ public:
 
     bool running{true};
     float deltaTime{0.0f};
+    std::vector<GameObject> objects;
 
 private:
     SDL_Window* window{nullptr};
     SDL_Renderer* renderer{nullptr};
     Uint32 lastTicks{0};
-    std::vector<GameObject> objects;
 };
 
 int main(int, char**)
@@ -153,6 +146,13 @@ int main(int, char**)
     if (!engine.init())
     {
         return 1;
+    }
+
+    for (int i{0}; i < 12; ++i)
+    {
+        engine.objects.emplace_back(
+            static_cast<float>(80 + (i * 47) % 500),
+            static_cast<float>(60 + (i * 31) % 360));
     }
 
     while (engine.running)

@@ -1,15 +1,18 @@
 # Example: Flappy Bird Clone
 
-A rough **Flappy Bird**–style clone: tap **Space** or **click** to flap, dodge **scrolling pipes**, score when you pass a pair. No assets required — the bird is a circle, pipes are rectangles.
+A rough **Flappy Bird**–style clone: tap **Space** or **click** to flap, dodge **scrolling pipes**, score when you pass a pair. The bird is half-scale **`dude.png`**, rotated smoothly with **`birdVy`**.
 
-**New here:** simple **scrolling** world coordinates, **reset on crash**, and on-screen **score**.
+**New here:** even **pipe spacing**, difficulty that **ramps** (faster scroll, smaller gaps), logged **speed** / **gap** values, and **`SDL_RenderCopyEx`** tilt.
 
 ```sdl2
+// @asset: assets/dude.png
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
 #include <vector>
 #include <cstdlib>
 #include <algorithm>
+#include <cmath>
 
 struct Pipe
 {
@@ -22,20 +25,32 @@ struct Pipe
 class FlappyGame
 {
 public:
-    static constexpr int kBirdRadius{16};
-    static constexpr float kScrollSpeed{140.0f};
+    static constexpr float kBirdX{120.0f};
+    static constexpr float kPipeSpacing{240.0f};
+
+    void setSpriteSize(int texW, int texH)
+    {
+        drawW = texW / 2;
+        drawH = texH / 2;
+        hitRadius = static_cast<int>(0.7f * static_cast<float>(std::min(drawW, drawH)) * 0.5f);
+    }
 
     void reset()
     {
         birdY = 240.0f;
         birdVy = 0.0f;
+        birdAngle = 100.0f;
         score = 0;
         alive = true;
-        pipes.clear();
+        gameTime = 0.0f;
         spawnTimer = 0.0f;
+        logTimer = 0.0f;
+        scrollSpeed = 55.0f;
+        gapH = 200;
+        pipes.clear();
         for (int i{0}; i < 3; ++i)
         {
-            spawnPipe(640.0f + i * 220.0f);
+            spawnPipe(640.0f + i * kPipeSpacing);
         }
     }
 
@@ -58,30 +73,49 @@ public:
             return;
         }
 
+        gameTime += dt;
+        scrollSpeed = std::min(220.0f, 55.0f + gameTime * 12.0f + static_cast<float>(score) * 6.0f);
+        gapH = std::max(72, 200 - static_cast<int>(gameTime * 10.0f) - score * 8);
+
+        logTimer += dt;
+        if (logTimer >= 1.0f)
+        {
+            SDL_Log("speed %.0f gap %d", scrollSpeed, gapH);
+            logTimer = 0.0f;
+        }
+
         const float gravity{620.0f};
         birdVy += gravity * dt;
         birdY += birdVy * dt;
 
-        if (birdY - kBirdRadius < 0.0f)
+        const float vyFlap{-280.0f};
+        const float vyFall{380.0f};
+        float t{(birdVy - vyFlap) / (vyFall - vyFlap)};
+        t = std::max(0.0f, std::min(1.0f, t));
+        const float targetAngle{80.0f + t * 40.0f};
+        birdAngle += (targetAngle - birdAngle) * std::min(1.0f, dt * 10.0f);
+
+        if (birdY - static_cast<float>(hitRadius) < 0.0f)
         {
-            birdY = static_cast<float>(kBirdRadius);
+            birdY = static_cast<float>(hitRadius);
             birdVy = 0.0f;
         }
-        if (birdY + kBirdRadius > 480.0f)
+        if (birdY + static_cast<float>(hitRadius) > 480.0f)
         {
             alive = false;
         }
 
         spawnTimer += dt;
-        if (spawnTimer > 1.8f)
+        const float spawnInterval{kPipeSpacing / scrollSpeed};
+        if (spawnTimer >= spawnInterval)
         {
-            spawnTimer = 0.0f;
+            spawnTimer -= spawnInterval;
             spawnPipe(640.0f);
         }
 
         for (Pipe& pipe : pipes)
         {
-            pipe.x -= kScrollSpeed * dt;
+            pipe.x -= scrollSpeed * dt;
 
             SDL_Rect top{static_cast<int>(pipe.x), 0, 52, pipe.gapY};
             SDL_Rect bottom{
@@ -95,7 +129,7 @@ public:
                 alive = false;
             }
 
-            if (!pipe.scored && pipe.x + 52 < 120.0f)
+            if (!pipe.scored && pipe.x + 52 < kBirdX)
             {
                 pipe.scored = true;
                 ++score;
@@ -107,7 +141,7 @@ public:
             pipes.end());
     }
 
-    void draw(SDL_Renderer* renderer) const
+    void draw(SDL_Renderer* renderer, SDL_Texture* dude) const
     {
         for (const Pipe& pipe : pipes)
         {
@@ -122,7 +156,13 @@ public:
             SDL_RenderFillRect(renderer, &bottom);
         }
 
-        filledCircleRGBA(renderer, 120, static_cast<Sint16>(birdY), kBirdRadius, 255, 220, 80, 255);
+        SDL_Rect dest{
+            static_cast<int>(kBirdX) - drawW / 2,
+            static_cast<int>(birdY) - drawH / 2,
+            drawW,
+            drawH};
+        SDL_Point pivot{drawW / 2, drawH / 2};
+        SDL_RenderCopyEx(renderer, dude, nullptr, &dest, birdAngle, &pivot, SDL_FLIP_NONE);
 
         char label[32];
         SDL_snprintf(label, sizeof(label), "Score: %d", score);
@@ -142,31 +182,49 @@ public:
 private:
     float birdY{240.0f};
     float birdVy{0.0f};
+    float birdAngle{100.0f};
+    int drawW{16};
+    int drawH{24};
+    int hitRadius{8};
     int score{0};
     bool alive{true};
+    float gameTime{0.0f};
     float spawnTimer{0.0f};
+    float logTimer{0.0f};
+    float scrollSpeed{55.0f};
+    int gapH{200};
     std::vector<Pipe> pipes;
 
     void spawnPipe(float startX)
     {
         Pipe pipe{};
         pipe.x = startX;
-        pipe.gapY = 80 + std::rand() % 220;
+        pipe.gapH = gapH;
+        const int margin{40};
+        const int maxGapY{480 - pipe.gapH - margin};
+        pipe.gapY = margin + std::rand() % std::max(1, maxGapY - margin);
         pipes.push_back(pipe);
     }
 
     bool hits(SDL_Rect r) const
     {
-        const int bx = 120;
-        const int by = static_cast<int>(birdY);
-        return bx + kBirdRadius > r.x && bx - kBirdRadius < r.x + r.w && by + kBirdRadius > r.y
-            && by - kBirdRadius < r.y + r.h;
+        const float bx{kBirdX};
+        const float by{birdY};
+        const float hr{static_cast<float>(hitRadius)};
+        const float closestX{
+            std::max(static_cast<float>(r.x), std::min(bx, static_cast<float>(r.x + r.w)))};
+        const float closestY{
+            std::max(static_cast<float>(r.y), std::min(by, static_cast<float>(r.y + r.h)))};
+        const float dx{bx - closestX};
+        const float dy{by - closestY};
+        return dx * dx + dy * dy < hr * hr;
     }
 };
 
 int main(int, char**)
 {
     SDL_Init(SDL_INIT_VIDEO);
+    IMG_Init(IMG_INIT_PNG);
 
     SDL_Window* window = SDL_CreateWindow(
         "Flappy",
@@ -178,7 +236,19 @@ int main(int, char**)
 
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
+    SDL_Texture* dude = IMG_LoadTexture(renderer, "assets/dude.png");
+    if (dude == nullptr)
+    {
+        SDL_Log("IMG_LoadTexture: %s", IMG_GetError());
+        return 1;
+    }
+
+    int texW{0};
+    int texH{0};
+    SDL_QueryTexture(dude, nullptr, nullptr, &texW, &texH);
+
     FlappyGame game{};
+    game.setSpriteSize(texW, texH);
     game.reset();
 
     bool running{true};
@@ -212,7 +282,7 @@ int main(int, char**)
         SDL_SetRenderDrawColor(renderer, 120, 200, 235, 255);
         SDL_RenderClear(renderer);
 
-        game.draw(renderer);
+        game.draw(renderer, dude);
 
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
@@ -225,8 +295,11 @@ int main(int, char**)
 **Highlighted pieces:**
 
 - **`FlappyGame::draw(renderer)`** — game owns pipes, bird, and HUD.
-- **Scrolling** — subtract from `pipe.x` each frame; erase off-screen pipes.
-- **`deltaTime`** — multiply speeds so physics stay consistent (section 09/16).
+- **`SDL_RenderCopyEx`** — half-scale **`dude.png`**, pivot at center; angle **80°–120°** (clockwise in SDL) from **`birdVy`**, smoothed each frame.
+- **Hit circle** — **70%** of half-sprite radius; pipe collision uses circle-vs-rect test.
+
+- **Scrolling** — `scrollSpeed` rises over time; spawn interval is `kPipeSpacing / scrollSpeed` so pipes stay evenly spaced.
+- **Difficulty** — new pipes use a smaller **`gapH`** over time; values logged each second.
 
 This finishes the chapter examples. Review the [SDL2 Cheat Sheet](17sdl2%20cheat%20sheet.md) or build a desktop copy with [CMake and vcpkg](18cmake%20vcpkg%20and%20links.md).
 
@@ -238,7 +311,7 @@ Prompt: When does `score` increment in the code above?
 
 :::details Answer
 
-When a pipe's right edge passes the bird (`pipe.x + 52 < 120`) and that pipe has not been scored yet.
+When a pipe's right edge passes the bird (`pipe.x + 52 < kBirdX`) and that pipe has not been scored yet.
 
 :::
 
@@ -248,6 +321,6 @@ Prompt: Name one feature you would add first to make this feel more like the ori
 
 :::details Answer
 
-Any reasonable idea: **pipe cap** sprites, **ground** collision strip, **rotation** on the bird based on `birdVy`, or **high score** saved to a file (ties to the Files chapter).
+Any reasonable idea: **pipe cap** sprites, **ground** collision strip, or **high score** saved to a file (ties to the Files chapter).
 
 :::

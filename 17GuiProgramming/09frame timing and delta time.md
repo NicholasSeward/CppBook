@@ -10,7 +10,9 @@
 
 ## Bouncing ball with adjustable FPS
 
-A ball starts near the **top** with **`vx` about 10 pixels per frame at 60 FPS** (600 units per second with delta time). Vertical motion uses **`y = f(t)`** — a periodic function of elapsed time — so the bounce height never fades. **Up/Down** arrows raise or lower the target FPS by 5 (minimum **5**). Once per second the log prints **target** and **actual** FPS.
+The demo shows a **bouncing ball** with a measured frame limiter. **Up/Down** arrows change the target FPS (minimum 5); the log prints **target** and **actual** FPS each second.
+
+When motion uses **delta time**, frame rate should affect **smoothness**, not where the ball is in its path. Run the demo, click the canvas, and play with the FPS — the bounce should stay **roughly the same** over a real second even at 5 FPS vs 60 FPS.
 
 ```sdl2
 #include <SDL2/SDL.h>
@@ -139,10 +141,6 @@ int main(int, char**)
     return 0;
 }
 ```
-
-**`f(t)`** here is `yTop + (yFloor - yTop) * sin²(ωt)`. At `t = 0` the ball is at the top with zero vertical speed; at the bottom `sin²(ωt) = 1` and vertical speed is zero again — a lossless bounce. **`t += dt`** each frame, so the arc keeps the same timing even when FPS changes.
-
-Click the canvas, then use **Up/Down** to change the cap. Horizontal speed still uses **`vx * dt`**; vertical motion follows **`f(t)`** instead of integrating velocity with damping.
 
 ## Why delta time matters
 

@@ -59,7 +59,7 @@ The **`Dog`** is still in memory. The calls through **`Animal&`** and **`Animal*
 
 You want a **`std::vector`** of different animals and a loop that makes each one act like itself:
 
-```cpp
+```
 for (Animal* pet : zoo)
 {
     pet->speak();   // want Woof for dogs, Meow for cats
@@ -132,7 +132,7 @@ Meow!
 
 **`virtual`** dispatch applies when you call through a **pointer** or **reference** whose static type is the base. It does **not** apply when you **copy** into a base **object**:
 
-```cpp
+```
 Dog dog{};
 Animal sliced = dog;   // slices: Animal object only
 sliced.speak();        // Animal::speak, even if speak is virtual
@@ -142,7 +142,7 @@ sliced.speak();        // Animal::speak, even if speak is virtual
 
 On a **terminal** class (nothing should inherit further), mark the override **`final`**:
 
-```cpp
+```
 class Dog : public Animal
 {
 public:
@@ -159,7 +159,7 @@ You can also mark a base virtual function **`final`** to forbid any override in 
 
 Destruction runs [base first on the way in, derived first on the way out](05destruction%20order.md). If you **`delete`** through a **`Base*`**, the base destructor must be **`virtual`** so the **derived** destructor runs first and cleans up derived-only resources.
 
-```cpp
+```
 Animal* pet = new Dog{};
 delete pet;   // safe only if Animal::~Animal() is virtual
 ```
@@ -255,7 +255,7 @@ The derived functions are marked **`override`**, but the base function is not ye
 
 **Reasoning:** Runtime dispatch requires a **`virtual`** function in the base. Change **`void speak() const`** to **`virtual void speak() const`**.
 
-```cpp
+```
 virtual void speak() const
 {
     std::cout << "...\n";

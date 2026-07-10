@@ -66,7 +66,7 @@ Output: **`Lin, age 28, person`** (not employee id 101). The **`Employee`** data
 
 A pointer to **`Employee`** still points at the whole **`Employee`** in memory. Slicing does not happen. Whether the **right** function runs depends on **`virtual`**, which the next sections cover.
 
-```cpp
+```
 Employee dev{"Lin", 28, 101};
 Person* ptr = &dev;   // points to full Employee; no slice
 ptr->describe();      // still Person::describe until speak is virtual (see next section)

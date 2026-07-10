@@ -23,10 +23,18 @@ public:
     void fetch() const { std::cout << "Fetched!\n"; }
 };
 
-Dog dog{};
-Animal& generic = dog;
-generic.speak();     // OK: virtual Woof
-// generic.fetch();  // error: Animal has no fetch()
+int main()
+{
+    Dog dog{};
+    Animal& generic = dog;
+    generic.speak();     // OK: virtual Woof
+    // generic.fetch();  // error: Animal has no fetch()
+
+    // Uncommenting the next line will cause a compile-time error:
+    // generic.fetch();
+
+    return 0;
+}
 ```
 
 That is not a bug. The type system says "you only promised this thing is an **`Animal`**."
@@ -176,7 +184,7 @@ int main()
 
 **Reasoning:** **`dynamic_cast<Bonsai*>(p)`** returns a valid pointer when the object really is a **`Bonsai`**, otherwise **`nullptr`** (for pointers).
 
-```cpp
+```
 if (Bonsai* b = dynamic_cast<Bonsai*>(p))
 {
     b->trim();

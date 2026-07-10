@@ -6,7 +6,7 @@ Sometimes the base class **cannot** implement a function meaningfully. **`Animal
 
 Mark a virtual function with **`= 0`** to make it **pure virtual**. The base provides no body:
 
-```cpp
+```
 virtual void speak() const = 0;   // pure virtual: no body in Animal
 ```
 
@@ -117,7 +117,7 @@ Each shape calls **its own** **`area()`** through [virtual dispatch](07virtual%2
 
 An **interface** is often a class where **every** virtual function is pure virtual and there is little or no data, only contracts:
 
-```cpp
+```
 class Drawable
 {
 public:
@@ -173,13 +173,13 @@ int main()
 
 **Reasoning:** **`= 0`** makes **`area()`** pure virtual, so **`Shape`** is abstract. **`Circle`** must provide a concrete **`area()`** with **`override`**.
 
-```cpp
+```
 virtual double area() const = 0;
 ```
 
 In **`Circle`**:
 
-```cpp
+```
 double area() const override
 {
     return 3.14159 * r_ * r_;

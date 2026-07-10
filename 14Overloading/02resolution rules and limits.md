@@ -58,7 +58,7 @@ You also **cannot invent** new operator symbols. Only existing C++ operators can
 
 **Precedence** and **associativity** do not change. `*` still binds tighter than `+` whether or not you overload them.
 
-```cpp
+```
 a + b * c   // still multiplies b and c first, then adds a
 ```
 

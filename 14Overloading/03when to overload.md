@@ -13,7 +13,7 @@ Overloading is a readability tool. Use it when the operator spelling matches the
 
 ## Unclear uses
 
-```cpp
+```
 // Hard to read: what does "string - 2" mean?
 customString - 2;
 

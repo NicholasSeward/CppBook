@@ -46,7 +46,7 @@ Without `explicit`, `double d = m;` could compile. That is sometimes convenient 
 | `operator=` | `T&` | Chain assignment (`a = b = c`) |
 | `operator+` | Usually **by value** | Result is a new object |
 
-```cpp
+```
 class Buffer
 {
 public:
@@ -69,7 +69,7 @@ Returning a reference to a **local** variable is undefined behavior. Only return
 
 ## Assignment vs arithmetic
 
-```cpp
+```
 Fraction& operator=(const Fraction& other);   // member, returns *this
 Fraction operator+(const Fraction& other) const;  // often returns new Fraction
 ```

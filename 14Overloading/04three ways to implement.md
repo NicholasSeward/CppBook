@@ -93,7 +93,7 @@ int main()
 
 Works when **public** getters (or public fields) expose enough data:
 
-```cpp
+```
 #include <iostream>
 
 class Fraction

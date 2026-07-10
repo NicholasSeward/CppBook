@@ -40,7 +40,7 @@ flowchart TD
 
 For `a + b` and `b + a` when types differ, you may need **two** overloads or one **friend** that sees both types. Member `operator+` only handles “my type on the left.”
 
-```cpp
+```
 class A {};
 class B {};
 

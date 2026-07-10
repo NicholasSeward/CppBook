@@ -4,7 +4,7 @@ You already know **function overloading**: same name, different parameter lists 
 
 C++ also lets you overload **operators** for your own types: `+`, `<<`, `==`, `[]`, and many more. The compiler turns an expression like `a + b` into a function call:
 
-```cpp
+```
 a + b   //  means something like:  operator+(a, b)
 ```
 

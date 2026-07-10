@@ -1,14 +1,12 @@
 # Object Slicing and Polymorphism
 
-**Polymorphism** sounds fancy. It means "many forms": code can treat different derived types through a common base idea, and each object runs **its own** version of a function.
+**Polymorphism** means "many forms": code treats different derived types through a common base idea, and each object runs **its own** version of a function. A **`Cat`** and a **`Dog`** can both **`speak()`**; a loop over **`Animal*`** should get the right sound for each pet.
 
-A **`Rectangle`** and **`Triangle`** can both expose **`area()`**. Code that holds a **`Polygon*`** can call **`area()`** on each shape and get the right math for that object.
-
-That only works reliably with **pointers** or **references**. Copying into a base **object** causes **object slicing**.
+That only works when you use **pointers** or **references** and **`virtual`** functions. Copying into a base **object** causes **object slicing**, which breaks the story before polymorphism even enters the picture.
 
 ## Slicing: the top layer is cut off
 
-A **`Person`** object only has room for **`Person`** data. Assign an **`Employee`** into a **`Person`** variable and the **`employeeId`** (and any other derived-only members) are **sliced off**:
+A **`Person`** variable only has room for **`Person`** data. Assign an **`Employee`** into it and the **`employeeId`** (and any other derived-only members) are **sliced off**:
 
 ```cpp
 #include <iostream>
@@ -27,12 +25,10 @@ public:
     {
     }
 
-    virtual void describe() const
+    void describe() const
     {
         std::cout << name << ", age " << age << ", person\n";
     }
-
-    virtual ~Person() = default;
 };
 
 class Employee : public Person
@@ -47,7 +43,7 @@ public:
     {
     }
 
-    void describe() const override
+    void describe() const
     {
         std::cout << name << ", employee " << employeeId << '\n';
     }
@@ -58,152 +54,52 @@ int main()
     Employee dev{"Lin", 28, 101};
 
     Person sliced = dev;  // slices: only Person part is copied
-    sliced.describe();    // calls Person::describe
+    sliced.describe();    // Person::describe (sliced object is a Person)
 
     return 0;
 }
 ```
 
-Output: **`Lin, age 28, person`** (not employee id 101).
+Output: **`Lin, age 28, person`** (not employee id 101). The **`Employee`** data is gone from **`sliced`**.
 
-## Pointers preserve the full object
+## Pointers keep the full object in memory
+
+A pointer to **`Employee`** still points at the whole **`Employee`** in memory. Slicing does not happen. Whether the **right** function runs depends on **`virtual`**, which the next sections cover.
 
 ```cpp
-#include <iostream>
-#include <string>
-
-class Person
-{
-protected:
-    std::string name;
-    int age{};
-
-public:
-    Person(std::string personName, int personAge)
-        : name{std::move(personName)}
-        , age{personAge}
-    {
-    }
-
-    virtual void describe() const
-    {
-        std::cout << name << ", age " << age << ", person\n";
-    }
-
-    virtual ~Person() = default;
-};
-
-class Employee : public Person
-{
-private:
-    int employeeId{};
-
-public:
-    Employee(std::string personName, int personAge, int id)
-        : Person{personName, personAge}
-        , employeeId{id}
-    {
-    }
-
-    void describe() const override
-    {
-        std::cout << name << ", employee " << employeeId << '\n';
-    }
-};
-
-int main()
-{
-    Employee dev{"Lin", 28, 101};
-    Person* ptr = &dev;  // points to full Employee in memory
-    ptr->describe();     // Employee::describe (virtual dispatch)
-
-    return 0;
-}
+Employee dev{"Lin", 28, 101};
+Person* ptr = &dev;   // points to full Employee; no slice
+ptr->describe();      // still Person::describe until speak is virtual (see next section)
 ```
 
-Output: **`Lin, age 28, employee 101`**.
+> PROTIP: When you store mixed derived types together (cats, dogs, shapes), use **`std::vector<Animal*>`** (or smart pointers to base) so each element stays a full derived object.
 
-## Many shapes, one loop
+## What comes next
 
-```cpp
-#include <iostream>
-#include <vector>
-
-class Polygon
-{
-public:
-    virtual double area() const = 0;
-    virtual ~Polygon() = default;
-};
-
-class Rectangle : public Polygon
-{
-private:
-    double w{};
-    double h{};
-
-public:
-    Rectangle(double width, double height)
-        : w{width}
-        , h{height}
-    {
-    }
-
-    double area() const override
-    {
-        return w * h;
-    }
-};
-
-class Triangle : public Polygon
-{
-private:
-    double base{};
-    double height{};
-
-public:
-    Triangle(double b, double hgt)
-        : base{b}
-        , height{hgt}
-    {
-    }
-
-    double area() const override
-    {
-        return 0.5 * base * height;
-    }
-};
-
-int main()
-{
-    Rectangle rect{4.0, 5.0};
-    Triangle tri{6.0, 3.0};
-
-    std::vector<Polygon*> shapes{};
-    shapes.push_back(&rect);
-    shapes.push_back(&tri);
-
-    for (Polygon* shape : shapes)
-    {
-        std::cout << shape->area() << '\n';
-    }
-
-    return 0;
-}
-```
-
-Each shape calls **its own** **`area()`**. That is polymorphism. **`virtual`** on the base function and a **virtual destructor** make it work through pointers.
-
-> NOTE: **`virtual`** and **`override`** are the machinery behind runtime polymorphism. The idea is simple: the object decides which function runs. The keywords make that decision reliable.
+| Section | Topic |
+|---------|--------|
+| [Virtual Functions](07virtual%20functions.md) | **`virtual`**, **`override`**, vtable, virtual destructors |
+| [Abstract Classes and Interfaces](08abstract%20classes%20and%20interfaces.md) | Pure virtual, abstract bases, shape hierarchies |
+| [`dynamic_cast` and Polymorphic Patterns](09dynamic%20cast%20and%20polymorphic%20patterns.md) | Derived-only members, downcasting, printing |
 
 ## Try it now
 
 ### Exercise 1: Sliced or not?
 
-Prompt: Does `Person p = employee;` call `Employee::describe` or `Person::describe` when `describe` is virtual?
+Prompt: Does `Person p = employee;` call `Employee::describe` or `Person::describe`?
 
 :::details Answer
 
 **`Person::describe`**. The **`Employee`** part was sliced off; **`p`** is a **`Person`** object.
+
+:::
+
+### Exercise 2: Pointer slice?
+
+Prompt: `Employee e{"Lin", 28, 101};` `Person* p = &e;` Does **`p`** point at a sliced object?
+
+:::details Answer
+
+**No.** The **`Employee`** object in memory is still complete. Only **copying into a `Person` variable** slices.
 
 :::

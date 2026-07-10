@@ -29,7 +29,7 @@ Ambiguity breaks compilation or forces fragile **`virtual`** inheritance tricks.
 Patterns that avoid multiple inheritance:
 
 - **One base class**, add other behavior with **members** (composition)
-- **Interfaces** as separate abstract bases (advanced; still needs care)
+- **Interfaces** as separate abstract bases (see [Abstract Classes and Interfaces](08abstract%20classes%20and%20interfaces.md); still needs care)
 - **Free functions** or **namespaces** for shared utilities
 
 > PREFERENCE: Limit each class to **one direct parent** in this book. The wins from multiple inheritance are usually available through composition and clearer types.

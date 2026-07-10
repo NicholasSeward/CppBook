@@ -207,15 +207,27 @@ A beginner-friendly C++ textbook organized as Markdown chapters.
 - [Constructing Derived Objects](13Inheritance/04constructing%20derived%20objects.md)
 - [Destruction Order](13Inheritance/05destruction%20order.md)
 - [Object Slicing and Polymorphism](13Inheritance/06object%20slicing%20and%20polymorphism.md)
-- [Protected Members](13Inheritance/07protected%20members.md)
-- [Public, Protected, and Private Inheritance](13Inheritance/08inheritance%20access%20control.md)
-- [Extending and Hiding Base Behavior](13Inheritance/09extending%20and%20hiding%20base%20behavior.md)
-- [Multiple Inheritance](13Inheritance/10multiple%20inheritance.md)
+- [Virtual Functions](13Inheritance/07virtual%20functions.md)
+- [Abstract Classes and Interfaces](13Inheritance/08abstract%20classes%20and%20interfaces.md)
+- [`dynamic_cast` and Polymorphic Patterns](13Inheritance/09dynamic%20cast%20and%20polymorphic%20patterns.md)
+- [Protected Members](13Inheritance/10protected%20members.md)
+- [Public, Protected, and Private Inheritance](13Inheritance/11inheritance%20access%20control.md)
+- [Extending and Hiding Base Behavior](13Inheritance/12extending%20and%20hiding%20base%20behavior.md)
+- [Multiple Inheritance](13Inheritance/13multiple%20inheritance.md)
 
 ### 14 Overloading
 
 - [Overloading Index](14Overloading/README.md)
-Coming soon.
+- [Introduction to Operator Overloading](14Overloading/01introduction%20to%20operator%20overloading.md)
+- [Resolution, Rules, and Limits](14Overloading/02resolution%20rules%20and%20limits.md)
+- [When to Overload](14Overloading/03when%20to%20overload.md)
+- [Three Ways to Implement Operators](14Overloading/04three%20ways%20to%20implement.md)
+- [Choosing Member, Friend, or Free](14Overloading/05choosing%20member%20friend%20or%20free.md)
+- [Stream Operators `<<` and `>>`](14Overloading/06stream%20operators.md)
+- [Unary and Relational Operators](14Overloading/07unary%20and%20relational%20operators.md)
+- [Building Comparisons from `<`](14Overloading/08building%20comparisons.md)
+- [Subscript and Call Operators](14Overloading/09subscript%20and%20call%20operators.md)
+- [Conversion Operators and References](14Overloading/10conversion%20operators%20and%20references.md)
 
 ### 15 Pointers
 

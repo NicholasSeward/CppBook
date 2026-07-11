@@ -21,6 +21,9 @@ public:
     {
         return value_;
     }
+
+private:
+    double value_{};
 };
 
 int main()

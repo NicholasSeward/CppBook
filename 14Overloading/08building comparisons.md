@@ -88,22 +88,28 @@ If `a == b`, then `a < b` and `b < a` should both be false. If `a < b`, then `b 
 
 ## Try it now
 
-### Exercise 1: Derive `>`
+### Exercise 1: Which pairs are enough?
 
-Prompt: `a > b` is implemented as `b < a`. Why swap the operands?
+Prompt: You want all six operators (`==`, `!=`, `<`, `>`, `<=`, `>=`). You will write **real logic** for only **two**, then derive the other four. Which of these pairs is enough?
 
-:::details Answer
-
-**`<`** means “left is less than right.” “`a` greater than `b`” is the same as “`b` less than `a`.”
-
-:::
-
-### Exercise 2: Minimal set
-
-Prompt: Which two operators must you define with real logic before deriving the other four?
+1. `==` and `<`
+2. `==` and `!=`
+3. `<` and `>`
+4. `<=` and `>=`
+5. `==` and `>`
+6. `<` and `<=`
 
 :::details Answer
 
-**`==`** and **`<`** (as in the table above).
+| Pair | Enough? | Why |
+|------|---------|-----|
+| `==` and `<` | **Yes** | Canonical pair in this section: `!=` from `==`; `>`, `<=`, `>=` from `<` |
+| `==` and `!=` | **No** | Equality only; no ordering to build `<`, `>`, `<=`, or `>=` |
+| `<` and `>` | **Yes** | `==` when neither is less; `!=` from `==`; `<=` and `>=` from `<` and `>` |
+| `<=` and `>=` | **Yes** | `==` when both hold both ways; `<` and `>` from strict cases; `!=` from `==` |
+| `==` and `>` | **Yes** | Mirror of `==` and `<`: swap operands when deriving `<` |
+| `<` and `<=` | **Yes** | `<=` overlaps `<`; use both to recover `==`, then `!=`, `>`, `>=` |
+
+> PREFERENCE: **`==` and `<`** remain the usual choice: clearest meaning and matches the table at the top of this section.
 
 :::

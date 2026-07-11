@@ -46,7 +46,9 @@ Without `explicit`, `double d = m;` could compile. That is sometimes convenient 
 | `operator=` | `T&` | Chain assignment (`a = b = c`) |
 | `operator+` | Usually **by value** | Result is a new object |
 
-```
+```cpp
+#include <iostream>
+
 class Buffer
 {
 public:
@@ -63,18 +65,75 @@ public:
 private:
     int data_[10]{};
 };
+
+int main()
+{
+    Buffer b;
+    b[0] = 42;          // non-const operator[] returns int&, so assignment works
+    b[1] = b[0] + 1;
+
+    const Buffer& cb{b};
+    std::cout << cb[0] << ' ' << cb[1] << '\n';  // const operator[]
+    return 0;
+}
 ```
 
 Returning a reference to a **local** variable is undefined behavior. Only return references to members or other storage that outlives the call.
 
 ## Assignment vs arithmetic
 
-```
-Fraction& operator=(const Fraction& other);   // member, returns *this
-Fraction operator+(const Fraction& other) const;  // often returns new Fraction
-```
+Assignment mutates the left object and returns `*this` (so `a = b = c` chains); `+` usually produces a new value.
 
-Assignment mutates the left object; `+` usually produces a new value.
+```cpp
+#include <iostream>
+
+class Fraction
+{
+public:
+    Fraction(int num = 0, int den = 1)
+        : numerator_{num}
+        , denominator_{den}
+    {
+    }
+
+    Fraction& operator=(const Fraction& other)   // returns *this
+    {
+        numerator_ = other.numerator_;
+        denominator_ = other.denominator_;
+        return *this;
+    }
+
+    Fraction operator+(const Fraction& other) const  // returns a new Fraction
+    {
+        return Fraction{
+            numerator_ * other.denominator_ + other.numerator_ * denominator_,
+            denominator_ * other.denominator_};
+    }
+
+    void print() const
+    {
+        std::cout << numerator_ << '/' << denominator_ << '\n';
+    }
+
+private:
+    int numerator_{};
+    int denominator_{};
+};
+
+int main()
+{
+    Fraction a;
+    Fraction b;
+    Fraction c{1, 4};
+
+    a = b = c;          // chained assignment via operator= returning *this
+    a.print();
+
+    Fraction sum{c + Fraction{1, 4}};  // operator+ returns a fresh value
+    sum.print();
+    return 0;
+}
+```
 
 ## Chapter summary
 

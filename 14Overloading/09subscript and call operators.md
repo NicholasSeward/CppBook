@@ -96,6 +96,9 @@ public:
         return data_[row * cols_ + col];
     }
 
+    int rows() const { return rows_; }
+    int cols() const { return cols_; }
+
 private:
     std::vector<int> data_;
     int rows_{};
@@ -106,7 +109,15 @@ int main()
 {
     Matrix m{2, 3, 0};
     m(0, 1) = 42;
-    std::cout << m(0, 1) << '\n';
+
+    for (int row = 0; row < m.rows(); ++row)
+    {
+        for (int col = 0; col < m.cols(); ++col)
+        {
+            std::cout << m(row, col) << ' ';
+        }
+        std::cout << '\n';
+    }
     return 0;
 }
 ```

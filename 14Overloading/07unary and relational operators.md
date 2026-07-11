@@ -129,12 +129,14 @@ Prompt: Which overload runs for `c++`, `operator++()` or `operator++(int)`?
 
 :::
 
-### Exercise 2: Sort key
+### Exercise 2: Same score, different names
 
-Prompt: `Student::operator<` compares only `score_`. Can two different students compare equal with `==` but not with `<`?
+Prompt: `Student ada{"Ada", 95};` `Student cleo{"Cleo", 95};` What are the values of `ada < cleo`, `cleo < ada`, and `ada == cleo`?
 
 :::details Answer
 
-**Yes.** Same score → neither `a < b` nor `b < a`, but `==` also checks **name**, so they may not be equal.
+**`false`**, **`false`**, **`false`**.
+
+**`<`** compares **score** only, so neither student is less than the other when scores match. **`==`** also checks **name**, so Ada and Cleo are not equal even with the same score.
 
 :::

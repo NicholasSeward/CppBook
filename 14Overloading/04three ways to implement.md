@@ -31,6 +31,11 @@ public:
             denominator * other.denominator};
     }
 
+    void print() const
+    {
+        std::cout << numerator << '/' << denominator << '\n';
+    }
+
 private:
     int numerator{};
     int denominator{};
@@ -41,7 +46,7 @@ int main()
     Fraction a{1, 2};
     Fraction b{1, 3};
     Fraction c{a + b};
-    std::cout << c.numerator << '/' << c.denominator << '\n';
+    c.print();
     return 0;
 }
 ```
@@ -66,6 +71,11 @@ public:
     {
     }
 
+    void print() const
+    {
+        std::cout << numerator << '/' << denominator << '\n';
+    }
+
 private:
     int numerator{};
     int denominator{};
@@ -82,7 +92,7 @@ int main()
 {
     Fraction a{1, 2};
     Fraction b{1, 3};
-    std::cout << (a + b).numerator << '\n';
+    (a + b).print();
     return 0;
 }
 ```
@@ -93,7 +103,7 @@ int main()
 
 Works when **public** getters (or public fields) expose enough data:
 
-```
+```cpp
 #include <iostream>
 
 class Fraction
@@ -118,6 +128,15 @@ Fraction operator+(const Fraction& left, const Fraction& right)
     return Fraction{
         left.num() * right.den() + right.num() * left.den(),
         left.den() * right.den()};
+}
+
+int main()
+{
+    Fraction a{1, 2};
+    Fraction b{1, 3};
+    Fraction sum = a + b;
+    std::cout << sum.num() << '/' << sum.den() << '\n';
+    return 0;
 }
 ```
 

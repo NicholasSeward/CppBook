@@ -82,6 +82,8 @@ public:
     {
         std::cout << "Animal speaks\n";
     }
+
+    virtual ~Animal() = default; // needed because we delete through Animal*
 };
 
 class Cat : public Animal
@@ -114,6 +116,8 @@ int main()
     delete a2;
 }
 ```
+
+> NOTE: The base class needs `virtual ~Animal() = default;` here. Once `Animal` has a virtual function, deleting a derived object through an `Animal*` requires a **virtual destructor**. Without it the code triggers a `-Wdelete-non-virtual-dtor` warning (and fails to compile when warnings are treated as errors, like on the TxtBook playground). The [Virtual destructor](#virtual-destructor) section below covers why.
 
 ### 2.
 

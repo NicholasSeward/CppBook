@@ -232,7 +232,16 @@ A beginner-friendly C++ textbook organized as Markdown chapters.
 ### 15 Pointers
 
 - [Pointers Index](15Pointers/README.md)
-- [Recursion and Linked Lists](15Pointers/01recursion%20and%20linked%20lists.md)
+- [Where Your Data Lives: Static, Stack, and Heap](15Pointers/01where%20memory%20lives.md)
+- [Allocating with `new` and `delete`](15Pointers/02new%20and%20delete.md)
+- [Dangling Pointers and Memory Leaks](15Pointers/03dangling%20pointers%20and%20memory%20leaks.md)
+- [Destructors and RAII](15Pointers/04destructors%20and%20raii.md)
+- [Pointers to Pointers and `void` Pointers](15Pointers/05pointers%20to%20pointers%20and%20void%20pointers.md)
+- [Introduction to Smart Pointers](15Pointers/06introduction%20to%20smart%20pointers.md)
+- [Move Semantics and rvalue References](15Pointers/07move%20semantics.md)
+- [`std::unique_ptr`](15Pointers/08unique%20ptr.md)
+- [`std::shared_ptr` and `std::weak_ptr`](15Pointers/09shared%20and%20weak%20ptr.md)
+- [Recursion and Linked Lists](15Pointers/10recursion%20and%20linked%20lists.md)
 
 ### 16 Data Structures
 

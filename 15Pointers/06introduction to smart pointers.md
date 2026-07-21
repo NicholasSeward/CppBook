@@ -77,20 +77,71 @@ The mechanism that makes safe ownership transfer possible is **move semantics**,
 
 ### Exercise 1: When does it free?
 
-Prompt: Using the `AutoPtr` above, at what exact moment is the wrapped `int` deleted in this code?
+Prompt: Run the program. In what order do the three lines print (`acquired`, `hi`, `released`)? At what moment is the wrapped `int` deleted?
 
 ```cpp
+// @file: main.cpp
+#include "AutoPtr.h"
+#include <iostream>
+
 int main()
 {
-    AutoPtr<int> p{new int{1}};
+    AutoPtr p{new int{1}};
     std::cout << "hi\n";
     return 0;
+}
+
+// @file: AutoPtr.h
+#pragma once
+
+class AutoPtr
+{
+public:
+    explicit AutoPtr(int* ptr);
+    ~AutoPtr();
+
+    int& operator*() const;
+    int* operator->() const;
+
+    AutoPtr(const AutoPtr&) = delete;
+    AutoPtr& operator=(const AutoPtr&) = delete;
+
+private:
+    int* ptr_;
+};
+
+// @file: AutoPtr.cpp
+#include "AutoPtr.h"
+#include <iostream>
+
+AutoPtr::AutoPtr(int* ptr)
+    : ptr_{ptr}
+{
+    std::cout << "acquired\n";
+}
+
+AutoPtr::~AutoPtr()
+{
+    delete ptr_;
+    std::cout << "released\n";
+}
+
+int& AutoPtr::operator*() const
+{
+    return *ptr_;
+}
+
+int* AutoPtr::operator->() const
+{
+    return ptr_;
 }
 ```
 
 :::details Answer
 
-When `p` goes out of scope at the closing brace of `main` (right after `return 0;`), its destructor runs and deletes the `int`. The output is `acquired`, `hi`, then `released`.
+Order: **`acquired`**, then **`hi`**, then **`released`**.
+
+The `int` is deleted when `p` goes out of scope at the end of `main` (after `return 0;`), when `AutoPtr`'s destructor runs.
 
 :::
 

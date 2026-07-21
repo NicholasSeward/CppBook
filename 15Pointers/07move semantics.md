@@ -44,7 +44,7 @@ Why is this useful? If an argument is a temporary about to be destroyed, a funct
 
 Sometimes you have a named value (an lvalue) that you are **done with** and want to move from. **`std::move`** casts it to an rvalue reference, giving permission to move:
 
-```cpp
+```
 #include <utility>
 
 AutoPtr<int> b{std::move(a)};   // treat a as a temporary; steal its pointer

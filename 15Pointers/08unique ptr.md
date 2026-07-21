@@ -72,7 +72,7 @@ Three patterns to notice:
 
 `make_unique` avoids a trap. If you wrap an existing raw pointer by hand, you can create two owners of the same memory:
 
-```cpp
+```
 int* raw = new int{5};
 std::unique_ptr<int> a{raw};
 std::unique_ptr<int> b{raw};   // BAD: a and b both think they own it
@@ -94,8 +94,12 @@ Prompt: This does not compile because `unique_ptr` cannot be copied. Make it tra
 
 ```cpp
 #include <memory>
+#include <iostream>
 
-void consume(std::unique_ptr<int> p);
+void consume(std::unique_ptr<int> p)   // takes ownership
+{
+    std::cout << "consumed " << *p << '\n';
+}
 
 int main()
 {
@@ -109,7 +113,7 @@ int main()
 
 Move it:
 
-```cpp
+```
 consume(std::move(p));
 ```
 

@@ -90,15 +90,29 @@ int main()
 Make one side of a two-way link a `weak_ptr` to break the cycle:
 
 ```cpp
+#include <iostream>
+#include <memory>
+
 struct Node
 {
     std::shared_ptr<Node> next;   // owns the next
     std::weak_ptr<Node> prev;     // observes the previous, no ownership
     ~Node() { std::cout << "Node destroyed\n"; }
 };
+
+int main()
+{
+    auto a = std::make_shared<Node>();
+    auto b = std::make_shared<Node>();
+
+    a->next = b;
+    b->prev = a;   // weak: does not keep a alive
+
+    return 0;      // both Nodes destroyed
+}
 ```
 
-With `prev` as a `weak_ptr`, there is no ownership cycle, and both nodes are destroyed correctly.
+With `prev` as a `weak_ptr`, there is no ownership cycle, and both nodes are destroyed correctly (this program prints two `Node destroyed` lines).
 
 ## Prefer `unique_ptr` plus raw pointers
 
@@ -149,13 +163,20 @@ int main()
 
 ### Exercise 1: Predict the count
 
-Prompt: What does this print?
+Prompt: Run this program. What does it print?
 
 ```cpp
-auto a = std::make_shared<int>(1);
-auto b = a;
-auto c = b;
-std::cout << a.use_count() << '\n';
+#include <iostream>
+#include <memory>
+
+int main()
+{
+    auto a = std::make_shared<int>(1);
+    auto b = a;
+    auto c = b;
+    std::cout << a.use_count() << '\n';
+    return 0;
+}
 ```
 
 :::details Answer
@@ -166,20 +187,95 @@ std::cout << a.use_count() << '\n';
 
 ### Exercise 2: Break the cycle
 
-Prompt: Two `Node`s point at each other with `shared_ptr` and never get destroyed. Which pointer type should one of the links use, and why?
+Prompt: This program leaks (no destructor messages). Change one link so both nodes destroy. Run it to confirm.
 
-:::details Answer
+```cpp
+#include <iostream>
+#include <memory>
 
-Change one link to a **`weak_ptr`**. It observes without adding to the reference count, so the cycle is broken and both nodes reach count zero and are destroyed.
+struct Node
+{
+    std::shared_ptr<Node> other;
+    ~Node() { std::cout << "Node destroyed\n"; }
+};
+
+int main()
+{
+    auto a = std::make_shared<Node>();
+    auto b = std::make_shared<Node>();
+
+    a->other = b;
+    b->other = a;   // TODO: break the cycle
+
+    return 0;
+}
+```
+
+:::details Hint
+
+One of the two links should observe without owning. `weak_ptr` does that, but then the member type on one side must change.
+
+:::
+
+:::details Solution
+
+**Reasoning:** Change one side to `std::weak_ptr` so it does not bump the reference count. Assign with `b->prev = a;` (or similar). Both counts can reach zero.
+
+```cpp
+#include <iostream>
+#include <memory>
+
+struct Node
+{
+    std::shared_ptr<Node> next;
+    std::weak_ptr<Node> prev;
+    ~Node() { std::cout << "Node destroyed\n"; }
+};
+
+int main()
+{
+    auto a = std::make_shared<Node>();
+    auto b = std::make_shared<Node>();
+
+    a->next = b;
+    b->prev = a;
+
+    return 0;
+}
+```
 
 :::
 
 ### Exercise 3: Is it still there?
 
-Prompt: You hold a `weak_ptr`. What must you call before using the object, and what does it tell you?
+Prompt: Run this program. What does it print, and which call checks that the object is still alive before use?
+
+```cpp
+#include <iostream>
+#include <memory>
+
+int main()
+{
+    auto sp = std::make_shared<int>(10);
+    std::weak_ptr<int> wp = sp;
+
+    if (auto locked = wp.lock())
+    {
+        std::cout << "alive: " << *locked << '\n';
+    }
+
+    sp.reset();
+
+    if (wp.expired())
+    {
+        std::cout << "gone\n";
+    }
+    return 0;
+}
+```
 
 :::details Answer
 
-Call **`lock()`**. It returns a valid `shared_ptr` if the object is still alive (which also keeps it alive while you use it), or an empty `shared_ptr` if it has been destroyed. You can also check **`expired()`**.
+Prints **`alive: 10`** then **`gone`**. Call **`lock()`** before using the object (it returns a valid `shared_ptr` while the object lives, or empty if it is gone). **`expired()`** is another way to check.
 
 :::

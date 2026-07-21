@@ -140,7 +140,7 @@ int main()
 
 :::details Answer
 
-```cpp
+```
 ~Buffer()
 {
     delete[] data_;

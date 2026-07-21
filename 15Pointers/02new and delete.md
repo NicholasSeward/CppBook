@@ -79,7 +79,7 @@ int main()
 
 :::details Answer
 
-```cpp
+```
 delete score;
 score = nullptr;
 ```

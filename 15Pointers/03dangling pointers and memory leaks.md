@@ -6,7 +6,7 @@ Manual memory has two classic hazards: using memory after you released it (**dan
 
 A **dangling pointer** points at memory you no longer own (usually after `delete`, or to a local that has gone out of scope). Reading or writing through it is **undefined behavior**: it might work, might print garbage, might crash, or might quietly corrupt other data.
 
-```cpp
+```
 int* p = new int{10};
 delete p;          // memory released
 std::cout << *p;   // DANGER: p is dangling, undefined behavior
@@ -64,7 +64,7 @@ You do not need to stress about this as a beginner, but you should know:
 
 Prompt: What is wrong with this code, and what could happen when it runs?
 
-```cpp
+```
 int* p = new int{3};
 delete p;
 std::cout << *p << '\n';
@@ -80,7 +80,7 @@ std::cout << *p << '\n';
 
 Prompt: Does this function leak? If so, how would you fix it?
 
-```cpp
+```
 void process()
 {
     int* buffer = new int[100];
@@ -98,7 +98,7 @@ void process()
 
 Prompt: Why is the second `delete` dangerous, and what one line prevents it?
 
-```cpp
+```
 int* p = new int{1};
 delete p;
 delete p;   // problem

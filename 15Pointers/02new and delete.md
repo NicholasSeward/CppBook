@@ -27,7 +27,7 @@ What happens in the machine: `new int{42}` finds a free spot on the heap big eno
 
 Heap memory stays reserved until you release it. **For every `new`, you need exactly one `delete`.**
 
-```cpp
+```
 delete p;   // release the heap memory p points to
 ```
 
@@ -92,7 +92,7 @@ Without the `delete`, the heap `int` stays reserved after `main` loses its only 
 
 Prompt: What is wrong with freeing this array with `delete arr;`?
 
-```cpp
+```
 int* arr = new int[5]{};
 // ...
 delete arr;   // ?

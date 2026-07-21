@@ -67,11 +67,46 @@ A **smart pointer** is a small class that wraps a raw pointer and calls `delete`
 
 ### Exercise 1: Cleanup order
 
-Prompt: Using the `IntBox` class above, create **two** boxes in `main` (`first` then `second`). Predict the order of the `released` messages.
+Prompt: Run this program. Which `released` message prints first: the one for `first` or the one for `second`?
+
+```cpp
+#include <iostream>
+
+class IntBox
+{
+public:
+    IntBox(int value)
+        : data_{new int{value}}
+        , label_{value}
+    {
+        std::cout << "acquired " << label_ << '\n';
+    }
+
+    ~IntBox()
+    {
+        delete data_;
+        std::cout << "released " << label_ << '\n';
+    }
+
+    IntBox(const IntBox&) = delete;
+    IntBox& operator=(const IntBox&) = delete;
+
+private:
+    int* data_;
+    int label_;
+};
+
+int main()
+{
+    IntBox first{1};
+    IntBox second{2};
+    return 0;
+}
+```
 
 :::details Answer
 
-`second` is released first, then `first`. Local objects are destroyed in **reverse** order of construction, so the last one built is the first to clean up.
+**`released 2`** prints first, then **`released 1`**. Local objects are destroyed in **reverse** order of construction, so `second` cleans up before `first`.
 
 :::
 

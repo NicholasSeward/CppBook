@@ -54,13 +54,19 @@ For the same reason, you must never `delete` a `void*`: the program would not kn
 
 ### Exercise 1: Follow the hops
 
-Prompt: What does this print, and what does each `*` do?
+Prompt: Run this program. What does it print? For each `*` in `**pp`, which hop does it take?
 
 ```cpp
-int n = 9;
-int* p = &n;
-int** pp = &p;
-std::cout << **pp << '\n';
+#include <iostream>
+
+int main()
+{
+    int n = 9;
+    int* p = &n;
+    int** pp = &p;
+    std::cout << **pp << '\n';
+    return 0;
+}
 ```
 
 :::details Answer
@@ -71,23 +77,41 @@ Prints **`9`**. The first `*` (on `pp`) gives `p`; the second `*` gives the `int
 
 ### Exercise 2: Fix the void pointer
 
-Prompt: This does not compile. Fix it so it prints the stored `double`.
+Prompt: This does not compile. Fix the marked line so the program prints the stored `double`.
 
 ```cpp
-double d = 3.5;
-void* v = &d;
-std::cout << *v << '\n';   // error
+#include <iostream>
+
+int main()
+{
+    double d = 3.5;
+    void* v = &d;
+    std::cout << *v << '\n';   // TODO: fix this line
+    return 0;
+}
 ```
 
-:::details Answer
+:::details Hint
 
-Cast `v` back to `double*` before dereferencing:
+A `void*` has no type, so you cannot dereference it directly. Cast it to `double*` first.
+
+:::
+
+:::details Solution
+
+**Reasoning:** Restore the type with `static_cast<double*>`, then dereference that pointer.
 
 ```cpp
-double* dp = static_cast<double*>(v);
-std::cout << *dp << '\n';
-```
+#include <iostream>
 
-A `void*` has no type information, so you must restore the type with a cast first.
+int main()
+{
+    double d = 3.5;
+    void* v = &d;
+    double* dp = static_cast<double*>(v);
+    std::cout << *dp << '\n';
+    return 0;
+}
+```
 
 :::
